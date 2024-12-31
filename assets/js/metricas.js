@@ -12,65 +12,45 @@ window.onload = verificarAmbiente;
 
 function obterTipoDispositivo() {
   if (window.innerWidth <= 800) {
-    return "mobile"; // Se a largura da tela for menor ou igual a 800px, considera como "mobile"
+    return "mobile";
   } else {
-    return "desktop"; // Caso contrário, considera como "desktop"
+    return "desktop";
   }
 }
 
-// Dados que você quer salvar
 const dados = {
   tipoDispositivo: obterTipoDispositivo(),
-  dataDeEntrada: new Date().toISOString() // data formatada para ISO
+  dataDeEntrada: new Date().toISOString()
 };
 
-// Gerando um ID único baseado no timestamp (milissegundos)
-const id = Date.now(); // O ID será o timestamp atual
+const id = Date.now();
 
-// URL do Firebase Realtime Database
 const url = `${urlBase}${id}.json`;
 
-// Função para enviar o POST
 fetch(url, {
-  method: 'PUT', // Usando PUT para criar um nó com o ID customizado
+  method: 'PUT',
   headers: {
-    'Content-Type': 'application/json', // Especificando que o conteúdo é JSON
+    'Content-Type': 'application/json',
   },
-  body: JSON.stringify(dados) // Convertendo os dados para JSON
+  body: JSON.stringify(dados)
 })
-.then(response => response.json()) // Converte a resposta para JSON
-.then(data => {
-  console.log('Dados salvos com sucesso:', data);
-})
-.catch(error => {
-  console.error('Erro ao salvar dados:', error);
-});
+.then(response => response.json());
 
-// Função para editar o registro com o clique no botão
 function editarRegistro(idBotao) {
-  // Dados adicionais do clique no botão
   const dadosClique = {
     botaoPagamentoClicado: true,
     idBotao: idBotao,
-    tempoClique: new Date().toISOString() // Hora do clique formatada
+    tempoClique: new Date().toISOString()
   };
 
-  // URL para atualizar o registro no Firebase
-  const urlEdicao = `${urlBase$}{id}.json`;
+  const urlEdicao = `${urlBase}${id}.json`;
 
-  // Atualizando o registro com o PATCH
   fetch(urlEdicao, {
-    method: 'PATCH', // Usando PATCH para atualizar o nó existente sem sobrescrever
+    method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(dadosClique), // Convertendo os dados adicionais para JSON
+    body: JSON.stringify(dadosClique),
   })
-  .then(response => response.json()) // Converte a resposta para JSON
-  .then(data => {
-    console.log('Dados atualizados com sucesso:', data);
-  })
-  .catch(error => {
-    console.error('Erro ao atualizar dados:', error);
-  });
+  .then(response => response.json());
 }
