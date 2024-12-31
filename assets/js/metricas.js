@@ -2,12 +2,16 @@
 let urlBase = "https://sorteio-curso-canal-default-rtdb.firebaseio.com/users/";
 
 function verificarAmbiente() {
-  const isProd = window.location.hostname === "carlos-alexandre-leutz.github.io" || window.location.hostname === "alexandreleutz.com";
+  console.log(window.location.hostname);
+
+  const isProd = window.location.hostname === "carlos-alexandre-leutz.github.io";
+  console.log(!!isProd);
   if (isProd) {
       urlBase = "https://pagina-de-venda-dap-default-rtdb.firebaseio.com/users/";
   }
 }
 window.onload = verificarAmbiente;
+console.log(urlBase);
 
 
 function obterTipoDispositivo() {
@@ -18,9 +22,17 @@ function obterTipoDispositivo() {
   }
 }
 
+const params = new URLSearchParams(window.location.search);
+const utm_source = params.get('utm_source');
+const utm_medium = params.get('utm_medium');
+const utm_campaign = params.get('utm_campaign');
+
 const dados = {
   tipoDispositivo: obterTipoDispositivo(),
-  dataDeEntrada: new Date().toISOString()
+  dataDeEntrada: new Date().toISOString(),
+  utm_source: utm_source,
+  utm_medium: utm_medium,
+  utm_campaign: utm_campaign
 };
 
 const id = Date.now();
