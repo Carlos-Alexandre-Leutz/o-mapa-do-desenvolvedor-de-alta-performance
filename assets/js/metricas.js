@@ -9,10 +9,9 @@ function verificarAmbiente() {
   if (isProd) {
       urlBase = "https://pagina-de-venda-dap-default-rtdb.firebaseio.com/users/";
   }
+  save();
 }
 window.onload = verificarAmbiente;
-console.log(urlBase);
-
 
 function obterTipoDispositivo() {
   if (window.innerWidth <= 800) {
@@ -22,31 +21,33 @@ function obterTipoDispositivo() {
   }
 }
 
-const params = new URLSearchParams(window.location.search);
-const utm_source = params.get('utm_source');
-const utm_medium = params.get('utm_medium');
-const utm_campaign = params.get('utm_campaign');
+function save () {
+  const params = new URLSearchParams(window.location.search);
+  const utm_source = params.get('utm_source');
+  const utm_medium = params.get('utm_medium');
+  const utm_campaign = params.get('utm_campaign');
 
-const dados = {
-  tipoDispositivo: obterTipoDispositivo(),
-  dataDeEntrada: new Date().toISOString(),
-  utm_source: utm_source,
-  utm_medium: utm_medium,
-  utm_campaign: utm_campaign
+  const dados = {
+    tipoDispositivo: obterTipoDispositivo(),
+    dataDeEntrada: new Date().toISOString(),
+    utm_source: utm_source,
+    utm_medium: utm_medium,
+    utm_campaign: utm_campaign
+  };
+
+  const id = Date.now();
+
+  const url = `${urlBase}${id}.json`;
+
+  fetch(url, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(dados)
+  })
+  .then(response => response.json());
 };
-
-const id = Date.now();
-
-const url = `${urlBase}${id}.json`;
-
-fetch(url, {
-  method: 'PUT',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify(dados)
-})
-.then(response => response.json());
 
 function editarRegistro(idBotao) {
   const dadosClique = {
