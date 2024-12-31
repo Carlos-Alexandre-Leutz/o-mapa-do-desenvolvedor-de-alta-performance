@@ -1,0 +1,17 @@
+{
+  "name": "o-mapa-do-desenvolvedor-de-alta-performance",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "purgecss": "postcss ./assets/css/custom-frontend.min.css --dir dist/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^7.0.2",
+    "postcss-cli": "^11.0.0"
+  }
+}
