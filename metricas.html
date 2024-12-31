@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel de Dados</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border: 1px solid #ddd;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Painel de Dados de Usuários</h1>
+
+  <table id="tabelaDados">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Tipo de Dispositivo</th>
+        <th>Data de Entrada</th>
+        <th>utm_source</th>
+        <th>utm_medium</th>
+        <th>utm_campaign</th>
+        <th>Botão Pagamento Clicado</th>
+        <th>ID do Botão</th>
+        <th>Tempo do Clique</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Os dados serão inseridos aqui -->
+    </tbody>
+  </table>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    let urlBase = "https://pagina-de-venda-dap-default-rtdb.firebaseio.com/users/";
+
+    // Carregar dados do Firebase e exibir na tabela
+    function carregarDados() {
+      fetch(`${urlBase}.json`)
+        .then(response => response.json())
+        .then(data => {
+          const tabela = document.getElementById('tabelaDados').getElementsByTagName('tbody')[0];
+          tabela.innerHTML = ''; // Limpar a tabela antes de preencher novamente
+
+          for (const id in data) {
+            const registro = data[id];
+            const linha = tabela.insertRow();
+            linha.innerHTML = `
+              <td>${id}</td>
+              <td>${registro.tipoDispositivo}</td>
+              <td>${registro.dataDeEntrada}</td>
+              <td>${registro.utm_source || ''}</td>
+              <td>${registro.utm_medium || ''}</td>
+              <td>${registro.utm_campaign || ''}</td>
+              <td>${registro.botaoPagamentoClicado || ''}</td>
+              <td>${registro.idBotao || ''}</td>
+              <td>${registro.tempoClique || ''}</td>
+            `;
+          }
+        })
+        .catch(error => console.error('Erro ao carregar dados:', error));
+    }
+
+    window.onload = carregarDados;
+  </script>
+
+</body>
+</html>

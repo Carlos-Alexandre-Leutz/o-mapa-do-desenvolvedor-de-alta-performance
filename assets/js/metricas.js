@@ -1,5 +1,6 @@
 
 let urlBase = "https://sorteio-curso-canal-default-rtdb.firebaseio.com/users/";
+const id = Date.now();
 
 function verificarAmbiente() {
   console.log(window.location.hostname);
@@ -35,7 +36,6 @@ function save () {
     utm_campaign: utm_campaign
   };
 
-  const id = Date.now();
 
   const url = `${urlBase}${id}.json`;
 
