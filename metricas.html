@@ -18,12 +18,22 @@
     th {
       background-color: #f2f2f2;
     }
+    button {
+      padding: 5px 10px;
+      color: white;
+      background-color: red;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: darkred;
+    }
   </style>
 </head>
 <body>
 
   <h1>Painel de Dados de Usuários</h1>
-
   <table id="tabelaDados">
     <thead>
       <tr>
@@ -32,10 +42,11 @@
         <th>Data de Entrada</th>
         <th>utm_source</th>
         <th>utm_medium</th>
-        <th>utm_campaign</th>
+        <th>Vídeo</th>
         <th>Botão Pagamento Clicado</th>
         <th>ID do Botão</th>
         <th>Tempo do Clique</th>
+        <th>Ações</th>
       </tr>
     </thead>
     <tbody>
@@ -45,7 +56,7 @@
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
-    let urlBase = "https://pagina-de-venda-dap-default-rtdb.firebaseio.com/users/";
+    const urlBase = "https://pagina-de-venda-dap-default-rtdb.firebaseio.com/users/";
 
     // Carregar dados do Firebase e exibir na tabela
     function carregarDados() {
@@ -64,14 +75,33 @@
               <td>${registro.dataDeEntrada}</td>
               <td>${registro.utm_source || ''}</td>
               <td>${registro.utm_medium || ''}</td>
-              <td>${registro.utm_campaign || ''}</td>
+              <td>
+                <img src="https://img.youtube.com/vi/${registro.utm_campaign || ''}/0.jpg" alt="Preview do Vídeo" style="width: 100px; height: auto;" />
+              </td>
               <td>${registro.botaoPagamentoClicado || ''}</td>
               <td>${registro.idBotao || ''}</td>
               <td>${registro.tempoClique || ''}</td>
+              <td><button onclick="deletarRegistro('${id}')">Deletar</button></td>
             `;
           }
         })
         .catch(error => console.error('Erro ao carregar dados:', error));
+    }
+
+    // Função para deletar um registro no Firebase
+    function deletarRegistro(id) {
+      if (confirm(`Tem certeza de que deseja deletar o registro com ID ${id}?`)) {
+        fetch(`${urlBase}${id}.json`, { method: 'DELETE' })
+          .then(response => {
+            if (response.ok) {
+              // alert('Registro deletado com sucesso!');
+              carregarDados(); // Recarregar a tabela após deletar
+            } else {
+              alert('Erro ao deletar o registro.');
+            }
+          })
+          .catch(error => console.error('Erro ao deletar registro:', error));
+      }
     }
 
     window.onload = carregarDados;
