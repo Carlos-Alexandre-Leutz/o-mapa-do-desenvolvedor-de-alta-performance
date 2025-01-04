@@ -53,19 +53,13 @@
           class="elementor-element elementor-element-43f73f41 elementor-widget__width-inherit elementor-widget elementor-widget-html"
           data-id="43f73f41" data-element_type="widget" data-widget_type="html.default">
 
-          <video width="640" height="360" controls>
-            <source src="./assets/vid.mp4" type="video/mp4">
-            Seu navegador não suporta a tag de vídeo.
-          </video>
-
+          
           <div class="iframe-container">
-            <iframe width="100%" height="100%"
-              allow="autoplay; encrypted-media"
-              src="https://www.youtube.com/embed/D3SHwxk68o4?controls=0&modestbranding=1&rel=0&autohide=1"
-              frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
+            <video id="video" width="640" height="360" controls autoplay muted loop>
+              <source src="./assets/vidlegendado.mp4" type="video/mp4">
+              Seu navegador não suporta a tag de vídeo.
+            </video>
           </div>
-
         </div>
         <div
           onclick="editarRegistro(1)"
@@ -896,6 +890,13 @@
       </div>
     </div>
   </div>
+   <!-- Modal Play-->
+  <div id="modalAlerta">
+    <div class="modal-content">
+      <h2>O Vídeo já começou!</h2>
+      <button onclick="desmutar()">Ativar Áudio</button>
+    </div>
+  </div>
   <!-- Modal de Desconto -->
   <div id="discountModal">
     <div class="modal-content">
@@ -908,7 +909,44 @@
       </div>
     </div>
   </div>
+  <div id="cookie-banner" style="display: none;">
+    <p>
+      Utilizamos cookies para melhorar sua experiência e coletar dados analíticos.  
+      <a href="/politica-de-privacidade.html" target="_blank">Saiba mais</a>.
+    </p>
+    <button id="accept-all">Aceitar Todos</button>
+    <button id="manage-preferences">Gerenciar Preferências</button>
+  </div>
+  
+  <div id="preferences-modal" style="display: none;">
+    <div>
+      <h2>Gerenciar Preferências de Cookies</h2>
+      <label>
+        <input type="checkbox" id="essential" disabled checked />
+        Cookies Essenciais (sempre ativado)
+      </label>
+      <label>
+        <input type="checkbox" id="analytics" />
+        Cookies de Análise
+      </label>
+      <label>
+        <input type="checkbox" id="marketing" />
+        Cookies de Marketing
+      </label>
+      <button onclick="savePreferences()">Salvar Preferências</button>
+      <button onclick="savePreferences()">Fechar</button>
+    </div>
+  </div>
+  <footer class="bg-light text-center py-3">
+    <p class="mb-0">&copy; <span id="currentYear"></span> - Alexandre Leutz. Todos os direitos reservados.</p>
+  </footer>
+  <script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+  </script>
+  
   <script src="./assets/js/metricas.js"></script>
+  <script src="./assets/js/modalPlay.js"></script>
+  <script src="./assets/js/lgpd.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
