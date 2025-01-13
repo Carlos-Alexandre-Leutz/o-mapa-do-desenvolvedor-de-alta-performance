@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const cookieBanner = document.getElementById("cookie-banner");
   const preferencesModal = document.getElementById("preferences-modal");
-  
+
   // Show the banner if no consent is saved
   if (!localStorage.getItem("cookieConsent")) {
     cookieBanner.style.display = "block";
@@ -28,12 +28,12 @@ document.addEventListener("DOMContentLoaded", () => {
 function savePreferences () {
   const analytics = document.getElementById("analytics").checked;
   const marketing = document.getElementById("marketing").checked;
-  
+
   localStorage.setItem("cookieConsent", JSON.stringify({
     essential: true,
     analytics,
     marketing
   }));
-  
+
   document.getElementById("preferences-modal").style.display = "none";
 }

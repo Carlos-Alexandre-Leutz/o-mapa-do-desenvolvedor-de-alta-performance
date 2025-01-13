@@ -67,6 +67,13 @@
               Seu navegador não suporta a tag de vídeo.
             </video>
           </div>
+          <!-- Modal Play-->
+          <div id="modalAlerta">
+            <div class="modal-content">
+              <h2>O Vídeo já começou!</h2>
+              <button onclick="desmutar()">Ativar Áudio</button>
+            </div>
+          </div>
         </div>
         <div
           onclick="editarRegistro(1)"
@@ -897,20 +904,13 @@
       </div>
     </div>
   </div>
-   <!-- Modal Play-->
-  <div id="modalAlerta">
-    <div class="modal-content">
-      <h2>O Vídeo já começou!</h2>
-      <button onclick="desmutar()">Ativar Áudio</button>
-    </div>
-  </div>
   <!-- Modal de Desconto -->
   <div id="discountModal">
     <div class="modal-content">
       <h2>Não vá embora!</h2>
-      <p>Ganhe <strong>30%</strong> de desconto na sua compra, aproveite!</p>
+      <p>Ganhe agora Como <strong>Bônus</strong> o Módulo: <u>Desenvolvimento de Carreira e Networking</u> <strong>Grátis</strong> e aprenda como se destacar na programação e construir conexões poderosas!</p>
       <div onclick="editarRegistro(6)">
-        <a href="https://pay.hotmart.com/B95460619U?off=piqjmvrz" target="_blank" rel="noopener noreferrer">
+        <a href="https://pay.hotmart.com/B95460619U" target="_blank" rel="noopener noreferrer">
           <button id="stayButton">Ficar e aproveitar</button>
         </a>
       </div>
@@ -921,8 +921,10 @@
       Utilizamos cookies para melhorar sua experiência e coletar dados analíticos.
       <a href="/politica-de-privacidade.html" target="_blank">Saiba mais</a>.
     </p>
-    <button id="accept-all">Aceitar Todos</button>
-    <button id="manage-preferences">Gerenciar Preferências</button>
+    <div style="display: flex;">
+      <button id="accept-all">Aceitar</button>
+      <button id="manage-preferences">Gerenciar Preferências</button>
+    </div>
   </div>
 
   <div id="preferences-modal" style="display: none;">
@@ -944,6 +946,14 @@
       <button onclick="savePreferences()">Fechar</button>
     </div>
   </div>
+  <div class="whatsapp-container">
+    <a href="https://wa.me/47999333485?text=Olá!%20Tenho%20dúvidas%20sobre%20o%20DAP%20e%20gostaria%20de%20falar%20com%20você." target="_blank"" target="_blank">
+        <img src="./assets/whatsapp.png" alt="WhatsApp">
+        <span class="tooltip">Tem dúvidas? <br /> Fale comigo!</span>
+    </a>
+  </div>
+
+
   <footer class="bg-light text-center py-3">
     <p class="mb-0">&copy; <span id="currentYear"></span> - Alexandre Leutz. Todos os direitos reservados.</p>
   </footer>

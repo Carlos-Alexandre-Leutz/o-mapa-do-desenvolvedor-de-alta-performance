@@ -16,6 +16,7 @@ videoElement.onplay = function() {
 
 // Função para ativar o áudio
 function desmutar() {
-    videoElement.muted = false; // Desativa o mudo
-    modalAlerta.style.display = 'none'; // Fecha o modal
+    videoElement.currentTime = 0;
+    videoElement.muted = false;
+    modalAlerta.style.display = 'none';
 }
