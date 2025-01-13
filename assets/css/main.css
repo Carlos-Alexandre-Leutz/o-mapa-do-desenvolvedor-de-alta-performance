@@ -159,6 +159,7 @@ body {
   height: 80%;
   margin: auto;
   margin-top: -180px;
+  margin-bottom: 30px;
 }
 #discountModal {
   display: none; /* Inicialmente escondido */
@@ -270,5 +271,5 @@ button {
 
 .whatsapp-container a:hover .tooltip {
   visibility: visible;
-  opacity: 1; 
+  opacity: 1;
 }
