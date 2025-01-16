@@ -29,6 +29,18 @@
     button:hover {
       background-color: darkred;
     }
+    #paginacao {
+      margin: 0 auto;
+      width: 150px;
+    }
+    #paginacao button.active {
+      font-weight: bold;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: default;
+    }
+
   </style>
 </head>
 <body>
@@ -53,6 +65,7 @@
       <!-- Os dados serão inseridos aqui -->
     </tbody>
   </table>
+  <div id="paginacao"></div>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
@@ -87,40 +100,74 @@
       return `${dias}d ${horas}h ${minutos}m ${segundos}s`;
     }
 
-    // Carregar dados do Firebase e exibir na tabela
+    let currentPage = 1; // Página inicial
+    const itemsPerPage = 10; // Número de itens por página
+    let paginatedData = []; // Dados paginados
+
     function carregarDados() {
       fetch(`${urlBase}.json`)
         .then(response => response.json())
         .then(data => {
-          const tabela = document.getElementById('tabelaDados').getElementsByTagName('tbody')[0];
-          tabela.innerHTML = ''; // Limpar a tabela antes de preencher novamente
-
-          for (const id in data) {
-            const registro = data[id];
-            const linha = tabela.insertRow();
-
-            const dataFormatada = formatarData(registro.dataDeEntrada);
-            const tempoClique = calcularTempoClique(registro.dataDeEntrada, registro.tempoClique);
-            const tempoFormatado = formatarData(registro.tempoClique);
-
-            linha.innerHTML = `
-              <td>${id}</td>
-              <td>${registro.tipoDispositivo}</td>
-              <td>${dataFormatada}</td>
-              <td>${registro.utm_source || ''}</td>
-              <td>${registro.utm_medium || ''}</td>
-              <td>
-                <img src="https://img.youtube.com/vi/${registro.utm_campaign || ''}/0.jpg" alt="Preview do Vídeo" style="width: 100px; height: auto;" />
-              </td>
-              <td>${registro.botaoPagamentoClicado || ''}</td>
-              <td>${registro.idBotao || ''}</td>
-              <td>${tempoClique} <br> ${tempoFormatado}</td>
-              <td><button onclick="deletarRegistro('${id}')">Deletar</button></td>
-            `;
-          }
+          const array = Object.values(data).reverse(); // Obtém e inverte os dados
+          paginatedData = array; // Armazena os dados para a paginação
+          renderizarTabela(); // Exibe a primeira página
+          renderizarPaginacao(); // Cria os controles de paginação
         })
         .catch(error => console.error('Erro ao carregar dados:', error));
     }
+
+    function renderizarTabela() {
+      const tabela = document.getElementById('tabelaDados').getElementsByTagName('tbody')[0];
+      tabela.innerHTML = '';
+
+      const startIndex = (currentPage - 1) * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      const pageData = paginatedData.slice(startIndex, endIndex); // Dados da página atual
+
+      pageData.forEach((registro, index) => {
+        const linha = tabela.insertRow();
+
+        const dataFormatada = formatarData(registro.dataDeEntrada);
+        const tempoClique = calcularTempoClique(registro.dataDeEntrada, registro.tempoClique);
+        const tempoFormatado = formatarData(registro.tempoClique);
+
+        linha.innerHTML = `
+          <td>${startIndex + index + 1}</td>
+          <td>${registro.tipoDispositivo}</td>
+          <td>${dataFormatada}</td>
+          <td>${registro.utm_source || ''}</td>
+          <td>${registro.utm_medium || ''}</td>
+          <td>
+            <img src="https://img.youtube.com/vi/${registro.utm_campaign || ''}/0.jpg" alt="Preview do Vídeo" style="width: 100px; height: auto;" />
+          </td>
+          <td>${registro.botaoPagamentoClicado || ''}</td>
+          <td>${registro.idBotao || ''}</td>
+          <td>${tempoClique} <br> ${tempoFormatado}</td>
+          <td><button onclick="deletarRegistro('${startIndex + index + 1}')">Deletar</button></td>
+        `;
+      });
+    }
+
+function renderizarPaginacao() {
+  const paginacao = document.getElementById('paginacao');
+  paginacao.innerHTML = '';
+
+  const totalPages = Math.ceil(paginatedData.length / itemsPerPage);
+
+  for (let i = 1; i <= totalPages; i++) {
+    const button = document.createElement('button');
+    button.textContent = i;
+    button.className = i === currentPage ? 'active' : '';
+    button.onclick = () => {
+      currentPage = i;
+      renderizarTabela();
+      renderizarPaginacao();
+    };
+    paginacao.appendChild(button);
+  }
+}
+
+
 
     // Função para deletar um registro no Firebase
     function deletarRegistro(id) {
