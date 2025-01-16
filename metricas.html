@@ -112,6 +112,7 @@
         .then(data => {
           const array = Object.values(data).reverse(); // Obtém e inverte os dados
           paginatedData = array; // Armazena os dados para a paginação
+          resumoDaMetrica(paginatedData);
           renderizarTabela(); // Exibe a primeira página
           renderizarPaginacao(); // Cria os controles de paginação
         })
@@ -125,7 +126,6 @@
       const startIndex = (currentPage - 1) * itemsPerPage;
       const endIndex = startIndex + itemsPerPage;
       const pageData = paginatedData.slice(startIndex, endIndex); // Dados da página atual
-      resumoDaMetrica(pageData);
       pageData.forEach((registro, index) => {
         const linha = tabela.insertRow();
 
@@ -150,44 +150,113 @@
       });
     }
     function resumoDaMetrica(data) {
-      // Processar os dados
-      const resumo = {};
-      data.forEach(entry => {
-        const campaign = entry.utm_campaign;
-        if (!resumo[campaign]) {
-          resumo[campaign] = { totalCliques: 0, cliquesPagamento: 0 };
-        }
-        resumo[campaign].totalCliques++;
-        if (entry.botaoPagamentoClicado) {
-          resumo[campaign].cliquesPagamento++;
-        }
-      });
-
-      // Ordenar campanhas por total de cliques em ordem decrescente
-      const campanhasOrdenadas = Object.entries(resumo)
-        .sort(([, a], [, b]) => b.totalCliques - a.totalCliques);
-
-      // Gerar tabela de resumo
-      const summaryDiv = document.getElementById('summary');
-      const table = document.createElement('table');
-      table.innerHTML = `
-        <tr>
-          <th>Campanha</th>
-          <th>Total de Cliques</th>
-        </tr>
-      `;
-      campanhasOrdenadas.forEach(([campaign, { totalCliques }]) => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-          <td>
-            <img src="https://img.youtube.com/vi/${campaign}/0.jpg" alt="Preview do Vídeo" style="width: 100px; height: auto;" />
-          </td>
-          <td>${totalCliques}</td>
-        `;
-        table.appendChild(row);
-      });
-      summaryDiv.appendChild(table);
+  // Processar os dados
+  const resumo = {};
+  data.forEach(entry => {
+    const campaign = entry.utm_campaign;
+    if (!resumo[campaign]) {
+      resumo[campaign] = {
+        totalCliques: 0,
+        cliquesPagamento: 0,
+        aparicoes: 0,
+        tempoTotalClique: 0
+      };
     }
+
+    // Contar aparições
+    resumo[campaign].aparicoes++;
+
+    // Contar total de cliques e cliques no botão de pagamento
+    if (entry.botaoPagamentoClicado === true) {
+      resumo[campaign].totalCliques++; // Considera apenas os cliques no botão de pagamento
+      resumo[campaign].cliquesPagamento++; // Contabiliza cliques no pagamento
+    }
+
+    // Calcular o tempo para o clique, se disponível
+    if (entry.tempoClique) {
+      const tempoEntrada = new Date(entry.dataDeEntrada).getTime();
+      const tempoClique = new Date(entry.tempoClique).getTime();
+      const tempoParaClique = (tempoClique - tempoEntrada) / 1000; // tempo em segundos
+      resumo[campaign].tempoTotalClique += tempoParaClique;
+    }
+  });
+
+  // Ordenar campanhas por total de cliques em ordem decrescente
+  const campanhasOrdenadas = Object.entries(resumo)
+    .sort(([, a], [, b]) => b.totalCliques - a.totalCliques);
+
+  // Definir parâmetros de paginação
+  const itemsPerPage = 5; // Número de campanhas por página
+  const totalPages = Math.ceil(campanhasOrdenadas.length / itemsPerPage); // Número total de páginas
+  let currentPage = 1; // Página atual
+
+  // Função para converter segundos em minutos e segundos
+  function formatTime(seconds) {
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.round(seconds % 60);
+    return `${mins}m ${secs}s`;
+  }
+
+  // Função para renderizar a tabela de acordo com a página
+  function renderTable(page) {
+    const startIndex = (page - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const campanhasParaExibir = campanhasOrdenadas.slice(startIndex, endIndex);
+
+    // Gerar tabela de resumo
+    const summaryDiv = document.getElementById('summary');
+    summaryDiv.innerHTML = ''; // Limpar conteúdo anterior
+
+    const table = document.createElement('table');
+    table.innerHTML = `
+      <tr>
+        <th>Campanha</th>
+        <th>Acessos</th>
+        <th>Total de Cliques</th>
+        <th>Cliques no Modal de Intenção de Saída</th>
+        <th>Média de Tempo para o Clique (min:s)</th>
+      </tr>
+    `;
+    campanhasParaExibir.forEach(([campaign, { totalCliques, aparicoes, tempoTotalClique, cliquesPagamento }]) => {
+      const mediaTempoClique = formatTime(tempoTotalClique / aparicoes); // Converter o tempo médio para min:s
+      const cliquesModalSaida = data.filter(entry => entry.idBotao === 6 && entry.utm_campaign === campaign).length;
+
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>
+          <img src="https://img.youtube.com/vi/${campaign}/0.jpg" alt="Preview do Vídeo" style="width: 100px; height: auto;" />
+        </td>
+        <td>${aparicoes}</td>
+        <td>${totalCliques}</td>
+        <td>${cliquesModalSaida > 0 ? `Clique no Modal de Intenção de Saída (${cliquesModalSaida})` : 'Não houve clique'}</td>
+        <td>${mediaTempoClique}</td>
+      `;
+      table.appendChild(row);
+    });
+    summaryDiv.appendChild(table);
+
+    // Adicionar navegação de página
+    const paginationDiv = document.createElement('div');
+    paginationDiv.classList.add('pagination');
+
+    const prevButton = document.createElement('button');
+    prevButton.innerText = 'Anterior';
+    prevButton.disabled = page === 1;
+    prevButton.onclick = () => renderTable(page - 1);
+    paginationDiv.appendChild(prevButton);
+
+    const nextButton = document.createElement('button');
+    nextButton.innerText = 'Próximo';
+    nextButton.disabled = page === totalPages;
+    nextButton.onclick = () => renderTable(page + 1);
+    paginationDiv.appendChild(nextButton);
+
+    summaryDiv.appendChild(paginationDiv);
+  }
+
+  // Renderizar a tabela da primeira página
+  renderTable(currentPage);
+}
 
     function renderizarPaginacao() {
       const paginacao = document.getElementById('paginacao');
