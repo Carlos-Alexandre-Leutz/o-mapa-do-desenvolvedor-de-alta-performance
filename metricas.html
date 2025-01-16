@@ -44,6 +44,8 @@
   </style>
 </head>
 <body>
+  <h1>Resumo de Cliques</h1>
+  <div id="summary"></div>
 
   <h1>Painel de Dados de Usuários</h1>
   <table id="tabelaDados">
@@ -123,7 +125,7 @@
       const startIndex = (currentPage - 1) * itemsPerPage;
       const endIndex = startIndex + itemsPerPage;
       const pageData = paginatedData.slice(startIndex, endIndex); // Dados da página atual
-
+      resumoDaMetrica(pageData);
       pageData.forEach((registro, index) => {
         const linha = tabela.insertRow();
 
@@ -147,25 +149,64 @@
         `;
       });
     }
+    function resumoDaMetrica(data) {
+      // Processar os dados
+      const resumo = {};
+      data.forEach(entry => {
+        const campaign = entry.utm_campaign;
+        if (!resumo[campaign]) {
+          resumo[campaign] = { totalCliques: 0, cliquesPagamento: 0 };
+        }
+        resumo[campaign].totalCliques++;
+        if (entry.botaoPagamentoClicado) {
+          resumo[campaign].cliquesPagamento++;
+        }
+      });
 
-function renderizarPaginacao() {
-  const paginacao = document.getElementById('paginacao');
-  paginacao.innerHTML = '';
+      // Ordenar campanhas por total de cliques em ordem decrescente
+      const campanhasOrdenadas = Object.entries(resumo)
+        .sort(([, a], [, b]) => b.totalCliques - a.totalCliques);
 
-  const totalPages = Math.ceil(paginatedData.length / itemsPerPage);
+      // Gerar tabela de resumo
+      const summaryDiv = document.getElementById('summary');
+      const table = document.createElement('table');
+      table.innerHTML = `
+        <tr>
+          <th>Campanha</th>
+          <th>Total de Cliques</th>
+        </tr>
+      `;
+      campanhasOrdenadas.forEach(([campaign, { totalCliques }]) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>
+            <img src="https://img.youtube.com/vi/${campaign}/0.jpg" alt="Preview do Vídeo" style="width: 100px; height: auto;" />
+          </td>
+          <td>${totalCliques}</td>
+        `;
+        table.appendChild(row);
+      });
+      summaryDiv.appendChild(table);
+    }
 
-  for (let i = 1; i <= totalPages; i++) {
-    const button = document.createElement('button');
-    button.textContent = i;
-    button.className = i === currentPage ? 'active' : '';
-    button.onclick = () => {
-      currentPage = i;
-      renderizarTabela();
-      renderizarPaginacao();
-    };
-    paginacao.appendChild(button);
-  }
-}
+    function renderizarPaginacao() {
+      const paginacao = document.getElementById('paginacao');
+      paginacao.innerHTML = '';
+
+      const totalPages = Math.ceil(paginatedData.length / itemsPerPage);
+
+      for (let i = 1; i <= totalPages; i++) {
+        const button = document.createElement('button');
+        button.textContent = i;
+        button.className = i === currentPage ? 'active' : '';
+        button.onclick = () => {
+          currentPage = i;
+          renderizarTabela();
+          renderizarPaginacao();
+        };
+        paginacao.appendChild(button);
+      }
+    }
 
 
 
