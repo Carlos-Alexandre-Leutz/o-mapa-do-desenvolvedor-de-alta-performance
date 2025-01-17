@@ -177,13 +177,24 @@ body {
   padding: 20px;
   border-radius: 5px;
   text-align: center;
-  width: 600px;
+  width: 1000px;
+  max-width: 90%;
+  overflow-y: scroll;
+  height: 100%;
+}
+@media screen and (max-width: 700px) {
+  .accordion {
+
+  }
 }
 .modal-content h2 {
   margin: 0 0 20px 0;
 }
 .modal-content p {
   margin: 10px 0;
+}
+.modal-content ul {
+  text-align: left;
 }
 .modal-content button {
   padding: 10px 20px;

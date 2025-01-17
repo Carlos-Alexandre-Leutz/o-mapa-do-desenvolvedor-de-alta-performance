@@ -907,8 +907,49 @@
   <!-- Modal de Desconto -->
   <div id="discountModal">
     <div class="modal-content">
-      <h2>Não vá embora!</h2>
-      <p>Ganhe agora Como <strong>Bônus</strong> o Módulo: <u>Desenvolvimento de Carreira e Networking</u> <strong>Grátis</strong> e aprenda como se destacar na programação e construir conexões poderosas!</p>
+      <h2>Bônus Grátis!</h2>
+      <div class="modal-content">
+        <div class="accordion" id="accordionExample3">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Bônus 1 - Desenvolvimento de Carreira e Networking
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample3">
+              <div class="accordion-body">
+                <ul>
+                  <li>Como criar um portfólio profissional que destaque suas habilidades</li>
+                  <li>Estratégias para construir um currículo atrativo para recrutadores</li>
+                  <li>Técnicas para criar um portfólio que impressione no mercado de TI</li>
+                  <li>Como otimizar seu perfil no LinkedIn para atrair oportunidades de emprego</li>
+                  <li>Como expandir sua rede de contatos e contribuir para projetos de código aberto</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Bônus 2 - Técnicas para Passar em uma Entrevista Técnica
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample3">
+              <div class="accordion-body">
+                <ul>
+                  <li>Como se preparar adequadamente antes de uma entrevista técnica</li>
+                  <li>Estratégias avançadas para brilhar durante uma entrevista técnica</li>
+                  <li>Como se preparar para as perguntas mais frequentes em entrevistas de TI</li>
+                  <li>Técnicas para se destacar na parte técnica de uma entrevista</li>
+                  <li>Como usar as soft skills para aumentar suas chances de ser contratado</li>
+                  <li>Como seguir após a entrevista com feedback e estratégias de follow-up</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div onclick="editarRegistro(6)">
         <a href="https://pay.hotmart.com/B95460619U" target="_blank" rel="noopener noreferrer">
           <button id="stayButton">Ficar e aproveitar</button>
@@ -1018,7 +1059,37 @@
       document.addEventListener(event, lazyloadRunObserver);
     });
   </script>
+  <script>
+      // Detecta a intenção de saída do usuário
+      window.addEventListener('beforeunload', function (e) {
+        // Exibe uma mensagem de confirmação (este comportamento pode variar dependendo do navegador)
+        const message = 'Você tem certeza que deseja sair da página?';
+        e.returnValue = message; // Alguns navegadores precisam disso para mostrar a mensagem
+        return message; // Outros navegadores podem precisar disso
+      });
 
+      // Detecta o movimento de rolagem e tenta identificar quando o usuário pode estar saindo
+      let isScrolling;
+
+      window.addEventListener('scroll', function () {
+        window.clearTimeout(isScrolling);
+
+        isScrolling = setTimeout(function () {
+          // Verifica se o usuário rolou até o final da página
+          const scrollPosition = window.scrollY + window.innerHeight;
+          const documentHeight = document.documentElement.scrollHeight;
+
+          // Se o usuário rolar até o final, exibe o alerta
+          if (scrollPosition >= documentHeight) {
+            modal.style.display = "flex";
+          }
+        }, 66); // Delay de 66ms para simular comportamento similar ao "debounce"
+      });
+
+      // Detecta a interação com a barra de navegação ou tentativa de fechar a página
+      window.addEventListener('blur', function () {
+        modal.style.display = "flex";
+      });
+  </script>
 </body>
-
 </html>
