@@ -179,12 +179,11 @@ body {
   text-align: center;
   width: 1000px;
   max-width: 90%;
-  overflow-y: scroll;
-  height: 100%;
 }
 @media screen and (max-width: 700px) {
-  .accordion {
-
+  .modal-content {
+    overflow-y: scroll;
+    height: 100%;
   }
 }
 .modal-content h2 {
