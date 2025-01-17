@@ -3,7 +3,10 @@ let urlBase = "https://sorteio-curso-canal-default-rtdb.firebaseio.com/users/";
 const id = Date.now();
 
 function verificarAmbiente() {
-  const isProd = window.location.hostname === "carlos-alexandre-leutz.github.io";
+  let isProd = window.location.hostname === "carlos-alexandre-leutz.github.io";
+  if(!isProd) {
+    isProd = window.location.hostname === "alexandreleutz.com.br";
+  }
   if (isProd) {
       urlBase = "https://pagina-de-venda-dap-default-rtdb.firebaseio.com/users/";
   }
