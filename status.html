@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Status da sua compra do curso Mapa do Desenvolvedor de Alta Performance.">
+    <title>Status da Compra | Mapa do Desenvolvedor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            padding: 20px 10px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        main {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        main h2 {
+            color: #007BFF;
+        }
+        .hidden {
+            display: none;
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #666;
+        }
+        /* aguardando */
+        .aguardando {
+          background: #ffc107;
+          color: #333;
+        }
+
+        #aguardando-pagamento h2 {
+            color: #ff9800;
+        }
+        #aguardando-pagamento .button {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 10px 20px;
+            background: #ff9800;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        #aguardando-pagamento .button:hover {
+            background: #e68900;
+        }
+
+        /* analise */
+        .analise {
+          background: #ffc107;
+          color: #333;
+        }
+        #em-analise h2 {
+            color: #ff9800;
+        }
+        #em-analise .button {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 10px 20px;
+            background: #ff9800;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        #em-analise .button:hover {
+            background: #e68900;
+        }
+
+        /* confirmado */
+        .confirmado {
+          background: #007BFF;
+          color: #fff;
+        }
+        #pagamento-confirmado h2 {
+          color: #007BFF;
+        }
+        #pagamento-confirmado .button {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 10px 20px;
+            background: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        #pagamento-confirmado .button:hover {
+            background: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+    <header id="title">
+        <h1>Status da Compra</h1>
+    </header>
+    <main>
+        <!-- Aguardando Pagamento -->
+        <div id="aguardando-pagamento" class="hidden">
+              <h2>Sua Compra Está Aguardando Pagamento</h2>
+              <p>Olá, <strong>Futuro(a) Desenvolvedor(a)</strong>,</p>
+              <p>Recebemos o seu pedido para o curso <strong>"Mapa do Desenvolvedor de Alta Performance"</strong>. No momento, estamos aguardando a confirmação do pagamento para liberar o seu acesso.</p>
+
+              <h3>O que você deve fazer agora?</h3>
+              <ol>
+                  <li><strong>Verifique o e-mail cadastrado</strong>: Um e-mail com os detalhes do pagamento foi enviado para você.</li>
+                  <li><strong>Efetue o pagamento</strong>: Siga as instruções no e-mail para concluir a transação.</li>
+                  <li><strong>Aguarde a confirmação</strong>: Assim que o pagamento for confirmado, você receberá um e-mail com o acesso ao curso.</li>
+              </ol>
+
+              <a href="https://wa.me/47999333485?text=Olá!%20Tenho%20dúvidas%20sobre%20o%20DAP%20e%20gostaria%20de%20falar%20com%20você." class="button">Preciso de Ajuda</a>
+
+              <p>Se você já efetuou o pagamento, aguarde até 48 horas para que ele seja processado.</p>
+              <p>Qualquer dúvida, entre em contato com nosso suporte em:
+                <a href="https://wa.me/47999333485?text=Olá!%20Tenho%20dúvidas%20sobre%20o%20DAP%20e%20gostaria%20de%20falar%20com%20você." target="_blank"   target="_blank">
+                  <span class="tooltip">Whatsapp</span>
+                </a>
+              </p>
+        </div>
+
+        <!-- Em Análise de Crédito -->
+        <div id="em-analise" class="hidden">
+          <h2>Sua Compra Está em Análise de Crédito</h2>
+          <p>Olá, <strong>Futuro(a) Desenvolvedor(a)</strong>,</p>
+          <p>Recebemos o seu pedido para o curso <strong>"Mapa do Desenvolvedor de Alta Performance"</strong>. No momento, sua compra está sendo analisada pela operadora de pagamento.</p>
+
+          <h3>O que você precisa saber:</h3>
+          <ul>
+              <li>O processo de análise pode levar até <strong>24 horas</strong> para ser concluído.</li>
+              <li>Assim que o método de pagamento confirmar o processamento, você receberá um e-mail com os detalhes de acesso ao curso.</li>
+              <li>Se houver qualquer problema, entraremos em contato com você para resolver a situação.</li>
+          </ul>
+
+          <a href="https://wa.me/47999333485?text=Olá!%20Tenho%20dúvidas%20sobre%20o%20DAP%20e%20gostaria%20de%20falar%20com%20você." class="button">Preciso de Ajuda</a>
+
+          <p>Enquanto isso, se você tiver dúvidas, entre em contato com nosso suporte:</p>
+          <p>
+            <a href="https://wa.me/47999333485?text=Olá!%20Tenho%20dúvidas%20sobre%20o%20DAP%20e%20gostaria%20de%20falar%20com%20você." target="_blank"       target="_blank">
+              <span class="tooltip">Whatsapp</span>
+            </a>
+           </p>
+        </div>
+
+        <!-- Pagamento Confirmado -->
+        <div id="pagamento-confirmado" class="hidden">
+          <h2>Bem-vindo(a) ao curso "Mapa do Desenvolvedor de Alta Performance"!</h2>
+          <p>Olá, <strong>Futuro(a) Desenvolvedor(a)</strong>,</p>
+          <p>Estamos muito felizes em tê-lo(a) nesta jornada. Este curso foi desenvolvido para ajudá-lo(a) a alcançar seus objetivos na programação e a construir uma carreira sólida na área de tecnologia.</p>
+
+          <h3>Próximos Passos:</h3>
+          <ol>
+              <li><strong>Acesse sua conta</strong>: Faça login na plataforma usando o e-mail cadastrado.</li>
+              <!-- <li><strong>Participe da mentoria</strong>: Entre no grupo do WhatsApp para tirar suas dúvidas e receber feedback personalizado.</li> -->
+              <li><strong>Inicie o primeiro módulo</strong>: Comece sua jornada com o módulo inicial e coloque a mão na massa!</li>
+          </ol>
+
+          <a href="https://hotmart.com/pt-br/club/alexandre-leutz/products/4505286" class="button">Acessar Plataforma</a>
+
+          <p>Se precisar de ajuda, entre em contato com nosso suporte em:
+            <a href="https://wa.me/47999333485?text=Olá!%20Tenho%20dúvidas%20sobre%20o%20DAP%20e%20gostaria%20de%20falar%20com%20você." target="_blank"" target="_blank">
+              <span class="tooltip">Clicando aqui</span>
+          </a>
+          </p>
+        </div>
+    </main>
+    <footer>
+        &copy; 2025 Mapa do Desenvolvedor de Alta Performance. Todos os direitos reservados.
+    </footer>
+
+    <script>
+        // Obtém os parâmetros da URL
+        const params = new URLSearchParams(window.location.search);
+        const status = params.get("status");
+
+        // Exibe o conteúdo com base no status
+        if (status === "aguardando") {
+            document.getElementById("aguardando-pagamento").classList.remove("hidden");
+            document.getElementById("title").classList.add("aguardando");
+        } else if (status === "analise") {
+            document.getElementById("em-analise").classList.remove("hidden");
+            document.getElementById("title").classList.add("analise");
+        } else if (status === "confirmado") {
+            document.getElementById("pagamento-confirmado").classList.remove("hidden");
+            document.getElementById("title").classList.add("confirmado");
+        } else {
+            // Caso o status não seja reconhecido
+            document.body.innerHTML = `
+                <main>
+                    <h2>Status Não Reconhecido</h2>
+                    <p>O status da sua compra não pôde ser identificado. Por favor, entre em contato com o suporte.</p>
+                    <p>E-mail: <a href="mailto:suporte@mapadodesenvolvedor.com">suporte@mapadodesenvolvedor.com</a></p>
+                </main>
+            `;
+        }
+    </script>
+</body>
+</html>
