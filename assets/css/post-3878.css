@@ -21,11 +21,11 @@
   .elementor-element.elementor-element-4c1c885c:not(
     .elementor-motion-effects-element-type-background
   ) {
-  background-color: #283f8d;
-  background-image: url("https://alexvargas.com.br/wp-content/uploads/2023/10/desktop_01.jpg");
+  background-color: #181928;
+  background-image: url("../vscode.png");
   background-position: top center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100% auto;
 }
 .elementor-widget-image-box .elementor-image-box-title {
   font-family: var(--e-global-typography-primary-font-family), Sans-serif;
@@ -779,10 +779,10 @@ body:not(.rtl)
     .elementor-element.elementor-element-4c1c885c:not(
       .elementor-motion-effects-element-type-background
     ) {
-    background-image: url("https://alexvargas.com.br/wp-content/uploads/unlimited_elements/ultra-wide_01.jpg");
+    background-image: url("../vscode.png");
     background-position: top center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% auto;
   }
   .elementor-3878 .elementor-element.elementor-element-4c1c885c {
     --min-height: 803px;
@@ -821,7 +821,7 @@ body:not(.rtl)
     .elementor-element.elementor-element-4c1c885c:not(
       .elementor-motion-effects-element-type-background
     ) {
-    background-image: url("https://alexvargas.com.br/wp-content/uploads/unlimited_elements/laptop_01.jpg");
+    background-image: url("../vscodedlaptop_01.png");
     background-position: top center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -882,7 +882,8 @@ body:not(.rtl)
     .elementor-element.elementor-element-4c1c885c:not(
       .elementor-motion-effects-element-type-background
     ) {
-    background-image: url("https://alexvargas.com.br/wp-content/uploads/unlimited_elements/tablet_0-1-1.jpg");
+    background-color: #181928;
+    /* background-image: url("https://alexvargas.com.br/wp-content/uploads/unlimited_elements/tablet_0-1-1.jpg"); */
     background-position: top center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -973,7 +974,8 @@ body:not(.rtl)
     .elementor-element.elementor-element-4c1c885c:not(
       .elementor-motion-effects-element-type-background
     ) {
-    background-image: url("https://alexvargas.com.br/wp-content/uploads/unlimited_elements/mobile_0-1-1.jpg");
+    background-color: #181928;
+    /* background-image: url("https://alexvargas.com.br/wp-content/uploads/unlimited_elements/mobile_0-1-1.jpg"); */
     background-position: top center;
     background-repeat: no-repeat;
     background-size: cover;
