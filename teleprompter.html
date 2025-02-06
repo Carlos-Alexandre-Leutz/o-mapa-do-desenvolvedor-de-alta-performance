@@ -13,6 +13,8 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
+            width: 70%;
+            margin: auto;
         }
         #container {
             height: 80vh;
@@ -21,10 +23,13 @@
             align-items: center;
             justify-content: center;
             transform: scaleX(-1);
+            position: relative;
         }
         #text {
             white-space: pre-wrap;
             text-align: center;
+            transform: translateY(0);
+            transition: transform 0.1s linear; /* Adicionando suavidade à rolagem manual */
         }
         #controls {
             position: fixed;
@@ -78,6 +83,30 @@
 
         document.getElementById("speed").addEventListener("input", function() {
             speed = this.value;
+        });
+
+        // Permitindo o scroll manual
+        let isDragging = false;
+        let startY;
+        const textDiv = document.getElementById("text");
+
+        textDiv.addEventListener("mousedown", (event) => {
+            isDragging = true;
+            startY = event.clientY;
+            event.preventDefault();
+        });
+
+        document.addEventListener("mousemove", (event) => {
+            if (isDragging) {
+                const deltaY = event.clientY - startY;
+                position += deltaY;
+                startY = event.clientY;
+                textDiv.style.transform = `translateY(${position}px)`;
+            }
+        });
+
+        document.addEventListener("mouseup", () => {
+            isDragging = false;
         });
     </script>
 </body>
