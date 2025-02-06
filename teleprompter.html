@@ -13,8 +13,6 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
-            width: 70%;
-            margin: auto;
         }
         #container {
             height: 80vh;
@@ -29,7 +27,7 @@
             white-space: pre-wrap;
             text-align: center;
             transform: translateY(0);
-            transition: transform 0.1s linear; /* Adicionando suavidade à rolagem manual */
+            transition: transform 0.1s linear;
         }
         #controls {
             position: fixed;
@@ -85,11 +83,12 @@
             speed = this.value;
         });
 
-        // Permitindo o scroll manual
+        // Permitindo o scroll manual para desktop e dispositivos móveis
         let isDragging = false;
         let startY;
         const textDiv = document.getElementById("text");
 
+        // Para dispositivos de desktop (usando o mouse)
         textDiv.addEventListener("mousedown", (event) => {
             isDragging = true;
             startY = event.clientY;
@@ -106,6 +105,26 @@
         });
 
         document.addEventListener("mouseup", () => {
+            isDragging = false;
+        });
+
+        // Para dispositivos móveis (usando toque na tela)
+        textDiv.addEventListener("touchstart", (event) => {
+            isDragging = true;
+            startY = event.touches[0].clientY;
+            event.preventDefault();
+        });
+
+        document.addEventListener("touchmove", (event) => {
+            if (isDragging) {
+                const deltaY = event.touches[0].clientY - startY;
+                position += deltaY;
+                startY = event.touches[0].clientY;
+                textDiv.style.transform = `translateY(${position}px)`;
+            }
+        });
+
+        document.addEventListener("touchend", () => {
             isDragging = false;
         });
     </script>
