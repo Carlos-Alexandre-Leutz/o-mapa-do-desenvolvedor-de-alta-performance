@@ -67,3 +67,20 @@ function editarRegistro(idBotao) {
   })
   .then(response => response.json());
 }
+function botaoDesmutarClicado() {
+  const dadosClique = {
+    desmutou: true,
+    tempoClique: new Date().toISOString()
+  };
+
+  const urlEdicao = `${urlBase}${id}.json`;
+
+  fetch(urlEdicao, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(dadosClique),
+  })
+  .then(response => response.json());
+}

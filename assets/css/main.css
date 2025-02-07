@@ -156,10 +156,50 @@ body {
 
 #modalAlerta {
   width: 80%;
-  height: 80%;
   margin: auto;
-  margin-top: -180px;
-  margin-bottom: 30px;
+  margin-top: -380px;
+  margin-bottom: 60px;
+  .modal-content{
+    background-color: #00ff3752 !important;
+    border: solid 1px;
+    color: white;
+    cursor: pointer;
+    font-size: x-large;
+    font-weight: bold;
+  }
+  svg {
+    width: 200px;
+    height: 200px;
+    margin: auto;
+  }
+}
+@media (max-width: 768px) {
+  #modalAlerta {
+    margin-top: -40vw;
+    margin-bottom: 105px;
+    svg {
+      width: 20%;
+      height: auto;
+    }
+    .modal-content{
+      font-size: large;
+    }
+  }
+}
+@media (max-width: 620px) {
+  #modalAlerta {
+    margin-bottom: 65px;
+  }
+}
+@media (max-width: 425px) {
+  #modalAlerta {
+    margin-bottom: 15px;
+  }
+}
+@media (max-width: 350px) {
+  #modalAlerta {
+    margin-bottom: 0px;
+  }
 }
 #discountModal {
   display: none; /* Inicialmente escondido */
@@ -287,6 +327,9 @@ button {
 #promocaoTexto {
   color: #FFF;
   text-align: center;
+  @media (max-width: 425px) {
+    margin-top: 10px;
+  }
 }
 #promocaoTexto {
   font-size: large;
@@ -304,4 +347,17 @@ button {
   padding: 3px;
   margin: 2px;
   color: #FFF;
+}
+.animated-div {
+  transform: scale(0);
+  animation: growIn 0.8s ease-out forwards;
+}
+
+@keyframes growIn {
+  from {
+      transform: scale(0);
+  }
+  to {
+      transform: scale(1);
+  }
 }

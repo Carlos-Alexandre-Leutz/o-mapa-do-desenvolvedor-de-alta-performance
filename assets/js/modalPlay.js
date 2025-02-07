@@ -19,4 +19,5 @@ function desmutar() {
     videoElement.currentTime = 0;
     videoElement.muted = false;
     modalAlerta.style.display = 'none';
+    botaoDesmutarClicado();
 }
