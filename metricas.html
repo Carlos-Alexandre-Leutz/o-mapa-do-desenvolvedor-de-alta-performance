@@ -130,7 +130,6 @@
         const endIndex = startIndex + itemsPerPage;
         const pageData = paginatedData.slice(startIndex, endIndex); // Dados da página atual
         pageData.forEach((registro, index) => {
-          console.log(registro);
           const linha = tabela.insertRow();
 
           const dataFormatada = formatarData(registro.dataDeEntrada);
@@ -142,7 +141,6 @@
             registro.dataDeEntrada,
             registro.tempoDesmute
           );
-
 
           linha.innerHTML = `
           <td>
@@ -163,7 +161,7 @@
           </td>
           <td>
             Desmutou: ${registro.desmutou || "Não"}<br/>
-            Tempo para desmutar: ${registro.tempoDesmutar || ""}<br/>
+            Tempo para desmutar: ${tempoDesmutar || ""}<br/>
             Botão clicado: ${registro.idBotao || ""}
           </td>
           <td>
