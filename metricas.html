@@ -51,13 +51,10 @@
     <table id="tabelaDados">
       <thead>
         <tr>
-          <th>Tipo de Dispositivo</th>
+          <th>Origem</th>
           <th>Data de Entrada</th>
-          <th>utm_source</th>
-          <th>utm_medium</th>
           <th>Vídeo</th>
           <th>Botão Clicado</th>
-          <th>Comprou</th>
           <th>Ações</th>
         </tr>
       </thead>
@@ -141,26 +138,44 @@
             registro.dataDeEntrada,
             registro.tempoClique
           );
+          const tempoDesmutar = calcularTempoClique(
+            registro.dataDeEntrada,
+            registro.tempoDesmute
+          );
+
 
           linha.innerHTML = `
-          <td>${registro.tipoDispositivo}</td>
+          <td>
+            ${registro.tipoDispositivo}<br/>
+            ${registro.utm_source || ""}<br/>
+            ${registro.utm_medium || ""}
+
+          </td>
           <td>${dataFormatada} <br>
             Tempo para o Clique:<br>
             ${tempoClique}
           </td>
-          <td>${registro.utm_source || ""}</td>
-          <td>${registro.utm_medium || ""}</td>
           <td>
             <img src="https://img.youtube.com/vi/${
               registro.utm_campaign || ""
-            }/0.jpg" alt="Preview do Vídeo" style="width: 100px; height: auto;" />
+            }/0.jpg" alt="Preview do Vídeo" style="width: 100px; height: auto;" /> <br/>
+            ${ registro.utm_campaign }
           </td>
-          <td>${registro.idBotao || ""}</td>
-          <td>${registro.vendido || ""}</td>
-          <td><button onclick="deletarRegistro('${
-            registro.id
-          }')">Deletar</button>
-            <button onclick="comprou('${registro.id}')">Comprou</button></td>
+          <td>
+            Desmutou: ${registro.desmutou || "Não"}<br/>
+            Tempo para desmutar: ${registro.tempoDesmutar || ""}<br/>
+            Botão clicado: ${registro.idBotao || ""}
+          </td>
+          <td>
+            Comprou:${registro.vendido || "Não"} <br/>
+            <button onclick="deletarRegistro('${
+                registro.id
+              }')"
+            >
+              Deletar
+            </button>
+            <button onclick="comprou('${registro.id}')">Comprou</button>
+          </td>
         `;
         });
       }

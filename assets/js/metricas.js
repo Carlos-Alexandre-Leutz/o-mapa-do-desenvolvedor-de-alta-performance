@@ -70,7 +70,7 @@ function editarRegistro(idBotao) {
 function botaoDesmutarClicado() {
   const dadosClique = {
     desmutou: true,
-    tempoClique: new Date().toISOString()
+    tempoDesmute: new Date().toISOString()
   };
 
   const urlEdicao = `${urlBase}${id}.json`;
