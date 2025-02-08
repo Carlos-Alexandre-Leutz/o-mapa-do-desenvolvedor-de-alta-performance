@@ -1,16 +1,3 @@
-var player;
-
-function onYouTubeIframeAPIReady() {
-    player = new YT.Player('video', {
-        videoId: '5fHtpLExs2c', // ID do vídeo do YouTube
-        playerVars: {
-            'autoplay': 1,
-            'controls': 0,
-            'mute': 1 // Começa sem áudio
-        }
-    });
-}
-
 // Obtendo elementos
 const videoElement = document.getElementById('video');
 const modalAlerta = document.getElementById('modalAlerta');
