@@ -128,7 +128,7 @@ body {
   max-width: 100%;
 }
 
-.iframe-container video {
+.iframe-container iframe {
   position: absolute;
   top: 0;
   left: 0;

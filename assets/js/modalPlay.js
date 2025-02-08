@@ -1,3 +1,16 @@
+var player;
+
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('video', {
+        videoId: '5fHtpLExs2c', // ID do vídeo do YouTube
+        playerVars: {
+            'autoplay': 1,
+            'controls': 0,
+            'mute': 1 // Começa sem áudio
+        }
+    });
+}
+
 // Obtendo elementos
 const videoElement = document.getElementById('video');
 const modalAlerta = document.getElementById('modalAlerta');
@@ -16,8 +29,13 @@ videoElement.onplay = function() {
 
 // Função para ativar o áudio
 function desmutar() {
-    videoElement.currentTime = 0;
-    videoElement.muted = false;
+    // videoElement.currentTime = 0;
+    // videoElement.muted = false;
+    var iframe = document.getElementById("videoFrame");
+    var videoSrc = "https://www.youtube.com/embed/5fHtpLExs2c?autoplay=1&controls=0&start=2";
+
+    // Reinicia o vídeo e ativa o som removendo o mute
+    iframe.src = videoSrc + "&mute=0";
     modalAlerta.style.display = 'none';
     botaoDesmutarClicado();
 }
