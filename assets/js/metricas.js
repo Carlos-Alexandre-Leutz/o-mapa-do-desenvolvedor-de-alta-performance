@@ -66,7 +66,9 @@ function editarRegistro(idBotao) {
     body: JSON.stringify(dadosClique),
   })
   .then(response => response.json());
-  alert("Deseja adicionar os módulos:\n\n- Desenvolvimento de Carreira e Networking\n- Técnicas para Passar em uma Entrevista Técnica\n\nGRÁTIS ao seu carrinho?\n\nEssa oferta é válida somente para VOCÊ agora!");
+
+  // alert("Deseja adicionar os módulos:\n\n- Desenvolvimento de Carreira e Networking\n- Técnicas para Passar em uma Entrevista Técnica\n\nGRÁTIS ao seu carrinho?\n\nEssa oferta é válida somente para VOCÊ agora!");
+
 }
 function botaoDesmutarClicado() {
   const dadosClique = {
