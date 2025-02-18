@@ -85,5 +85,30 @@ function botaoDesmutarClicado() {
     },
     body: JSON.stringify(dadosClique),
   })
-  .then(response => response.json());
+  .then(() => {
+    const newBtn = `<div
+            onclick="editarRegistro(10)"
+            class="elementor-element elementor-element-6655043a elementor-mobile-align-center elementor-widget-mobile__width-initial elementor-widget elementor-widget-button"
+            data-id="6655043a"
+            data-element_type="widget"
+            data-widget_type="button.default"
+          >
+            <div class="elementor-widget-container">
+              <div class="elementor-button-wrapper">
+                <a
+                  class="elementor-button elementor-button-link elementor-size-lg"
+                  target="_blank"
+                  href="https://go.hotmart.com/B95460619U"
+                >
+                  <span class="elementor-button-content-wrapper">
+                    <span class="elementor-button-text"
+                      >Garantir minha vaga!<br
+                    /></span>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>`
+    document.getElementById("btnCompra").innerHTML = newBtn;
+  });
 }
