@@ -1,6 +1,7 @@
 
 let urlBase = "https://sorteio-curso-canal-default-rtdb.firebaseio.com/users/";
 const id = Date.now();
+let btnClicados = "";
 
 function verificarAmbiente() {
   let isProd = window.location.hostname === "carlos-alexandre-leutz.github.io";
@@ -52,7 +53,7 @@ function save () {
 function editarRegistro(idBotao) {
   const dadosClique = {
     botaoPagamentoClicado: true,
-    idBotao: idBotao,
+    idBotao: btnClicados + " " + idBotao,
     tempoClique: new Date().toISOString()
   };
 
@@ -64,11 +65,9 @@ function editarRegistro(idBotao) {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(dadosClique),
-  })
-  .then(response => response.json());
-
-  // alert("Deseja adicionar os módulos:\n\n- Desenvolvimento de Carreira e Networking\n- Técnicas para Passar em uma Entrevista Técnica\n\nGRÁTIS ao seu carrinho?\n\nEssa oferta é válida somente para VOCÊ agora!");
-
+  }).then(() => {
+    btnClicados = idBotao;
+  });
 }
 function botaoDesmutarClicado(btn) {
   const dadosClique = {
