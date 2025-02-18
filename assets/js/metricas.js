@@ -51,9 +51,10 @@ function save () {
 };
 
 function editarRegistro(idBotao) {
+  btnClicados = btnClicados + " " + idBotao;
   const dadosClique = {
     botaoPagamentoClicado: true,
-    idBotao: btnClicados + " " + idBotao,
+    idBotao: btnClicados,
     tempoClique: new Date().toISOString()
   };
 
@@ -65,8 +66,6 @@ function editarRegistro(idBotao) {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(dadosClique),
-  }).then(() => {
-    btnClicados = idBotao;
   });
 }
 function botaoDesmutarClicado(btn) {
