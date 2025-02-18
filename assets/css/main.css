@@ -118,6 +118,11 @@ body {
   padding-right: 0px;
   padding-bottom: 0px;
   padding-left: 0px;
+  background-color: #13141e;
+  color: #ffffff;
+}
+ul {
+  list-style-type: none;
 }
 .iframe-container {
   position: relative;
@@ -354,4 +359,26 @@ button {
   to {
       transform: scale(1);
   }
+}
+.matricule-se-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: #007BFF; /* Cor do botão */
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.matricule-se-btn:hover {
+  background-color: #0056b3;
+}
+
+.palavrasDestaque {
+  color: #FFFF00;
 }

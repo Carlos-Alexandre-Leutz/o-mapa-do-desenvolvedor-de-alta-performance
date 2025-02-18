@@ -8,7 +8,7 @@ function verificarAmbiente() {
     isProd = window.location.hostname === "alexandreleutz.com.br";
   }
   if (isProd) {
-      urlBase = "https://pagina-de-venda-dap-default-rtdb.firebaseio.com/users/";
+      urlBase ="https://pagina-de-venda-dap-default-rtdb.firebaseio.com/18-01-25/"; //dadoso salvoso apartir desta data
   }
   save();
 }
@@ -70,9 +70,10 @@ function editarRegistro(idBotao) {
   // alert("Deseja adicionar os módulos:\n\n- Desenvolvimento de Carreira e Networking\n- Técnicas para Passar em uma Entrevista Técnica\n\nGRÁTIS ao seu carrinho?\n\nEssa oferta é válida somente para VOCÊ agora!");
 
 }
-function botaoDesmutarClicado() {
+function botaoDesmutarClicado(btn) {
   const dadosClique = {
     desmutou: true,
+    botao: btn,
     tempoDesmute: new Date().toISOString()
   };
 
@@ -87,7 +88,7 @@ function botaoDesmutarClicado() {
   })
   .then(() => {
     const newBtn = `<div
-            onclick="editarRegistro(10)"
+            onclick="editarRegistro('abaixo do vídeo')"
             class="elementor-element elementor-element-6655043a elementor-mobile-align-center elementor-widget-mobile__width-initial elementor-widget elementor-widget-button"
             data-id="6655043a"
             data-element_type="widget"
@@ -102,7 +103,7 @@ function botaoDesmutarClicado() {
                 >
                   <span class="elementor-button-content-wrapper">
                     <span class="elementor-button-text"
-                      >Garantir minha vaga!<br
+                      >Inscreva-se Clicando Aqui!<br
                     /></span>
                   </span>
                 </a>

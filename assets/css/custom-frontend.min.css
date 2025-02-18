@@ -292,6 +292,7 @@
   fill: #fff;
   text-align: center;
   transition: all 0.3s;
+  cursor: pointer;
 }
 .elementor-button:focus,
 .elementor-button:hover,
