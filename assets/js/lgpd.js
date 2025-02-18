@@ -25,15 +25,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Event: Save Preferences
 });
-function savePreferences () {
-  const analytics = document.getElementById("analytics").checked;
-  const marketing = document.getElementById("marketing").checked;
-
-  localStorage.setItem("cookieConsent", JSON.stringify({
-    essential: true,
-    analytics,
-    marketing
-  }));
-
-  document.getElementById("preferences-modal").style.display = "none";
-}
