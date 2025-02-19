@@ -51,7 +51,7 @@ function save () {
 };
 
 function editarRegistro(idBotao) {
-  btnClicados = btnClicados + " " + idBotao;
+  btnClicados = btnClicados + ", " + idBotao;
   const dadosClique = {
     botaoPagamentoClicado: true,
     idBotao: btnClicados,
@@ -86,7 +86,7 @@ function botaoDesmutarClicado(btn) {
   })
   .then(() => {
     const newBtn = `<div
-            onclick="editarRegistro('abaixo do vídeo')"
+            onclick="editarRegistro('Abaixo do vídeo')"
             class="elementor-element elementor-element-6655043a elementor-mobile-align-center elementor-widget-mobile__width-initial elementor-widget elementor-widget-button"
             data-id="6655043a"
             data-element_type="widget"

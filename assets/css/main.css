@@ -365,7 +365,7 @@ button {
   top: 20px;
   right: 20px;
   padding: 10px 20px;
-  background-color: #007BFF; /* Cor do botão */
+  background-color: #007BFF;
   color: white;
   font-size: 16px;
   font-weight: bold;
@@ -374,6 +374,16 @@ button {
   cursor: pointer;
   z-index: 1000;
 }
+@media (max-width: 768px) {
+  .matricule-se-btn {
+    top: auto;
+    right: auto;
+    bottom: 20px;
+    left: 20px;
+    z-index: 999;
+  }
+}
+
 
 .matricule-se-btn:hover {
   background-color: #0056b3;
