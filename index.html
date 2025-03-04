@@ -619,7 +619,7 @@
 
         <p>
           Atualmente, o curso já conta com
-          <span class="palavrasDestaque">42 aulas</span> com conteúdo original
+          <span class="palavrasDestaque">43 aulas</span> com conteúdo original
           sobre programação e carreira na área de tecnologia. A cada mês, tenho
           a meta de
           <span class="palavrasDestaque">publicar novas aulas</span> com
@@ -908,7 +908,7 @@
             <div class="elementor-widget-container">
               <div class="elementor-image-box-wrapper">
                 <div class="elementor-image-box-content">
-                  <h3 class="elementor-image-box-title">Vamos nessa 🤝</h3>
+                  <h3 id="vamosNessa" class="elementor-image-box-title">Vamos nessa 🤝</h3>
                   <p class="elementor-image-box-description">
                     🎯 "Pare de adiar seu futuro! Inscreva-se agora e dê o
                     primeiro passo para sua carreira na programação."
@@ -1165,6 +1165,19 @@
     <!-- Modal de Desconto -->
     <div id="discountModal" style="color: black;">
       <div class="modal-content">
+        <h2 class="accordion-header" id="headingOne">
+          Ganhe 15% de DESCONTO!
+        </h2>
+        <p id="coupon">Coupon: <b>SOAGORA15</b></p>
+        <div onclick="copyToClipboard()">
+          <button class="btn" onclick="editarRegistro('Ficar e aproveitar')">Copiar Cupom</button>
+        </div>
+        <p class="message" id="message">Copiado para a área de transferência!</p>
+      </div>
+    </div>
+    <!-- Modal de Bonus -->
+    <div id="bonusModal" style="color: black;">
+      <div class="modal-content">
         <button
           onclick="closeModal()"
           type="button"
@@ -1173,8 +1186,7 @@
           aria-label="Close"
         ></button>
 
-        <h3>Não vá embora</h3>
-        <h2>Ganhe estes 2 módulos bônus grátis!</h2>
+        <h3>Brinde, 2 módulos bônus grátis!</h3>
         <div class="modal-content">
           <h2 class="accordion-header" id="headingOne">
             Bônus 1 - Desenvolvimento de Carreira e Networking
@@ -1289,9 +1301,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
       // Obter referências ao modal e botão
-      let modal = document.getElementById("discountModal");
+      let modal = document.getElementById("bonusModal");
+      let discountModal = document.getElementById("discountModal");
       let stayButton = document.getElementById("stayButton");
-      let hasShownModal = false; // Garantir que o modal só seja exibido uma vez
+      let hasShownModal = false;
+      let hasDiscountModal = false;
 
       // Função para verificar se está em produção
       function isProduction() {
@@ -1306,13 +1320,37 @@
       function showModal() {
         if (!hasShownModal) {
           modal.style.display = "flex";
-          hasShownModal = true; // Evitar exibições múltiplas
+          hasShownModal = true;
         }
       }
 
+      function showDiscountModal(){
+        if (!hasDiscountModal) {
+          discountModal.style.display = "flex";
+          hasDiscountModal = true;
+        }
+      }
       // Fechar o modal
       function closeModal() {
         modal.style.display = "none";
+      }
+      function closeDiscountModal() {
+        discountModal.style.display = "none";
+      }
+
+      //copia cupom
+      function copyToClipboard() {
+        const couponText = document.getElementById("coupon").innerText;
+        navigator.clipboard.writeText(couponText).then(() => {
+            const message = document.getElementById("message");
+            message.style.display = "block";
+            setTimeout(() => {
+              hasShownModal = true;
+              closeDiscountModal();
+              message.style.display = "none";
+              window.location.href = "#vamosNessa";
+             }, 1500);
+        });
       }
 
       // Eventos
@@ -1320,7 +1358,7 @@
         // Detecta a intenção de saída do usuário (movimento do mouse)
         document.addEventListener("mouseout", function (event) {
           if (event.clientY < 50) {
-            showModal();
+            showDiscountModal();
           }
         });
 
@@ -1354,7 +1392,7 @@
 
         // Detecta tentativa de sair da página
         window.addEventListener("beforeunload", function (e) {
-          const message = "Você tem certeza que deseja sair da página?";
+          const message = "Ganhe 15% de DESCONTO! Coupon: SOAGORA15";
           e.returnValue = message; // Compatibilidade com navegadores mais antigos
           return message;
         });
