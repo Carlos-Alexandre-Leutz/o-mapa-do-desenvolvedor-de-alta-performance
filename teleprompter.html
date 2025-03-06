@@ -134,31 +134,19 @@
         });
     </script>
         <script>
-            function registrarEvento(evento) {
-                const log = document.getElementById("eventos");
-                const tipoEvento = evento.type;
-                let detalhes = "";
+            let start = false;
+            function registrarEvento() {
 
-                if (evento.type.startsWith("key")) {
-                    detalhes = `Tecla: ${evento.key}`;
-                } else if (evento.type.startsWith("mouse")) {
-                    detalhes = `Posição: (${evento.clientX}, ${evento.clientY})`;
-                } else if (evento.type.startsWith("touch")) {
-                    const touch = evento.touches[0] || evento.changedTouches[0];
-                    detalhes = `Posição: (${touch.clientX}, ${touch.clientY})`;
+                if(!start) {
+                    startScroll();
+                    start = true;
                 }
-
-                log.innerHTML += `<p><strong>${tipoEvento}</strong> - ${detalhes}</p>`;
-                log.scrollTop = log.scrollHeight; // Rolagem automática para o último evento
+                if(start) {
+                    stopScroll();
+                    start = false;
+                }
             }
-
-            // Captura eventos de clique e toques na tela
             document.addEventListener("click", registrarEvento);
-            document.addEventListener("touchstart", registrarEvento);
-
-            // Captura eventos de teclado
-            document.addEventListener("keydown", registrarEvento);
-            document.addEventListener("keyup", registrarEvento);
         </script>
 
 </body>
