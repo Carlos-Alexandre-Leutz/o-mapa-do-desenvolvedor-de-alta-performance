@@ -133,21 +133,21 @@
             isDragging = false;
         });
     </script>
-        <script>
-            let start = false;
-            function registrarEvento() {
+    <script>
+        let start = false;
+        function registrarEvento() {
 
-                if(!start) {
-                    startScroll();
-                    start = true;
-                }
-                if(start) {
-                    stopScroll();
-                    start = false;
-                }
+            if(!start) {
+                startScroll();
+                start = true;
             }
-            document.addEventListener("click", registrarEvento);
-        </script>
+            if(start) {
+                stopScroll();
+                start = false;
+            }
+        }
+        document.addEventListener("click", registrarEvento);
+    </script>
 
 </body>
 </html>
