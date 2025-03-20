@@ -16,7 +16,6 @@
         }
         #container {
             height: 80vh;
-            width: 80%;
             margin: auto;
             overflow: hidden;
             display: flex;
@@ -28,10 +27,12 @@
             font-family: Arial, Helvetica, sans-serif;
         }
         #text {
-            line-break: auto;
+            width: 80%;
             text-align: center;
             transform: translateY(0);
             transition: transform 0.1s linear;
+            word-break: break-word;
+            overflow-wrap: break-word;
         }
         #controls {
             position: fixed;
@@ -49,7 +50,7 @@
 <body>
     <div id="eventos"></div>
     <div id="container">
-        <div id="text"></div>
+        <p id="text"></p>
     </div>
     <div id="controls">
         <textarea id="inputText" placeholder="Cole seu texto aqui..."></textarea><br>
