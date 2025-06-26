@@ -97,7 +97,7 @@ function botaoDesmutarClicado(btn) {
                 <a
                   class="elementor-button elementor-button-link elementor-size-lg"
                   target="_blank"
-                  href="https://go.hotmart.com/B95460619U"
+                  href="https://go.hotmart.com/C100353978H"
                 >
                   <span class="elementor-button-content-wrapper">
                     <span class="elementor-button-text"

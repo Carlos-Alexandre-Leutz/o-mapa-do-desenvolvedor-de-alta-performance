@@ -24,5 +24,7 @@ function desmutar() {
     // Reinicia o vídeo e ativa o som removendo o mute
     iframe.src = videoSrc + "&mute=0";
     modalAlerta.style.display = 'none';
+    let btnCompraLink = document.getElementById('btnCompraLink');
+    btnCompraLink.style.display = 'block';
     botaoDesmutarClicado();
 }
