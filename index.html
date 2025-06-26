@@ -1191,7 +1191,7 @@
       </div> -->
     </div>
     <!-- Modal de Desconto -->
-    <div id="discountModal" style="color: black;">
+    <!-- <div id="discountModal" style="color: black;">
       <div class="modal-content">
         <h2 class="accordion-header" id="headingOne">
           Ganhe 15% de DESCONTO!
@@ -1202,9 +1202,9 @@
         </div>
         <p class="message" id="message">Copiado para a área de transferência!</p>
       </div>
-    </div>
+    </div> -->
     <!-- Modal de Bonus -->
-    <div id="bonusModal" style="color: black;">
+    <!-- <div id="bonusModal" style="color: black;">
       <div class="modal-content">
         <button
           onclick="closeModal()"
@@ -1272,7 +1272,7 @@
           </a>
         </div>
       </div>
-    </div>
+    </div> -->
     <div id="cookie-banner" style="display: none">
       <div>
         Usamos cookies para personalizar conteúdos e melhorar a sua experiência.
@@ -1329,94 +1329,94 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
       // Obter referências ao modal e botão
-      let modal = document.getElementById("bonusModal");
-      let discountModal = document.getElementById("discountModal");
-      let stayButton = document.getElementById("stayButton");
-      let hasShownModal = false;
-      let hasDiscountModal = false;
+      // let modal = document.getElementById("bonusModal");
+      // let discountModal = document.getElementById("discountModal");
+      // let stayButton = document.getElementById("stayButton");
+      // let hasShownModal = false;
+      // let hasDiscountModal = false;
 
       // Função para verificar se está em produção
-      function isProduction() {
-        const host = window.location.hostname;
-        return (
-          host === "carlos-alexandre-leutz.github.io" ||
-          host === "alexandreleutz.com.br"
-        );
-      }
+      // function isProduction() {
+      //   const host = window.location.hostname;
+      //   return (
+      //     host === "carlos-alexandre-leutz.github.io" ||
+      //     host === "alexandreleutz.com.br"
+      //   );
+      // }
 
       // Função para exibir o modal
-      function showModal() {
-        if (!hasShownModal) {
-          modal.style.display = "flex";
-          hasShownModal = true;
-        }
-      }
+      // function showModal() {
+      //   if (!hasShownModal) {
+      //     modal.style.display = "flex";
+      //     hasShownModal = true;
+      //   }
+      // }
 
-      function showDiscountModal(){
-        if (!hasDiscountModal) {
-          discountModal.style.display = "flex";
-          hasDiscountModal = true;
-        }
-      }
+      // function showDiscountModal(){
+      //   if (!hasDiscountModal) {
+      //     discountModal.style.display = "flex";
+      //     hasDiscountModal = true;
+      //   }
+      // }
       // Fechar o modal
-      function closeModal() {
-        modal.style.display = "none";
-      }
-      function closeDiscountModal() {
-        discountModal.style.display = "none";
-      }
+      // function closeModal() {
+      //   modal.style.display = "none";
+      // }
+      // function closeDiscountModal() {
+      //   discountModal.style.display = "none";
+      // }
 
       //copia cupom
-      function copyToClipboard() {
-        const couponText = document.getElementById("coupon").innerText;
-        navigator.clipboard.writeText(couponText).then(() => {
-            const message = document.getElementById("message");
-            message.style.display = "block";
-            setTimeout(() => {
-              hasShownModal = true;
-              closeDiscountModal();
-              message.style.display = "none";
-              window.location.href = "#vamosNessa";
-             }, 1500);
-        });
-      }
+      // function copyToClipboard() {
+      //   const couponText = document.getElementById("coupon").innerText;
+      //   navigator.clipboard.writeText(couponText).then(() => {
+      //       const message = document.getElementById("message");
+      //       message.style.display = "block";
+      //       setTimeout(() => {
+      //         hasShownModal = true;
+      //         closeDiscountModal();
+      //         message.style.display = "none";
+      //         window.location.href = "#vamosNessa";
+      //        }, 1500);
+      //   });
+      // }
 
       // Eventos
-      if (isProduction()) {
-        // Detecta a intenção de saída do usuário (movimento do mouse)
-        document.addEventListener("mouseout", function (event) {
-          if (event.clientY < 50) {
-            showDiscountModal();
-          }
-        });
+      // if (isProduction()) {
+      //   // Detecta a intenção de saída do usuário (movimento do mouse)
+      //   document.addEventListener("mouseout", function (event) {
+      //     if (event.clientY < 50) {
+      //       showDiscountModal();
+      //     }
+      //   });
 
-        // Detecta rolagem até o final da página
-        let isScrolling;
-        window.addEventListener("scroll", function () {
-          window.clearTimeout(isScrolling);
+      //   // Detecta rolagem até o final da página
+      //   let isScrolling;
+      //   window.addEventListener("scroll", function () {
+      //     window.clearTimeout(isScrolling);
 
-          isScrolling = setTimeout(function () {
-            const scrollPosition = window.scrollY + window.innerHeight;
-            const documentHeight = document.documentElement.scrollHeight;
+      //     isScrolling = setTimeout(function () {
+      //       const scrollPosition = window.scrollY + window.innerHeight;
+      //       const documentHeight = document.documentElement.scrollHeight;
 
-            if (scrollPosition >= documentHeight) {
-              showModal();
-            }
-          }, 66); // Debounce de 66ms
-        });
+      //       if (scrollPosition >= documentHeight) {
+      //         showModal();
+      //       }
+      //     }, 66); // Debounce de 66ms
+      //   });
 
-        // Detecta perda de foco da janela
-        window.addEventListener("blur", showModal);
+      //   // Detecta perda de foco da janela
+      //   window.addEventListener("blur", showModal);
 
-        // Botão para fechar o modal
-        stayButton.onclick = closeModal;
+      //   // Botão para fechar o modal
+      //   stayButton.onclick = closeModal;
 
-        // Fechar o modal ao clicar fora dele
-        window.onclick = function (event) {
-          if (event.target === modal) {
-            closeModal();
-          }
-        };
+      //   // Fechar o modal ao clicar fora dele
+      //   window.onclick = function (event) {
+      //     if (event.target === modal) {
+      //       closeModal();
+      //     }
+      //   };
 
         // Detecta tentativa de sair da página
         // window.addEventListener("beforeunload", function (e) {
@@ -1424,7 +1424,7 @@
         //   e.returnValue = message; // Compatibilidade com navegadores mais antigos
         //   return message;
         // });
-      }
+      //}
     </script>
   </body>
 </html>
