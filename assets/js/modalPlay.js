@@ -26,5 +26,7 @@ function desmutar() {
     modalAlerta.style.display = 'none';
     let btnCompraLink = document.getElementById('btnCompraLink');
     btnCompraLink.style.display = 'block';
+    let btnCompra = document.getElementById('btnCompra');
+    btnCompra.style.display = 'none';
     botaoDesmutarClicado();
 }
