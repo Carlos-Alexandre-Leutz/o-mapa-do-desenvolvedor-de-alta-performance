@@ -425,3 +425,7 @@ button {
   font-weight: bold;
   display: none;
 }
+.texto-com-borda {
+  color: white;
+  -webkit-text-stroke: 1px black;
+}
