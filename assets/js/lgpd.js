@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const cookieBanner = document.getElementById("cookie-banner");
   const preferencesModal = document.getElementById("preferences-modal");
+  const managePreferences = document.getElementById("manage-preferences");
 
   // Show the banner if no consent is saved
   if (!localStorage.getItem("cookieConsent")) {
@@ -18,10 +19,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Event: Manage Preferences
-  document.getElementById("manage-preferences").addEventListener("click", () => {
-    preferencesModal.style.display = "block";
-    cookieBanner.style.display = "none";
-  });
-
-  // Event: Save Preferences
+  if(managePreferences) {
+    managePreferences.addEventListener("click", () => {
+      preferencesModal.style.display = "block";
+      cookieBanner.style.display = "none";
+    });
+  }
 });
