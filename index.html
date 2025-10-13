@@ -127,6 +127,10 @@
                     Crie Seu <span class="palavrasDestaque">Primeiro Projeto Web em 15 Dias</span>
                   </h1>
                   Mesmo que Você Nunca Tenha Escrito uma Linha de Código!
+                  <div class="lancamento">
+                    <strong>🚨 *Última chance de aproveitar o preço de lançamento!*</strong>
+                    <p id="promocao1"></p>
+                  </div>
                   <!-- <p class="elementor-image-box-description">
                     Aprenda <span class="palavrasDestaque">HTML, CSS, JavaScript e banco de dados do zero</span>.
                     <br />
@@ -239,12 +243,11 @@
                   </div>
                 </div>
                 <div id="promocaoTexto">
-                   De <strong><del>R$ 497.00</del></strong> por <strong>R$ 97.00</strong> em até 12x
+                   De <strong><del>R$ 697.00</del></strong> por <strong>R$ 147.00</strong> em até 12x
                 </div>
                 <div class="lancamento">
-                  <strong>*Oferta de Lançamento </strong> Os valores podem ser
-                  alterados sem aviso prévio <br>
-                  <small>Últimos dias: a promoção encerra no final deste mês!</small>
+                  <strong>*Oferta de Lançamento PRORROGADA por + 7 dias </strong>
+                  <p id="promocao2"></p>
                 </div>
               </div>
             </div>
@@ -453,21 +456,25 @@
             <div
             onclick="editarRegistro('CONHECER OS MÓDULOS')"
             >
-              <a
-                target="_blank"
-                href="https://go.hotmart.com/B95460619U?dp=1"
-              >
-                <button type="button" class="btn btn-warning btn-lg">
-                  Quero conhecer os módulos e criar meu primeiro projeto em 15 dias!
-                </button>
-              </a>
               <div id="promocaoTexto">
-                De <strong><del>R$ 497.00</del></strong> por <strong>R$ 97.00</strong> em até 12x
+                De <strong><del>R$ 697.00</del></strong> por <strong>R$ 147.00</strong> em até 12x
               </div>
               <div class="lancamento">
                 <strong>*Oferta de Lançamento </strong> Os valores podem ser
                 alterados sem aviso prévio
               </div>
+              <a
+                target="_blank"
+                href="https://go.hotmart.com/B95460619U?dp=1"
+              >
+                <button type="button" class="btn btn-warning btn-lg botao-promocao">
+                  <strong>
+                    Quero conhecer os módulos e criar meu primeiro projeto em 15 dias!
+                  </strong>
+                  <br>
+                  <small>Clique aqui!</small>
+                </button>
+              </a>
             </div>
           </div>
         </div>
@@ -672,12 +679,12 @@
         <h1 class="text-center mb-4">Qual o valor e desconto do pré-lançamento?</h1>
         <p>
           Aproveite agora o preço promocional de
-          <span class="palavrasDestaque">R$ 97</span>, podendo ser parcelado em
-          até <span class="palavrasDestaque">12x de R$ 9,70</span>. Esta é uma
+          <span class="palavrasDestaque">R$ 147</span>, podendo ser parcelado em
+          até <span class="palavrasDestaque">12x de R$ 15,20</span>. Esta é uma
           <span class="palavrasDestaque">promoção temporária</span>, com
           <span class="palavrasDestaque">desconto de 80%</span> sobre o valor
           final estimado do curso, que será de
-          <span class="palavrasDestaque">R$ 497</span>.
+          <span class="palavrasDestaque">R$ 697</span>.
         </p>
 
         <p>
@@ -1059,7 +1066,7 @@
                   </div>
                 </div>
                 <div id="promocaoTexto">
-                  De <strong><del>R$ 497.00</del></strong> por <strong>R$ 97.00</strong> em até 12x
+                  De <strong><del>R$ 697.00</del></strong> por <strong>R$ 147.00</strong> em até 12x
                 </div>
                 <div class="lancamento">
                   <strong>*Oferta de Lançamento </strong> Os valores podem ser
@@ -1520,6 +1527,30 @@
         //   return message;
         // });
       //}
+    </script>
+    <script>
+      // Data atual
+      const hoje = new Date();
+
+      // Calcula quantos dias faltam até o próximo domingo (0 = domingo)
+      const diasAteDomingo = (7 - hoje.getDay()) % 7 || 7;
+
+      // Cria uma nova data para o próximo domingo
+      const proximoDomingo = new Date();
+      proximoDomingo.setDate(hoje.getDate() + diasAteDomingo);
+
+      // Formata a data em português
+      const opcoes = { weekday: 'long', day: '2-digit', month: 'long' };
+      let dataFormatada = proximoDomingo.toLocaleDateString('pt-BR', opcoes);
+
+      // Deixa a primeira letra maiúscula
+      dataFormatada = dataFormatada.charAt(0).toUpperCase() + dataFormatada.slice(1);
+
+      // Exibe a mensagem
+      document.getElementById('promocao1').innerText =
+        `🔥 Promoção prorrogada até ${dataFormatada}! Depois disso, o preço volta ao normal.`;
+      document.getElementById('promocao2').innerText =
+        `🔥 Promoção prorrogada até ${dataFormatada}! Depois disso, o preço volta ao normal.`;
     </script>
   </body>
 </html>

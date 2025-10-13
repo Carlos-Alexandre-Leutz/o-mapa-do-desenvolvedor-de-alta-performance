@@ -423,3 +423,13 @@ button {
   50% { transform: scale(1.1); }
   100% { transform: scale(1); }
 }
+.botao-promocao {
+  box-shadow: 0 6px 18px rgba(255, 102, 0, 0.5);
+  color: #FFF;
+}
+
+/* efeito ao passar o mouse */
+.botao-promocao:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(255, 102, 0, 0.7);
+}
