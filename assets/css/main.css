@@ -433,3 +433,10 @@ button {
   transform: scale(1.05);
   box-shadow: 0 8px 25px rgba(255, 102, 0, 0.7);
 }
+
+.provaSocial h3 {
+  text-align: center;
+}
+.provaSocial img {
+  width: 100%;
+}
