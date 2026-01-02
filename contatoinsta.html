@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alexandre Leutz</title>
+</head>
+<body>
+    <script>
+        let urlBase = "https://sorteio-curso-canal-default-rtdb.firebaseio.com/users/";
+        const id = Date.now();
+        let btnClicados = "";
+
+        function verificarAmbiente() {
+            console.log('verificarAmbiente');
+            let isProd = window.location.hostname === "carlos-alexandre-leutz.github.io";
+            if(!isProd) {
+                isProd = window.location.hostname === "alexandreleutz.com.br";
+            }
+            if (isProd) {
+                urlBase ="https://pagina-de-venda-dap-default-rtdb.firebaseio.com/18-01-25/"; //dados salvos apartir desta data
+            }
+            save();
+        }
+        window.onload = verificarAmbiente;
+        function save () {
+             console.log('save');
+            const params = new URLSearchParams(window.location.search);
+            const utm_source = params.get('utm_source');
+            const utm_medium = params.get('utm_medium');
+            const utm_campaign = params.get('utm_campaign');
+
+            const dados = {
+                tipoDispositivo: obterTipoDispositivo(),
+                dataDeEntrada: new Date().toISOString(),
+                utm_source: utm_source,
+                utm_medium: utm_medium,
+                utm_campaign: utm_campaign
+            };
+
+
+            const url = `${urlBase}${id}.json`;
+
+            fetch(url, {
+                method: 'PUT',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(dados)
+            })
+            .then(response => {
+                window.location.href = "https://wa.me/5547997336957?text=Olá!%20Quero%20saber%20mais%20sobre%20o%20curso%20de%20programação";
+                response.json()
+            });
+        };
+        function obterTipoDispositivo() {
+            if (window.innerWidth <= 800) {
+                return "mobile";
+            } else {
+                return "desktop";
+            }
+        }
+
+    </script>
+
+</body>
+</html>
