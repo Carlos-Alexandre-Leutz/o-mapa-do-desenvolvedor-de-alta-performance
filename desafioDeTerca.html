@@ -311,7 +311,7 @@ if (idade >= 18) {
     explicacao.scrollIntoView({ behavior: "smooth" });
   }
 
-  function executarCodigo() {
+function executarCodigo() {
     const idadeInput = document.getElementById("idade").value;
     const codigo = document.getElementById("codigo").value;
     const saida = document.getElementById("saida");
@@ -320,13 +320,30 @@ if (idade >= 18) {
     try {
       const codigoFinal = `
         let valorDigitado = ${idadeInput};
+        let resultado = "";
         ${codigo}
         resultado;
       `;
+
       const resposta = eval(codigoFinal);
+
+      // Mostra o resultado
       saida.innerText = "Resultado: " + resposta;
-    } catch {
+      saida.style.display = "block";
+
+      // ⏳ Esconde após 5 segundos
+      setTimeout(() => {
+        saida.innerText = "";
+        saida.style.display = "none";
+      }, 5000);
+
+    } catch (e) {
+      console.log(e);
       saida.innerText = "Erro no código ❌";
+
+      setTimeout(() => {
+        saida.innerText = "";
+      }, 5000);
     }
   }
 </script>
