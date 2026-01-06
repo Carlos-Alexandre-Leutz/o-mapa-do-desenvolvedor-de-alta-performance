@@ -301,6 +301,8 @@ if (idade >= 18) {
 </footer>
 
 <script>
+  let timerMensagem = null;
+
   function toggleMenu() {
     document.getElementById("nav").classList.toggle("active");
   }
@@ -311,41 +313,58 @@ if (idade >= 18) {
     explicacao.scrollIntoView({ behavior: "smooth" });
   }
 
-function executarCodigo() {
-    const idadeInput = document.getElementById("idade").value;
-    const codigo = document.getElementById("codigo").value;
+  function mostrarMensagem(texto) {
     const saida = document.getElementById("saida");
+
+    // Cancela timer anterior (evita bug ao clicar rápido)
+    if (timerMensagem) {
+      clearTimeout(timerMensagem);
+    }
+
+    saida.innerText = texto;
+    saida.style.display = "block";
+
+    timerMensagem = setTimeout(() => {
+      saida.innerText = "";
+      saida.style.display = "none";
+      timerMensagem = null;
+    }, 5000);
+  }
+
+  function executarCodigo() {
+    const idadeInput = document.getElementById("idade");
+    const codigo = document.getElementById("codigo").value.trim();
+
+    // ❌ Impede envio vazio
+    if (idadeInput.value === "") {
+      mostrarMensagem("⚠️ Digite uma idade antes de executar.");
+      return;
+    }
+
     let resultado = "";
 
     try {
-      const codigoFinal = `
-        let valorDigitado = ${idadeInput};
+      // Cria escopo seguro
+      const funcao = new Function(`
+        let valorDigitado = ${Number(idadeInput.value)};
         let resultado = "";
+
         ${codigo}
-        resultado;
-      `;
 
-      const resposta = eval(codigoFinal);
+        return resultado;
+      `);
 
-      // Mostra o resultado
-      saida.innerText = "Resultado: " + resposta;
-      saida.style.display = "block";
+      const resposta = funcao();
+      mostrarMensagem("Resultado: " + resposta);
 
-      // ⏳ Esconde após 5 segundos
-      setTimeout(() => {
-        saida.innerText = "";
-        saida.style.display = "none";
-      }, 5000);
-
-    } catch (e) {
-      console.log(e);
-      saida.innerText = "Erro no código ❌";
-
-      setTimeout(() => {
-        saida.innerText = "";
-      }, 5000);
+      // ✅ Limpa o input após executar
+      idadeInput.value = "";
+    } catch (erro) {
+      console.error(erro);
+      mostrarMensagem("❌ Erro no código. Verifique a sintaxe.");
     }
   }
+
 </script>
 
 </body>
