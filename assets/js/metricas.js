@@ -111,3 +111,67 @@ function botaoDesmutarClicado(btn) {
     // document.getElementById("btnCompra").innerHTML = newBtn;
   });
 }
+async function buscarVagas() {
+  const url = `${urlBase}vagas.json`;
+
+  const resposta = await fetch(url);
+  const dados = await resposta.json();
+
+  if (!dados || dados.total == null) {
+    console.error("⚠ Banco ainda não tem 'vagas' configurado.");
+    return;
+  }
+
+  // Atualiza o elemento na página
+  document.getElementById("vagas_numero").innerText = dados.total;
+
+  // Caso queira mostrar a última atualização:
+  if (document.getElementById("vagas_atualizado")) {
+    const dataFormatada = new Date(dados.atualizadoEm).toLocaleString("pt-BR");
+    document.getElementById("vagas_atualizado").innerText = `Numero de vagas Atualizado em: ${dataFormatada}`;
+  }
+
+  console.log("🔥 Vagas carregadas:", dados.total);
+}
+buscarVagas();
+
+async function atualizarVagas(novoValor) {
+  if (isNaN(novoValor)) {
+    console.error("Valor inválido para vagas.");
+    return;
+  }
+
+  const dados = {
+    total: novoValor,
+    atualizadoEm: new Date().toISOString()
+  };
+
+  const url = `${urlBase}vagas.json`;
+
+  await fetch(url, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(dados)
+  });
+
+  console.log("🔥 Vagas atualizadas para:", novoValor);
+
+  // atualizar imediatamente na tela
+  buscarVagas();
+}
+async function salvarNovaVaga() {
+  const valor = parseInt(document.getElementById("inputVagas").value);
+
+  if (isNaN(valor) || valor < 1) {
+    document.getElementById("status-vagas").innerText =
+      "Por favor, insira um valor válido.";
+    return;
+  }
+
+  document.getElementById("status-vagas").innerText = "Salvando...";
+
+  await atualizarVagas(valor);
+
+  document.getElementById("status-vagas").innerText =
+    "Vagas atualizadas com sucesso!";
+}

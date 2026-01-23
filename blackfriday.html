@@ -1,20 +1,6 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
   <head>
-    <!-- Google Tag Manager -->
-    <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-K5X5TTM2");
-    </script>
-    <!-- End Google Tag Manager -->
     <meta charset="UTF-8" />
     <title>Alexandre Leutz</title>
     <meta name="robots" content="max-image-preview:large" />
@@ -38,91 +24,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link rel="icon" href="./assets/foto.png" sizes="32x32" />
     <link rel="icon" href="./assets/foto.png" sizes="192x192" />
-    <style>
-      :root {
-        --accent: #c9a227; /* amarelo queimado */
-        --text: #222;
-        --muted: #666;
-      }
-
-      .card ul {
-        padding-left: 18px;
-      }
-
-      .card li {
-        color: var(--text);
-        line-height: 1.6;
-        margin-bottom: 10px;
-      }
-
-      .highlight {
-        color: var(--accent);
-        font-weight: 600;
-      }
-
-      .subtle {
-        color: var(--muted);
-        font-size: 0.95em;
-      }
-
-      .hero {
-        font-size: 1.1rem;
-      }
-
-      .cta {
-        margin-top: 50px;
-        text-align: center;
-      }
-
-      .cta a {
-        display: inline-block;
-        background: #facc15;
-        color: #000;
-        padding: 18px 36px;
-        border-radius: 999px;
-        font-size: 1.1rem;
-        font-weight: bold;
-        text-decoration: none;
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
-        transition:
-          transform 0.2s ease,
-          box-shadow 0.2s ease;
-      }
-
-      .cta a:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
-      }
-
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 24px;
-      }
-
-      .card {
-        background: #ffffff;
-        border-radius: 16px;
-        padding: 28px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
-      }
-
-      .card h2 {
-        font-size: 1.4rem;
-        color: var(--primary);
-      }
-
-      .card ul li {
-        margin-bottom: 12px;
-        position: relative;
-      }
-
-      @media (max-width: 600px) {
-        .hero h1 {
-          font-size: 1.8rem;
-        }
-      }
-    </style>
 
     <meta
       property="og:title"
@@ -181,72 +82,25 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
+    <!-- Google tag (gtag.js) -->
+    <!-- <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=AW-16821912823"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "AW-16821912823");
+    </script> -->
   </head>
 
   <body
     class="home page-template page-template-elementor_canvas page page-id-3878 wp-embed-responsive elementor-default elementor-template-canvas elementor-kit-5 elementor-page elementor-page-3878"
   >
-    <!-- Google Tag Manager (noscript) -->
-    <noscript
-      ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-K5X5TTM2"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe
-    ></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    <!-- BARRA DE VAGAS -->
-    <div
-      id="barra-vagas"
-      style="
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 999999;
-        background: #000;
-        padding: 15px 0;
-        text-align: center;
-        color: #fff;
-      "
-    >
-      <div style="font-size: 18px; font-weight: bold; line-height: 1.5;">
-        🚨 Últimas <span id="vagas_numero"></span>/100 vagas com meu acompanhamento pessoal
-        <br>
-        <a href="#videoFrame">
-          <span style="
-            background: #FFC400;
-            padding: 6px 12px;
-            border-radius: 30px;
-            color: #000;
-            font-weight: bold;
-            display: inline-block;
-            margin-top: 6px;
-            box-shadow: 0 0 10px rgba(255, 196, 0, 0.6);"
-            onclick="desmutar(2)"
-          >
-            + Bônus: Encontros mensais • WhatsApp • Comunidade • Desafios semanais
-          </span>
-        </a>
-      </div>
-      <small><strong>ACABA HOJE </strong></small><small id="vagas_atualizado"></small>
-
-    </div>
-    <div id="espacamento-barra"></div>
-    <script>
-      function ajustarEspacamento() {
-        const barra = document.getElementById("barra-vagas");
-        const espaco = document.getElementById("espacamento-barra");
-
-        const altura = barra.offsetHeight;
-        espaco.style.height = altura + "px";
-      }
-
-      ajustarEspacamento();
-
-      window.onresize = ajustarEspacamento;
-    </script>
     <div
       data-elementor-type="wp-page"
       data-elementor-id="3878"
@@ -270,15 +124,11 @@
               <div class="elementor-image-box-wrapper">
                 <div class="elementor-image-box-content">
                   <h1 class="elementor-image-box-title">
-                    Crie Seu
-                    <span class="palavrasDestaque"
-                      >Primeiro Projeto Web em 15 Dias</span
-                    >
+                    Crie Seu <span class="palavrasDestaque">Primeiro Projeto de Programação em 15 Dias</span>
                   </h1>
                   Mesmo que Você Nunca Tenha Escrito uma Linha de Código!
                   <div class="lancamento">
-                    <strong>🚨 Oferta de Lançamento 2026 🚨</strong>
-                    <!-- <p id="promocao1"></p> -->
+                    <strong>🚨 *Bônus especiais da <span style="color: black;">Black Friday</span>* 🚨 <strong>
                   </div>
                   <!-- <p class="elementor-image-box-description">
                     Aprenda <span class="palavrasDestaque">HTML, CSS, JavaScript e banco de dados do zero</span>.
@@ -290,117 +140,6 @@
               </div>
             </div>
           </div>
-          <section class="hero" style="width: 100%; border: sol">
-            <p class="subtitle">
-              Mesmo sem saber nada, você vai aprender programação do zero, criar
-              seu primeiro projeto na prática, entender o que as empresas exigem
-              de um programador e descobrir como encontrar as melhores vagas
-              para trabalhar na área.
-            </p>
-
-            <div class="grid">
-              <div class="card">
-                <h2>O que você vai aprender</h2>
-                <ul>
-                  <li>
-                    <strong class="highlight">Programação do zero</strong>,
-                    mesmo sem experiência
-                  </li>
-
-                  <li>
-                    Instalação das <strong>ferramentas necessárias</strong>
-                  </li>
-
-                  <li>
-                    <strong class="highlight">HTML, CSS e JavaScript</strong>
-                    <span class="subtle">linha por linha</span>
-                  </li>
-
-                  <li><strong>Projetos práticos</strong> para fixação real</li>
-
-                  <li>
-                    <strong class="highlight">CRUD básico</strong> e
-                    <strong class="highlight">CRUD com banco de dados</strong>
-                  </li>
-
-                  <li>
-                    <strong class="highlight">Git, GitHub e GitFlow</strong> na
-                    prática
-                  </li>
-
-                  <li>
-                    <strong class="highlight">Scrum, Kanban</strong> e
-                    metodologias ágeis
-                  </li>
-
-                  <li>
-                    <strong>Qualidade de código</strong> e boas práticas
-                    profissionais
-                  </li>
-
-                  <li>
-                    <strong>Currículo, portfólio</strong> e
-                    <strong class="highlight">LinkedIn</strong> profissional
-                  </li>
-
-                  <li>
-                    <strong>Preparação para entrevistas</strong> e busca de
-                    vagas
-                  </li>
-                </ul>
-              </div>
-
-              <div class="card">
-                <h2>Além do conteúdo do curso</h2>
-                <ul>
-                  <li>
-                    <strong class="highlight">
-                      Acompanhamento pelo WhatsApp<span title="Somente para as últimas vagas disponíveis" style="color: red;">*</span>
-                    </strong>
-                  </li>
-
-                  <li>
-                    <strong>Encontros mensais</strong> <span title="Somente para as últimas vagas disponíveis" style="color: red;">*</span>
-                    <span class="subtle">ao vivo comigo</span><br>
-                    <small>Nas reuniões ao vivo mensais comigo, você recebe conteúdo extra atualizado e tira todas as suas dúvidas.</small>
-
-                  </li>
-
-                  <li><strong>Desafios semanais</strong> para praticar
-                 <span title="Somente para as últimas vagas disponíveis" style="color: red;">*</span></li>
-
-                  <li>
-                    <strong class="highlight">Acesso vitalício</strong> ao curso
-                  </li>
-
-                  <li>
-                    <strong>Pagamento único</strong>,
-                    <strong class="highlight">parcelável em até 12 x </strong>
-                    <strong style="color: green;">$20,37</strong>
-                  </li>
-
-                  <li>
-                    <strong class="highlight">7 dias de garantia</strong>
-                    incondicional
-                  </li>
-
-                  <li>
-                    <strong>Acesso a novos módulos</strong> sem custo adicional
-                   <span title="Somente para as últimas vagas disponíveis" style="color: red;">*</span>
-                  </li>
-                  <li>
-                    <div class="cta" onclick="desmutar(2)">
-                      <a href="#videoFrame">
-                        Quero ver como funciona o curso ▶
-                      </a>
-                    </div>
-                    <span title="Somente para as últimas vagas disponíveis" style="color: red;">*</span>
-                    <small>Benefício liberado somente para últimas vagas.</small>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </section>
           <div
             class="elementor-element elementor-element-43f73f41 elementor-widget__width-inherit elementor-widget elementor-widget-html"
             data-id="43f73f41"
@@ -412,22 +151,13 @@
                 id="videoFrame"
                 width="640"
                 height="360"
-                src="https://www.youtube.com/embed/UCqrggoWA30?autoplay=1&controls=0&mute=1"
+                src="https://www.youtube.com/embed/rXEpCLIKbdY?autoplay=1&controls=0&mute=1"
                 title="YouTube video player"
                 frameborder="0"
-                allow="
-                  accelerometer;
-                  autoplay;
-                  clipboard-write;
-                  encrypted-media;
-                  gyroscope;
-                  picture-in-picture;
-                  web-share;
-                "
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerpolicy="strict-origin-when-cross-origin"
                 allowfullscreen
               >
-                <!-- src="https://www.youtube.com/embed/rXEpCLIKbdY?autoplay=1&controls=0&mute=1" -->
               </iframe>
               <!-- <video
                 id="video"
@@ -444,10 +174,7 @@
             </div>
             <!-- Modal Play-->
             <div id="modalAlerta">
-              <div
-                onclick="desmutar(1)"
-                class="modal-content animated-div texto-com-borda"
-              >
+              <div onclick="desmutar(1)" class="modal-content animated-div texto-com-borda">
                 Clique aqui
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -475,14 +202,6 @@
                   href="#saibaMais"
                 >
               </a> -->
-                <div id="promocaoTexto">
-                  De <strong><del>R$ 697.00</del></strong> por
-                  <strong>R$ 197.00</strong> em até 12x
-                </div>
-                <div class="lancamento">
-                  <strong>🚨 Últimas vagas com meu acompanhamento pessoal por 12 meses🚨</strong>
-                  <br /><br />
-                </div>
                 <div id="btnCompra">
                   <span
                     onclick="desmutar(2)"
@@ -493,13 +212,11 @@
                     "
                   >
                     <span class="elementor-button-text" style="color: black">
-                      QUERO COMEÇAR MEU PROJETO HOJE! <br /><small
-                        >Ative o som</small
-                      >
+                      QUERO COMEÇAR MEU PROJETO HOJE! <br><small>Ative o som</small>
                     </span>
                   </span>
                 </div>
-                <div id="btnCompraLink" style="display: none">
+                 <div id="btnCompraLink" style="display: none">
                   <div
                     onclick="editarRegistro('Abaixo do vídeo')"
                     class="elementor-element elementor-element-6655043a elementor-mobile-align-center elementor-widget-mobile__width-initial elementor-widget elementor-widget-button"
@@ -512,11 +229,11 @@
                         <a
                           class="elementor-button elementor-button-link elementor-size-lg"
                           target="_blank"
-                          href="https://hotmart.com/pt-br/marketplace/produtos/hagsxd-desenvolvedor-de-alta-performance-l1nag/B95460619U"
+                          href="https://pay.hotmart.com/B95460619U"
                         >
                           <span class="elementor-button-content-wrapper">
                             <span class="elementor-button-text"
-                              >Sim, quero começar do jeito certo!<br
+                              >Inscreva-se Clicando Aqui!<br
                             /></span>
                           </span>
                         </a>
@@ -524,10 +241,16 @@
                     </div>
                   </div>
                 </div>
+                <!-- <div id="promocaoTexto">
+                   De <strong><del>R$ 697.00</del></strong> por <strong>R$ 147.00</strong> em até 12x
+                </div>
+                <div class="lancamento">
+                  <strong>*Oferta de Lançamento PRORROGADA por + 7 dias </strong>
+                  <p id="promocao2"></p>
+                </div> -->
               </div>
             </div>
           </div>
-
           <div
             class="elementor-element elementor-element-56b8c9c0 atrasado elementor-widget elementor-widget-image"
             data-id="56b8c9c0"
@@ -630,7 +353,6 @@
           </div>
         </div>
       </div>
-
       <div
         class="elementor-element elementor-element-738f75cc e-flex e-con-boxed e-con e-parent"
         data-id="738f75cc"
@@ -639,6 +361,7 @@
       >
         <div class="e-con-inner"></div>
       </div>
+
 
       <div
         class="elementor-element elementor-element-560519c2 atrasado e-flex e-con-boxed e-con e-parent"
@@ -649,54 +372,29 @@
         <div class="e-con-inner"></div>
       </div>
       <div id="saibaMais" class="container py-5">
-        <h1 class="text-center mb-4">Objetivo do Curso</h1>
-        <p class="lead">
-          <strong>
-            <span class="palavrasDestaque"
-              >Criar seu primeiro projeto com programação JavaScript do zero
-              absoluto do mesmo jeito que se faz dentro das empresas
-            </span>
-          </strong>
-          <br />
-          <strong>O Mapa Completo para Virar Programador do zero</strong> foi
-          criado para ajudar pessoas que estão começando na programação a e se
-          tornarem desenvolvedores Front-end prontos para o mercado de trabalho.
-        </p>
-        <p>
-          O objetivo principal do curso é ensinar de forma estruturada e
-          prática, todas as habilidades essenciais que um programador precisa
-          para
-          <span class="palavrasDestaque"
-            >conseguir criar qualquer projeto com programação</span
-          >
-          e seu primeiro <span class="palavrasDestaque">emprego</span> na área
-          de <span class="palavrasDestaque">TI</span>.
-        </p>
-        <h1 class="text-center mb-4">
-          🚀 No curso, você vai criar vários projetos práticos:
-        </h1>
+        <h1 class="text-center mb-4">A maioria das pessoas que quer aprender programação enfrenta os mesmos obstáculos:</h1>
         <ul>
           <li>
-            ✅ CRUD simples com JavaScript — para entender como manipular dados
-            no navegador.
+            Cursos cheios de teoria, mas sem prática real.
           </li>
           <li>
-            ✅ CRUD com banco de dados — aprendendo a salvar e buscar
-            informações de forma profissional.
+            Incerteza sobre qual tecnologia aprender primeiro.
           </li>
           <li>
-            ✅ Site com Bootstrap — construindo páginas modernas e responsivas
-            rapidamente.
+            Frustração por não conseguir criar nada sozinho.
           </li>
           <li>
-            ✅ Site Portfólio — para apresentar seus trabalhos e atrair
-            clientes.
+            Medo de investir tempo e dinheiro e não ver resultados.
           </li>
         </ul>
-        <p>
-          💡 Cada projeto é pensado para que você aprenda de forma prática e
-          saia com resultados reais para mostrar.
-        </p>
+        <h1 class="text-center mb-4">🚀 No curso, você vai criar vários projetos práticos:</h1>
+        <ul>
+          <li>✅ CRUD simples com JavaScript — para entender como manipular dados no navegador.</li>
+          <li>✅ CRUD com banco de dados — aprendendo a salvar e buscar informações de forma profissional.</li>
+          <li>✅ Site com Bootstrap — construindo páginas modernas e responsivas rapidamente.</li>
+          <li>✅ Site Portfólio — para apresentar seus trabalhos e atrair clientes.</li>
+        </ul>
+        <p>💡 Cada projeto é pensado para que você aprenda de forma prática e saia com resultados reais para mostrar.</p>
         <h3>Sabemos que muitos iniciantes enfrentam dificuldades como:</h3>
         <ul class="list-group mb-4">
           <li>
@@ -724,96 +422,13 @@
           Pensando nesses desafios, o curso foi desenvolvido para te guiar do
           absoluto zero até estar pronto para entrar no mercado.
         </p>
-        <style>
-            .carousel-container {
-              position: relative;
-              width: 100%;
-              max-width: 900px;
-              margin: auto;
-              overflow: hidden;
-              border-radius: 10px;
-            }
-
-            .carousel {
-              display: flex;
-              transition: transform 0.5s ease-in-out;
-            }
-
-            .carousel img {
-              width: 100%;
-              flex-shrink: 0;
-            }
-
-            .btncarousel {
-              position: absolute;
-              top: 50%;
-              transform: translateY(-50%);
-              background: rgba(0,0,0,0.5);
-              color: white;
-              border: none;
-              font-size: 30px;
-              padding: 8px 15px;
-              cursor: pointer;
-              border-radius: 4px;
-              z-index: 10;
-            }
-
-            .prev { left: 10px; }
-            .next { right: 10px; }
-
-          </style>
         <div class="provaSocial">
           <h3>O que os alunos acham?</h3>
-          <!-- <img src="./images/provaSocial/lucasSantos.png" alt="" />
-          <img src="./images/provaSocial/lucasPinto.png" alt="" />
-          <img src="./images/provaSocial/Paula.png" alt="" /> -->
-          <div class="carousel-container">
-            <div class="carousel" id="carousel">
-              <!-- As imagens são carregadas automaticamente pelo JS -->
-            </div>
-
-            <button class="btncarousel prev" onclick="moveSlide(-1)">&#10094;</button>
-            <button class="btncarousel next" onclick="moveSlide(1)">&#10095;</button>
-          </div>
-
+          <img src="./images/provaSocial/lucasSantos.png" alt="">
+          <img src="./images/provaSocial/lucasPinto.png" alt="">
+          <img src="./images/provaSocial/Paula.png" alt="">
         </div>
-        <script>
-          const carousel = document.getElementById("carousel");
 
-          // Carrega automaticamente 17 imagens
-          for (let i = 1; i <= 15; i++) {
-            const img = document.createElement("img");
-            img.src = `./assets/imagens/2026/${i}.png`;
-            carousel.appendChild(img);
-          }
-
-          let index = 0;
-          const totalImages = 17;
-
-          function updateSlide() {
-            const width = carousel.clientWidth;
-            carousel.style.transform = `translateX(${-index * width}px)`;
-          }
-
-          function moveSlide(direction) {
-            index += direction;
-
-            if (index < 0) index = totalImages - 1;
-            if (index >= totalImages) index = 0;
-
-            updateSlide();
-          }
-
-          // Auto-play (muda a cada 3 segundos)
-          setInterval(() => {
-            moveSlide(1);
-          }, 3000);
-
-          // Ajusta ao redimensionar
-          window.addEventListener("resize", updateSlide);
-
-
-        </script>
         <div
           class="elementor-element elementor-element-2e86c99e atrasado e-flex e-con-boxed e-con e-parent"
           data-id="2e86c99e"
@@ -830,37 +445,35 @@
               <div class="elementor-widget-container">
                 <div class="elementor-image-box-wrapper">
                   <div class="elementor-image-box-content">
-                    <h3 id="vamosNessa" class="elementor-image-box-title">
-                      CONHECER OS MÓDULOS 🤝
-                    </h3>
+                    <h3 id="vamosNessa" class="elementor-image-box-title">CONHECER OS MÓDULOS 🤝</h3>
                     <p class="elementor-image-box-description">
                       <strong>
-                        🎯 Confira tudo o que você vai aprender no curso
-                        completo para programadores Front-End!
+                        🎯 Confira tudo o que você vai aprender no curso completo para programadores Front-End!
                       </strong>
                     </p>
                   </div>
                 </div>
               </div>
             </div>
-            <div onclick="editarRegistro('CONHECER OS MÓDULOS')">
+            <div
+            onclick="editarRegistro('CONHECER OS MÓDULOS')"
+            >
               <!-- <div id="promocaoTexto">
-                De <strong><del>R$ 697.00</del></strong> por <strong>R$ 197.00</strong> em até 12x
+                De <strong><del>R$ 697.00</del></strong> por <strong>R$ 147.00</strong> em até 12x
               </div>
               <div class="lancamento">
                 <strong>*Oferta de Lançamento </strong> Os valores podem ser
                 alterados sem aviso prévio
               </div> -->
-              <a target="_blank" href="https://go.hotmart.com/B95460619U?dp=1">
-                <button
-                  type="button"
-                  class="btn btn-warning btn-lg botao-promocao"
-                >
+              <a
+                target="_blank"
+                href="https://go.hotmart.com/B95460619U?dp=1"
+              >
+                <button type="button" class="btn btn-warning btn-lg botao-promocao">
                   <strong>
-                    Quero conhecer os módulos e criar meu primeiro projeto em 15
-                    dias!
+                    Quero conhecer os módulos e criar meu primeiro projeto em 15 dias!
                   </strong>
-                  <br />
+                  <br>
                   <small>Clique aqui!</small>
                 </button>
               </a>
@@ -868,51 +481,32 @@
           </div>
         </div>
 
+
         <h2 class="text-center mt-5">Como o Curso Alcança Esse Objetivo?</h2>
         <ul class="list-group mb-4">
           <li>
             🔹
-            <strong
-              ><span class="palavrasDestaque"
-                >HTML, CSS e JavaScript do zero</span
-              ></strong
-            >
-            – Domine as três tecnologias essenciais para criar páginas e
-            sistemas
+            <strong><span class="palavrasDestaque">HTML, CSS e JavaScript do zero</span></strong>
+            – Domine as três tecnologias essenciais para criar páginas e sistemas
             <span class="palavrasDestaque">completos e funcionais</span>.
           </li>
           <li>
             🔹
-            <strong
-              ><span class="palavrasDestaque"
-                >Criação do seu primeiro projeto completo</span
-              ></strong
-            >
-            – Coloque em prática tudo o que aprendeu desenvolvendo um sistema
-            CRUD com
+            <strong><span class="palavrasDestaque">Criação do seu primeiro projeto completo</span></strong>
+            – Coloque em prática tudo o que aprendeu desenvolvendo um sistema CRUD com
             <span class="palavrasDestaque">banco de dados de verdade</span>.
           </li>
           <li>
             🔹
-            <strong
-              ><span class="palavrasDestaque"
-                >Banco de dados na prática</span
-              ></strong
-            >
-            – Aprenda como funciona um banco, como salvar, editar, listar e
-            deletar dados em um sistema.
+            <strong><span class="palavrasDestaque">Banco de dados na prática</span></strong>
+            – Aprenda como funciona um banco, como salvar, editar, listar e deletar dados em um sistema.
           </li>
-          <li></li>
           <li>
-            🔹
-            <strong
-              ><span class="palavrasDestaque"
-                >Seu primeiro projeto publicado na internet</span
-              ></strong
-            >
+            <li>  🔹
+            <strong><span class="palavrasDestaque">Seu primeiro projeto publicado na internet</span></strong>
             – Você vai criar um sistema completo com
-            <span class="palavrasDestaque">JavaScript e banco de dados</span> e
-            publicá-lo online, para acessar de qualquer lugar na internet
+            <span class="palavrasDestaque">JavaScript e banco de dados</span> e publicá-lo online,
+            para acessar de qualquer lugar na internet
           </li>
           <li>
             🔹
@@ -986,98 +580,55 @@
 
       <div class="container">
         <div class="row justify-content-center">
-          <div>
+         <div>
             <h2 class="text-center mb-4">Para quem é esse curso indicado?</h2>
             <p>
-              O
-              <strong>Mapa Completo para Virar Programador do Zero</strong> foi
-              criado para quem deseja entrar no mercado de
+              O <strong>Mapa Completo para Virar Programador do Zero</strong> foi criado para quem deseja entrar no mercado de
               <span class="palavrasDestaque">TI</span> com
               <span class="palavrasDestaque">segurança</span> e
-              <span class="palavrasDestaque">clareza</span>, sem precisar de
-              faculdade ou experiência prévia.
+              <span class="palavrasDestaque">clareza</span>, sem precisar de faculdade ou experiência prévia.
             </p>
 
             <ul>
               <li>
                 ✅
-                <strong
-                  ><span class="palavrasDestaque"
-                    >Nunca programou antes</span
-                  ></strong
-                >
-                – Não precisa saber nada! O curso te ensina tudo do zero, passo
-                a passo, até você publicar seu primeiro projeto.
+                <strong><span class="palavrasDestaque">Nunca programou antes</span></strong>
+                – Não precisa saber nada! O curso te ensina tudo do zero, passo a passo, até você publicar seu primeiro projeto.
               </li>
               <li>
                 ✅
-                <strong
-                  ><span class="palavrasDestaque"
-                    >Quer criar projetos reais com programação</span
-                  ></strong
-                >
-                – Desde as primeiras aulas, você começa a construir algo de
-                verdade, com HTML, CSS, JavaScript e banco de dados.
+                <strong><span class="palavrasDestaque">Quer criar projetos reais com programação</span></strong>
+                – Desde as primeiras aulas, você começa a construir algo de verdade, com HTML, CSS, JavaScript e banco de dados.
               </li>
               <li>
                 ✅
-                <strong
-                  ><span class="palavrasDestaque"
-                    >Quer trabalhar como desenvolvedor front-end</span
-                  ></strong
-                >
-                – Você vai aprender as tecnologias mais pedidas pelas empresas e
-                praticar com projeto real publicado na internet.
+                <strong><span class="palavrasDestaque">Quer trabalhar como desenvolvedor front-end</span></strong>
+                – Você vai aprender as tecnologias mais pedidas pelas empresas e praticar com projeto real publicado na internet.
               </li>
               <li>
                 ✅
-                <strong
-                  ><span class="palavrasDestaque"
-                    >Se sente perdido com tanto conteúdo solto por aí</span
-                  ></strong
-                >
-                – Esse curso organiza tudo pra você, em uma jornada clara e
-                estruturada, com um caminho que realmente funciona.
+                <strong><span class="palavrasDestaque">Se sente perdido com tanto conteúdo solto por aí</span></strong>
+                – Esse curso organiza tudo pra você, em uma jornada clara e estruturada, com um caminho que realmente funciona.
               </li>
               <li>
                 ✅
-                <strong
-                  ><span class="palavrasDestaque"
-                    >Quer aprender o que as empresas realmente cobram</span
-                  ></strong
-                >
-                – Você vai dominar boas práticas, Git, versionamento, Scrum,
-                código limpo e como trabalhar em equipe.
+                <strong><span class="palavrasDestaque">Quer aprender o que as empresas realmente cobram</span></strong>
+                – Você vai dominar boas práticas, Git, versionamento, Scrum, código limpo e como trabalhar em equipe.
               </li>
               <li>
                 ✅
-                <strong
-                  ><span class="palavrasDestaque"
-                    >Precisa de um portfólio e currículo fortes</span
-                  ></strong
-                >
-                – O curso ensina como criar projetos que impressionam, como
-                montar seu LinkedIn e se destacar nas entrevistas.
+                <strong><span class="palavrasDestaque">Precisa de um portfólio e currículo fortes</span></strong>
+                – O curso ensina como criar projetos que impressionam, como montar seu LinkedIn e se destacar nas entrevistas.
               </li>
               <li>
                 ✅
-                <strong
-                  ><span class="palavrasDestaque"
-                    >Quer fazer uma transição de carreira com confiança</span
-                  ></strong
-                >
-                – Se você está insatisfeito com sua área atual e quer um
-                trabalho melhor, esse curso é o seu ponto de virada.
+                <strong><span class="palavrasDestaque">Quer fazer uma transição de carreira com confiança</span></strong>
+                – Se você está insatisfeito com sua área atual e quer um trabalho melhor, esse curso é o seu ponto de virada.
               </li>
             </ul>
 
             <p class="mt-4">
-              Se você se identifica com esses pontos, então o
-              <strong>Mapa Completo para Virar Programador do Zero</strong> é o
-              caminho certo para transformar sua vontade de aprender em uma
-              verdadeira
-              <span class="palavrasDestaque">oportunidade no mercado de TI</span
-              >! 🚀
+              Se você se identifica com esses pontos, então o <strong>Mapa Completo para Virar Programador do Zero</strong> é o caminho certo para transformar sua vontade de aprender em uma verdadeira <span class="palavrasDestaque">oportunidade no mercado de TI</span>! 🚀
             </p>
           </div>
         </div>
@@ -1091,17 +642,18 @@
             recebeu foi em <span class="palavrasDestaque">31/07/2025</span>.
           </p>
           <p>
-            <span class="palavrasDestaque"> Adicionando mais 6 aulas 🎉 </span>
+            <span class="palavrasDestaque">
+              Adicionando mais 6 aulas 🎉
+            </span>
           </p>
         </div>
-        <div class="content">
+         <div class="content">
           <p>
-            A atualização anterior foi em
-            <span class="palavrasDestaque">23/01/2026</span>.
+            A atualização anterior foi em <span class="palavrasDestaque">26/06/2025</span>.
           </p>
           <p>
             <span class="palavrasDestaque">
-              Adicionando mais 1 módulo, com 14 aulas 5 horas de conteudo exclusivo 🎉
+              Adicionando mais 4 módulo, com 53 aulas 🎉
             </span>
           </p>
         </div>
@@ -1126,13 +678,11 @@
         </div>
       </div> -->
       <div class="container">
-        <h1 class="text-center mb-4">
-          Qual o valor e desconto do pré-lançamento?
-        </h1>
+        <h1 class="text-center mb-4">Qual o valor e desconto do pré-lançamento?</h1>
         <p>
           Aproveite agora o preço promocional de
-          <span class="palavrasDestaque">R$ 197</span>, podendo ser parcelado em
-          até <span class="palavrasDestaque"> ate 12x</span>. Esta é uma
+          <span class="palavrasDestaque">R$ 147</span>, podendo ser parcelado em
+          até <span class="palavrasDestaque">12x de R$ 15,20</span>. Esta é uma
           <span class="palavrasDestaque">promoção temporária</span>, com
           <span class="palavrasDestaque">desconto de 80%</span> sobre o valor
           final estimado do curso, que será de
@@ -1181,11 +731,11 @@
       <div class="container">
         <h1 class="text-center mb-4">Tempo de Acesso ao Curso</h1>
         <p>
-          O acesso ao curso é <span class="palavrasDestaque">vitalício</span>.
-          Isso significa que você poderá acessar todas as aulas e materiais
-          sempre que quiser, sem limite de tempo. Basta utilizar o mesmo e-mail
-          que você usou para se inscrever e pronto: o conteúdo estará disponível
-          para você <span class="palavrasDestaque">para sempre</span>.
+          O acesso ao curso é <span class="palavrasDestaque">vitalício</span>. Isso
+          significa que você poderá acessar todas as aulas e materiais sempre que
+          quiser, sem limite de tempo. Basta utilizar o mesmo e-mail que você usou
+          para se inscrever e pronto: o conteúdo estará disponível para você
+          <span class="palavrasDestaque">para sempre</span>.
         </p>
 
         <div class="elementor-widget-container">
@@ -1205,23 +755,24 @@
         </div>
 
         <p>
-          Assim, você pode aprender no seu ritmo, revisar quando quiser e nunca
-          se preocupar com prazos para concluir o curso.
+          Assim, você pode aprender no seu ritmo, revisar quando quiser e nunca se
+          preocupar com prazos para concluir o curso.
         </p>
       </div>
       <div class="container">
         <h1 class="text-center mb-4">Certificado de Conclusão</h1>
         <p>
           Ao finalizar todas as aulas e atividades do curso, você receberá um
-          <span class="palavrasDestaque">certificado de conclusão</span> com seu
-          nome, comprovando todo o conhecimento adquirido.
+          <span class="palavrasDestaque">certificado de conclusão</span> com seu nome,
+          comprovando todo o conhecimento adquirido.
         </p>
 
         <p>
-          O certificado é digital, válido em todo o território nacional, e pode
-          ser utilizado para enriquecer seu currículo ou perfil profissional.
+          O certificado é digital, válido em todo o território nacional, e pode ser
+          utilizado para enriquecer seu currículo ou perfil profissional.
         </p>
       </div>
+
 
       <div class="container">
         <h1 class="text-center mb-4">Política de Reembolso</h1>
@@ -1475,9 +1026,7 @@
             <div class="elementor-widget-container">
               <div class="elementor-image-box-wrapper">
                 <div class="elementor-image-box-content">
-                  <h3 id="vamosNessa" class="elementor-image-box-title">
-                    Vamos nessa 🤝
-                  </h3>
+                  <h3 id="vamosNessa" class="elementor-image-box-title">Vamos nessa 🤝</h3>
                   <p class="elementor-image-box-description">
                     🎯 "Pare de adiar seu futuro! Inscreva-se agora e dê o
                     primeiro passo para sua carreira na programação."
@@ -1510,23 +1059,20 @@
                       >
                         <span class="elementor-button-content-wrapper">
                           <span class="elementor-button-text">
-                            SIM, QUERO INVESTIR NO MEU FUTURO!
-                            <br />
+                              SIM, QUERO INVESTIR NO MEU FUTURO!
+                            <br/>
                           </span>
                         </span>
                       </a>
                     </div>
                   </div>
                 </div>
-                <div id="promocaoTexto">
-                  De <strong><del>R$ 697.00</del></strong> por
-                  <strong>R$ 197.00</strong> em até 12x
+               <div id="promocaoTexto">
+                   De <strong><del>R$ 697.00</del></strong> por <strong>R$ 147.00</strong> em até 12x
                 </div>
                 <div class="lancamento">
-                  <strong>🚨 *Bônus Meu Acompanhamento para 2026* 🚨</strong>
-                  <br />
-                  <!-- <strong>*Oferta de Lançamento PRORROGADA por + 7 dias </strong> -->
-                  <!-- <p id="promocao2"></p> -->
+                  <strong>*Oferta de Lançamento PRORROGADA por + 7 dias </strong>
+                  <p id="promocao2"></p>
                 </div>
               </div>
             </div>
@@ -1834,15 +1380,8 @@
         <button class="btn btn-primary" id="accept-all">Ok, entendi</button>
       </div>
     </div>
-    <div
-      onclick="editarRegistro('whatsapp')"
-      class="whatsapp-message pulse"
-      title="Clique aqui"
-    >
-      <a
-        href="https://wa.me/47997336957?text=Olá!%20Quero%20saber%20mais%20sobre%20o%20curso"
-        target="_blank"
-      >
+    <div onclick="editarRegistro('whatsapp')" class="whatsapp-message pulse" title="Clique aqui">
+      <a href="https://wa.me/47999333485?text=Olá!%20Quero%20saber%20mais%20sobre%20o%20curso" target="_blank">
         Tem dúvidas? Fale comigo!
       </a>
       <img src="./assets/whatsapp.png" alt="WhatsApp" />
@@ -1864,7 +1403,7 @@
           ><small>Termos de Uso</small></a
         >.
         <a
-          href="https://wa.me/47997336957?text=Olá!%20Tenho%20dúvidas%20sobre%20o%20DAP%20e%20gostaria%20de%20falar%20com%20você."
+          href="https://wa.me/47999333485?text=Olá!%20Tenho%20dúvidas%20sobre%20o%20DAP%20e%20gostaria%20de%20falar%20com%20você."
           target="_blank"
         >
           Contato
@@ -1983,12 +1522,12 @@
       //     }
       //   };
 
-      // Detecta tentativa de sair da página
-      // window.addEventListener("beforeunload", function (e) {
-      //   const message = "Ganhe 15% de DESCONTO! Coupon: SOAGORA15";
-      //   e.returnValue = message; // Compatibilidade com navegadores mais antigos
-      //   return message;
-      // });
+        // Detecta tentativa de sair da página
+        // window.addEventListener("beforeunload", function (e) {
+        //   const message = "Ganhe 15% de DESCONTO! Coupon: SOAGORA15";
+        //   e.returnValue = message; // Compatibilidade com navegadores mais antigos
+        //   return message;
+        // });
       //}
     </script>
     <script>
@@ -2003,17 +1542,16 @@
       proximoDomingo.setDate(hoje.getDate() + diasAteDomingo);
 
       // Formata a data em português
-      const opcoes = { weekday: "long", day: "2-digit", month: "long" };
-      let dataFormatada = proximoDomingo.toLocaleDateString("pt-BR", opcoes);
+      const opcoes = { weekday: 'long', day: '2-digit', month: 'long' };
+      let dataFormatada = proximoDomingo.toLocaleDateString('pt-BR', opcoes);
 
       // Deixa a primeira letra maiúscula
-      dataFormatada =
-        dataFormatada.charAt(0).toUpperCase() + dataFormatada.slice(1);
+      dataFormatada = dataFormatada.charAt(0).toUpperCase() + dataFormatada.slice(1);
 
       // Exibe a mensagem
-      document.getElementById("promocao1").innerText =
+      document.getElementById('promocao1').innerText =
         `🔥 Promoção prorrogada até ${dataFormatada}! Depois disso, o preço volta ao normal.`;
-      document.getElementById("promocao2").innerText =
+      document.getElementById('promocao2').innerText =
         `🔥 Promoção prorrogada até ${dataFormatada}! Depois disso, o preço volta ao normal.`;
     </script>
   </body>

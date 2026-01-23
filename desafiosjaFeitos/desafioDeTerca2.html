@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Desafio JavaScript — Quiz</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #020617;
+      border-bottom: 1px solid #1e293b;
+      padding: 12px 20px;
+    }
+
+    .menu-container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .logo {
+      font-weight: bold;
+      color: #22c55e;
+      font-size: 18px;
+    }
+
+    .container {
+      max-width: 820px;
+      margin: 30px auto;
+      padding: 20px;
+      background: #020617;
+      border-radius: 8px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .pergunta {
+      margin-bottom: 25px;
+    }
+
+    .pergunta p {
+      margin-bottom: 6px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      font-size: 15px;
+      border-radius: 4px;
+      border: 1px solid #334155;
+      background: #010a16;
+      color: #22c55e;
+    }
+
+    .feedback {
+      margin-top: 6px;
+      font-size: 14px;
+    }
+
+    .correta {
+      color: #22c55e;
+    }
+
+    .errada {
+      color: #f97316;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    .resultado {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="menu-container">
+    <span class="logo">Desafios Dev — Alexandre Leutz</span>
+  </div>
+</header>
+
+<div class="container">
+  <h1>🧠 Quiz JavaScript</h1>
+
+  <p style="text-align:center;">
+    Responda as <strong>5 perguntas</strong>.
+    Se errar, a resposta correta aparecerá logo abaixo.
+  </p>
+
+  <div class="pergunta">
+    <p>1️⃣ Qual palavra-chave usamos para declarar uma variável?</p>
+    <input type="text" id="q1">
+    <div class="feedback" id="f1"></div>
+  </div>
+
+  <div class="pergunta">
+    <p>2️⃣ Qual operador usamos para comparar valor e tipo?</p>
+    <input type="text" id="q2">
+    <div class="feedback" id="f2"></div>
+  </div>
+
+  <div class="pergunta">
+    <p>3️⃣ Como escrevemos um comentário de uma linha?</p>
+    <input type="text" id="q3">
+    <div class="feedback" id="f3"></div>
+  </div>
+
+  <div class="pergunta">
+    <p>4️⃣ Qual estrutura usamos para repetir código?</p>
+    <input type="text" id="q4">
+    <div class="feedback" id="f4"></div>
+  </div>
+
+  <div class="pergunta">
+    <p>5️⃣ Qual método usamos para exibir algo no console?</p>
+    <input type="text" id="q5">
+    <div class="feedback" id="f5"></div>
+  </div>
+
+  <button onclick="finalizarQuiz()">Finalizar Quiz</button>
+
+  <div class="resultado" id="resultado"></div>
+</div>
+
+<footer>
+  Criado por <strong>Alexandre Leutz</strong> • Programação do zero ao avançado
+</footer>
+
+<script>
+function finalizarQuiz() {
+  let nota = 0;
+
+  const respostas = [
+    { valor: document.getElementById("q1").value.toLowerCase().trim(), correta: ["let", "var", "const"], texto: "let, var ou const", feedback: "f1" },
+    { valor: document.getElementById("q2").value.trim(), correta: ["==="], texto: "===", feedback: "f2" },
+    { valor: document.getElementById("q3").value.trim(), correta: ["//"], texto: "//", feedback: "f3" },
+    { valor: document.getElementById("q4").value.toLowerCase().trim(), correta: ["for", "while"], texto: "for ou while", feedback: "f4" },
+    { valor: document.getElementById("q5").value.toLowerCase().trim(), correta: ["console.log", "console.log()"], texto: "console.log()", feedback: "f5" }
+  ];
+
+  respostas.forEach(item => {
+    const feedback = document.getElementById(item.feedback);
+
+    if (item.correta.includes(item.valor)) {
+      nota += 2;
+      feedback.innerHTML = "✅ Resposta correta";
+      feedback.className = "feedback correta";
+    } else {
+      feedback.innerHTML = "❌ Resposta correta: <strong>" + item.texto + "</strong>";
+      feedback.className = "feedback errada";
+    }
+  });
+
+  let mensagem = "";
+
+  if (nota === 10) {
+    mensagem = "🔥 Nota 10! Excelente!";
+  } else if (nota >= 6) {
+    mensagem = "👏 Boa! Sua nota foi " + nota;
+  } else {
+    mensagem = "⚠️ Sua nota foi " + nota + ". Continue praticando!";
+  }
+
+  document.getElementById("resultado").innerText = mensagem;
+}
+</script>
+
+</body>
+</html>
