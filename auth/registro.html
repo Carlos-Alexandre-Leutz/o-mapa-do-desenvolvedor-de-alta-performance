@@ -1,0 +1,96 @@
+<!-- <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Conta</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .box {
+            background: white;
+            padding: 30px;
+            width: 350px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        input {
+            width: 90%;
+            padding: 12px;
+            margin: 10px 0;
+        }
+        button {
+            width: 95%;
+            padding: 12px;
+            background: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover { background: #333; }
+        a { display: block; margin-top: 15px; }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <h2>Registrar</h2>
+
+        <input type="email" id="email" placeholder="Email">
+        <input type="password" id="senha" placeholder="Senha">
+
+        <button onclick="registrar()">Criar conta</button>
+
+        <a href="login.html">Já tenho conta</a>
+
+        <p id="msg"></p>
+    </div>
+
+    <script type="module">
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword }
+        from "https://www.gstatic.com/firebasejs/12.8.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDv_Ox81T-Kfn2DHxWmLmyk9iHQ_cTlLlM",
+            authDomain: "pagina-de-venda-dap.firebaseapp.com",
+            databaseURL: "https://pagina-de-venda-dap-default-rtdb.firebaseio.com",
+            projectId: "pagina-de-venda-dap",
+            storageBucket: "pagina-de-venda-dap.firebasestorage.app",
+            messagingSenderId: "448135499955",
+            appId: "1:448135499955:web:37a89374d54184b234e0c6",
+            measurementId: "G-QCPJS3MEMJ"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        window.registrar = function() {
+            const email = document.getElementById("email").value;
+            const senha = document.getElementById("senha").value;
+            const msg = document.getElementById("msg");
+
+            createUserWithEmailAndPassword(auth, email, senha)
+                .then(() => {
+                    msg.style.color = "green";
+                    msg.textContent = "Conta criada!";
+                    window.location.href = "login.html";
+                })
+                .catch((e) => {
+                    msg.style.color = "red";
+                    msg.textContent = "Erro: " + e.message;
+                });
+        }
+
+    </script>
+
+</body>
+</html> -->
