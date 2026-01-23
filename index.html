@@ -197,6 +197,14 @@
     ></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <!-- BARRA DE VAGAS -->
+     <style>
+      /* Remove o FIXO em telas pequenas (celular) */
+      @media (max-width: 600px) {
+        #barra-vagas {
+          position: static !important;
+        }
+      }
+      </style>
     <div
       id="barra-vagas"
       style="
@@ -235,17 +243,23 @@
     </div>
     <div id="espacamento-barra"></div>
     <script>
-      function ajustarEspacamento() {
-        const barra = document.getElementById("barra-vagas");
-        const espaco = document.getElementById("espacamento-barra");
+        function ajustarEspacamento() {
+            // Se for celular, NÃO ajusta
+            if (window.innerWidth <= 600) {
+              document.getElementById("espacamento-barra").style.height = "0px";
+              return;
+            }
 
-        const altura = barra.offsetHeight;
-        espaco.style.height = altura + "px";
-      }
+            // Desktop → ajusta normalmente
+            const barra = document.getElementById("barra-vagas");
+            const espaco = document.getElementById("espacamento-barra");
 
-      ajustarEspacamento();
+            const altura = barra.offsetHeight;
+            espaco.style.height = altura + "px";
+          }
 
-      window.onresize = ajustarEspacamento;
+          ajustarEspacamento();
+          window.onresize = ajustarEspacamento;
     </script>
     <div
       data-elementor-type="wp-page"
@@ -781,7 +795,7 @@
           const carousel = document.getElementById("carousel");
 
           // Carrega automaticamente 17 imagens
-          for (let i = 1; i <= 15; i++) {
+          for (let i = 1; i <= 14; i++) {
             const img = document.createElement("img");
             img.src = `./assets/imagens/2026/${i}.png`;
             carousel.appendChild(img);
@@ -1828,24 +1842,18 @@
         </div>
       </div>
     </div> -->
-    <div id="cookie-banner" style="display: none">
-      <div>
-        Usamos cookies para personalizar conteúdos e melhorar a sua experiência.
-        <button class="btn btn-primary" id="accept-all">Ok, entendi</button>
-      </div>
-    </div>
+
     <div
       onclick="editarRegistro('whatsapp')"
       class="whatsapp-message pulse"
       title="Clique aqui"
     >
-      <a
-        href="https://wa.me/47997336957?text=Olá!%20Quero%20saber%20mais%20sobre%20o%20curso"
-        target="_blank"
-      >
-        Tem dúvidas? Fale comigo!
+        <a
+          href="https://wa.me/47997336957?text=Olá!%20Quero%20saber%20mais%20sobre%20o%20curso"
+          target="_blank"
+        >
+        <img src="./assets/whatsapp.png" alt="WhatsApp" />
       </a>
-      <img src="./assets/whatsapp.png" alt="WhatsApp" />
     </div>
     <div onclick="editarRegistro('Modulos Flutuante')">
       <a
@@ -1870,6 +1878,12 @@
           Contato
         </a>
       </p>
+      <div id="cookie-banner" style="display: none">
+        <div>
+          Usamos cookies para personalizar conteúdos e melhorar a sua experiência.
+          <button class="btn btn-primary" id="accept-all">Ok, entendi</button>
+        </div>
+      </div>
     </footer>
 
     <!-- <script id="hotmart_launcher_script">
