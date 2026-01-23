@@ -112,7 +112,7 @@ function botaoDesmutarClicado(btn) {
   });
 }
 async function buscarVagas() {
-  const url = `${urlBase}vagas.json`;
+  const url = `https://pagina-de-venda-dap-default-rtdb.firebaseio.com/vagas.json`;
 
   const resposta = await fetch(url);
   const dados = await resposta.json();
@@ -146,7 +146,7 @@ async function atualizarVagas(novoValor) {
     atualizadoEm: new Date().toISOString()
   };
 
-  const url = `${urlBase}vagas.json`;
+  const url = `https://pagina-de-venda-dap-default-rtdb.firebaseio.com/vagas.json`;
 
   await fetch(url, {
     method: "PUT",
