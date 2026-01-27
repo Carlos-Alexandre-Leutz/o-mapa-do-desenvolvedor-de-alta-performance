@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Painel de Dados</title>
+
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f5f5f5;
+      }
+
+      /* MENU FIXO */
+      .top-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: #111;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+        z-index: 1000;
+      }
+      .top-menu .conteiner {
+        max-width: 1200px;
+        margin: auto;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      .sair-btn {
+        background: #444;
+        padding: 8px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        color: white;
+      }
+      .sair-btn:hover {
+        background: #666;
+      }
+
+      /* Conteúdo centralizado */
+      .content {
+        max-width: 1200px;
+        width: 100%;
+        margin: auto;
+      }
+    .separador {
+        height: 50px;
+    }
+    </style>
+
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+        border: 1px solid #ddd;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      button {
+        padding: 5px 10px;
+        color: white;
+        background-color: red;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: darkred;
+      }
+      #paginacao {
+        margin: 0 auto;
+        width: 150px;
+      }
+      #paginacao button.active {
+        font-weight: bold;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: default;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- MENU SUPERIOR -->
+    <div class="top-menu">
+      <div class="conteiner">
+        <div class="logo">
+          <a href="/auth/dashboard.html">
+            Painel
+          </a>
+        </div>
+
+        <a class="sair-btn" onclick="sair()">Sair</a>
+      </div>
+    </div>
+    <div class="separador"></div>
+
+    <!-- CONTEÚDO CENTRALIZADO -->
+    <div class="content">
+       <div
+      id="admin-vagas"
+      style="
+        max-width: 300px;
+        margin: 20px auto;
+        padding: 20px;
+        background: #f4f4f4;
+        border-radius: 10px;
+        font-family: Arial, sans-serif;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      "
+    >
+      <h3 style="margin-bottom: 10px; text-align: center">Painel de Vagas</h3>
+
+      <label style="font-weight: bold">Alterar número de vagas:</label>
+      <input
+        type="number"
+        id="inputVagas"
+        placeholder="Ex: 12"
+        style="
+          width: 100%;
+          padding: 10px;
+          margin: 8px 0 15px 0;
+          border-radius: 8px;
+          border: 1px solid #ccc;
+          font-size: 16px;
+        "
+      />
+
+      <button
+        onclick="salvarNovaVaga()"
+        style="
+          width: 100%;
+          background: #008cff;
+          color: #fff;
+          border: none;
+          padding: 12px;
+          border-radius: 8px;
+          font-size: 16px;
+          cursor: pointer;
+        "
+      >
+        Atualizar Vagas
+      </button>
+
+      <p
+        id="status-vagas"
+        style="
+          text-align: center;
+          margin-top: 15px;
+          color: #333;
+          font-size: 14px;
+        "
+      ></p>
+    </div>
+  </div>
+
+
+
+    <script src="./assets/js/metricas.js"></script>
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
+      import {
+        getAuth,
+        onAuthStateChanged,
+        signOut,
+      } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-auth.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyDv_Ox81T-Kfn2DHxWmLmyk9iHQ_cTlLlM",
+        authDomain: "pagina-de-venda-dap.firebaseapp.com",
+        databaseURL: "https://pagina-de-venda-dap-default-rtdb.firebaseio.com",
+        projectId: "pagina-de-venda-dap",
+        storageBucket: "pagina-de-venda-dap.firebasestorage.app",
+        messagingSenderId: "448135499955",
+        appId: "1:448135499955:web:37a89374d54184b234e0c6",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+
+      // Protege a página
+      onAuthStateChanged(auth, (user) => {
+        if (!user) {
+          window.location.href = "login.html";
+        }
+      });
+
+      // Função de sair
+      window.sair = () => {
+        signOut(auth);
+      };
+    </script>
+  </body>
+</html>
