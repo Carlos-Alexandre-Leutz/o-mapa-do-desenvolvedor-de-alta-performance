@@ -51,8 +51,6 @@
 
       .card li {
         color: var(--text);
-        line-height: 1.6;
-        margin-bottom: 10px;
       }
 
       .highlight {
@@ -70,7 +68,7 @@
       }
 
       .cta {
-        margin-top: 50px;
+        margin-top: 5px;
         text-align: center;
       }
 
@@ -97,7 +95,7 @@
       .grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 24px;
+        gap: 4px;
       }
 
       .card {
@@ -113,7 +111,6 @@
       }
 
       .card ul li {
-        margin-bottom: 12px;
         position: relative;
       }
 
@@ -197,14 +194,14 @@
     ></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <!-- BARRA DE VAGAS -->
-     <style>
+    <style>
       /* Remove o FIXO em telas pequenas (celular) */
       @media (max-width: 600px) {
         #barra-vagas {
           position: static !important;
         }
       }
-      </style>
+    </style>
     <div
       id="barra-vagas"
       style="
@@ -219,47 +216,51 @@
         color: #fff;
       "
     >
-      <div style="font-size: 18px; font-weight: bold; line-height: 1.5;">
-        🚨 Últimas <span id="vagas_numero"></span>/100 vagas com meu acompanhamento pessoal
-        <br>
+      <div style="font-size: 18px; font-weight: bold; line-height: 1.5">
+        🚨 Últimas <span id="vagas_numero"></span>/100 vagas disponíveis com meu
+        acompanhamento pessoal por 12 meses.
+        <br />
         <a href="#videoFrame">
-          <span style="
-            background: #FFC400;
-            padding: 6px 12px;
-            border-radius: 30px;
-            color: #000;
-            font-weight: bold;
-            display: inline-block;
-            margin-top: 6px;
-            box-shadow: 0 0 10px rgba(255, 196, 0, 0.6);"
+          <span
+            style="
+              background: #ffc400;
+              padding: 6px 12px;
+              border-radius: 30px;
+              color: #000;
+              font-weight: bold;
+              display: inline-block;
+              margin-top: 6px;
+              box-shadow: 0 0 10px rgba(255, 196, 0, 0.6);
+            "
             onclick="desmutar(2)"
           >
-            + Bônus: Encontros mensais • WhatsApp • Comunidade • Desafios semanais
+            + Bônus: Encontros mensais • WhatsApp • Comunidade • Desafios
+            semanais
           </span>
         </a>
       </div>
-      <small><strong>ACABA HOJE </strong></small><small id="vagas_atualizado"></small>
-
+      <small><strong>ACABA HOJE </strong></small
+      ><small id="vagas_atualizado"></small>
     </div>
     <div id="espacamento-barra"></div>
     <script>
-        function ajustarEspacamento() {
-            // Se for celular, NÃO ajusta
-            if (window.innerWidth <= 600) {
-              document.getElementById("espacamento-barra").style.height = "0px";
-              return;
-            }
+      function ajustarEspacamento() {
+        // Se for celular, NÃO ajusta
+        if (window.innerWidth <= 600) {
+          document.getElementById("espacamento-barra").style.height = "0px";
+          return;
+        }
 
-            // Desktop → ajusta normalmente
-            const barra = document.getElementById("barra-vagas");
-            const espaco = document.getElementById("espacamento-barra");
+        // Desktop → ajusta normalmente
+        const barra = document.getElementById("barra-vagas");
+        const espaco = document.getElementById("espacamento-barra");
 
-            const altura = barra.offsetHeight;
-            espaco.style.height = altura + "px";
-          }
+        const altura = barra.offsetHeight;
+        espaco.style.height = altura + "px";
+      }
 
-          ajustarEspacamento();
-          window.onresize = ajustarEspacamento;
+      ajustarEspacamento();
+      window.onresize = ajustarEspacamento;
     </script>
     <div
       data-elementor-type="wp-page"
@@ -305,12 +306,12 @@
             </div>
           </div>
           <section class="hero" style="width: 100%; border: sol">
-            <p class="subtitle">
+            <!-- <p class="subtitle">
               Mesmo sem saber nada, você vai aprender programação do zero, criar
               seu primeiro projeto na prática, entender o que as empresas exigem
               de um programador e descobrir como encontrar as melhores vagas
               para trabalhar na área.
-            </p>
+            </p> -->
 
             <div class="grid">
               <div class="card">
@@ -369,19 +370,45 @@
                 <ul>
                   <li>
                     <strong class="highlight">
-                      Acompanhamento pelo WhatsApp<span title="Somente para as últimas vagas disponíveis" style="color: red;">*</span>
+                      Acompanhamento pelo
+                      <span class="subtle" style="color: green">
+                        <strong>WhatsApp</strong>
+                      </span>
+                      <span
+                        title="Somente para as últimas vagas disponíveis"
+                        style="color: red"
+                        >*</span
+                      >
                     </strong>
                   </li>
 
                   <li>
-                    <strong>Encontros mensais</strong> <span title="Somente para as últimas vagas disponíveis" style="color: red;">*</span>
-                    <span class="subtle">ao vivo comigo</span><br>
-                    <small>Nas reuniões ao vivo mensais comigo, você recebe conteúdo extra atualizado e tira todas as suas dúvidas.</small>
-
+                    <strong>Encontros mensais</strong>
+                    <span
+                      title="Somente para as últimas vagas disponíveis"
+                      style="color: red"
+                      >*</span
+                    >
+                    <span class="subtle" style="color: green">
+                      <strong>ao VIVO COMIGO</strong> </span
+                    ><br />
+                    <small
+                      >Nas reuniões ao vivo mensais comigo, você recebe
+                      <strong style="color: green"
+                        >Conteúdo Extra Atualizado</strong
+                      >
+                      e tira todas as suas dúvidas.</small
+                    >
                   </li>
 
-                  <li><strong>Desafios semanais</strong> para praticar
-                 <span title="Somente para as últimas vagas disponíveis" style="color: red;">*</span></li>
+                  <li>
+                    <strong>Desafios semanais</strong> para praticar
+                    <span
+                      title="Somente para as últimas vagas disponíveis"
+                      style="color: red"
+                      >*</span
+                    >
+                  </li>
 
                   <li>
                     <strong class="highlight">Acesso vitalício</strong> ao curso
@@ -390,7 +417,7 @@
                   <li>
                     <strong>Pagamento único</strong>,
                     <strong class="highlight">parcelável em até 12 x </strong>
-                    <strong style="color: green;">$20,37</strong>
+                    <strong style="color: green">$20,37</strong>
                   </li>
 
                   <li>
@@ -400,21 +427,48 @@
 
                   <li>
                     <strong>Acesso a novos módulos</strong> sem custo adicional
-                   <span title="Somente para as últimas vagas disponíveis" style="color: red;">*</span>
+                    <span
+                      title="Somente para as últimas vagas disponíveis"
+                      style="color: red"
+                      >*</span
+                    >
                   </li>
                   <li>
-                    <div class="cta" onclick="desmutar(2)">
-                      <a href="#videoFrame">
-                        Quero ver como funciona o curso ▶
-                      </a>
+                    <div class="d-flex">
+                      Fale comigo no ZAP
+                      <div
+                        onclick="editarRegistro('whatsapp')"
+                        title="Clique aqui"
+                        class="pulse"
+                      >
+                        <a
+                          href="https://wa.me/47997336957?text=Olá!%20Quero%20saber%20mais%20sobre%20o%20curso"
+                          target="_blank"
+                        >
+                          <img
+                            style="width: 30px"
+                            src="./assets/whatsapp.png"
+                            alt="WhatsApp"
+                          />
+                        </a>
+                      </div>
                     </div>
-                    <span title="Somente para as últimas vagas disponíveis" style="color: red;">*</span>
-                    <small>Benefício liberado somente para últimas vagas.</small>
                   </li>
                 </ul>
               </div>
             </div>
           </section>
+          <div class="cta" onclick="desmutar(2)">
+            <a href="#videoFrame"> Quero ver como funciona o curso ▶ </a>
+          </div>
+          <div class="d-flex">
+            <span
+              title="Somente para as últimas vagas disponíveis"
+              style="color: red"
+              >*</span
+            >
+            <small>Benefício liberado somente para últimas vagas.</small>
+          </div>
           <div
             class="elementor-element elementor-element-43f73f41 elementor-widget__width-inherit elementor-widget elementor-widget-html"
             data-id="43f73f41"
@@ -490,11 +544,14 @@
                 >
               </a> -->
                 <div id="promocaoTexto">
-                  De <strong><del>R$ 697.00</del></strong> por
-                  <strong>R$ 197.00</strong> em até 12x
+                  <!-- De <strong><del>R$ 697.00</del></strong> por
+                  <strong>R$ 197.00</strong> em até 12x -->
                 </div>
                 <div class="lancamento">
-                  <strong>🚨 Últimas vagas com meu acompanhamento pessoal por 12 meses🚨</strong>
+                  <strong
+                    >🚨 Últimas vagas com meu acompanhamento pessoal por 12
+                    meses🚨</strong
+                  >
                   <br /><br />
                 </div>
                 <div id="btnCompra">
@@ -739,43 +796,46 @@
           absoluto zero até estar pronto para entrar no mercado.
         </p>
         <style>
-            .carousel-container {
-              position: relative;
-              width: 100%;
-              max-width: 900px;
-              margin: auto;
-              overflow: hidden;
-              border-radius: 10px;
-            }
+          .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 10px;
+          }
 
-            .carousel {
-              display: flex;
-              transition: transform 0.5s ease-in-out;
-            }
+          .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+          }
 
-            .carousel img {
-              width: 100%;
-              flex-shrink: 0;
-            }
+          .carousel img {
+            width: 100%;
+            flex-shrink: 0;
+          }
 
-            .btncarousel {
-              position: absolute;
-              top: 50%;
-              transform: translateY(-50%);
-              background: rgba(0,0,0,0.5);
-              color: white;
-              border: none;
-              font-size: 30px;
-              padding: 8px 15px;
-              cursor: pointer;
-              border-radius: 4px;
-              z-index: 10;
-            }
+          .btncarousel {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            font-size: 30px;
+            padding: 8px 15px;
+            cursor: pointer;
+            border-radius: 4px;
+            z-index: 10;
+          }
 
-            .prev { left: 10px; }
-            .next { right: 10px; }
-
-          </style>
+          .prev {
+            left: 10px;
+          }
+          .next {
+            right: 10px;
+          }
+        </style>
         <div class="provaSocial">
           <h3>O que os alunos acham?</h3>
           <!-- <img src="./images/provaSocial/lucasSantos.png" alt="" />
@@ -786,10 +846,13 @@
               <!-- As imagens são carregadas automaticamente pelo JS -->
             </div>
 
-            <button class="btncarousel prev" onclick="moveSlide(-1)">&#10094;</button>
-            <button class="btncarousel next" onclick="moveSlide(1)">&#10095;</button>
+            <button class="btncarousel prev" onclick="moveSlide(-1)">
+              &#10094;
+            </button>
+            <button class="btncarousel next" onclick="moveSlide(1)">
+              &#10095;
+            </button>
           </div>
-
         </div>
         <script>
           const carousel = document.getElementById("carousel");
@@ -825,8 +888,6 @@
 
           // Ajusta ao redimensionar
           window.addEventListener("resize", updateSlide);
-
-
         </script>
         <div
           class="elementor-element elementor-element-2e86c99e atrasado e-flex e-con-boxed e-con e-parent"
@@ -1115,7 +1176,8 @@
           </p>
           <p>
             <span class="palavrasDestaque">
-              Adicionando mais 1 módulo, com 14 aulas 5 horas de conteudo exclusivo 🎉
+              Adicionando mais 1 módulo, com 14 aulas 5 horas de conteudo
+              exclusivo 🎉
             </span>
           </p>
         </div>
@@ -1848,10 +1910,10 @@
       class="whatsapp-message pulse"
       title="Clique aqui"
     >
-        <a
-          href="https://wa.me/47997336957?text=Olá!%20Quero%20saber%20mais%20sobre%20o%20curso"
-          target="_blank"
-        >
+      <a
+        href="https://wa.me/47997336957?text=Olá!%20Quero%20saber%20mais%20sobre%20o%20curso"
+        target="_blank"
+      >
         <img src="./assets/whatsapp.png" alt="WhatsApp" />
       </a>
     </div>
@@ -1880,7 +1942,8 @@
       </p>
       <div id="cookie-banner" style="display: none">
         <div>
-          Usamos cookies para personalizar conteúdos e melhorar a sua experiência.
+          Usamos cookies para personalizar conteúdos e melhorar a sua
+          experiência.
           <button class="btn btn-primary" id="accept-all">Ok, entendi</button>
         </div>
       </div>
