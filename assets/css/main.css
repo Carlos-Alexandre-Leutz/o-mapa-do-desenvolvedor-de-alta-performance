@@ -313,7 +313,7 @@ button {
   transition: transform 0.2s, box-shadow 0.2s;
   z-index: 1000;
 }
-/* .whatsapp-message a {
+.whatsapp-message a {
   text-decoration: none;
   color: rgb(0, 0, 0);
   display: flex;
@@ -324,7 +324,7 @@ button {
   padding: 12px 20px;
   font-weight: bold;
   font-family: Arial, sans-serif;
-} */
+}
 .whatsapp-message:hover {
   transform: scale(1.05);
   box-shadow: 0 6px 18px rgba(0,0,0,0.3);
@@ -387,7 +387,7 @@ button {
   cursor: pointer;
   z-index: 1000;
 }
-@media (max-width: 768px) {
+@media (max-width: 1350px) {
   .matricule-se-btn {
     display: none;
   }
