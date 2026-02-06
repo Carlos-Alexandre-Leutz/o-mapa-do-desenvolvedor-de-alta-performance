@@ -58,6 +58,40 @@
         height: 50px;
     }
     </style>
+    <style>
+        /* Centralizar o filtro */
+        #filtro-container {
+          background: #fff;
+          padding: 20px;
+          border-radius: 10px;
+          margin-top: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 15px;
+          flex-wrap: wrap;
+        }
+
+        /* Centralizar totais */
+        #geralResumo {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 40px;
+          text-align: center;
+          padding: 20px;
+          background: white;
+          border-radius: 10px;
+        }
+
+        /* Scroll do resultado do filtro */
+        #resultadoFiltroContainer {
+          max-height: 500px;
+          overflow-y: auto;
+          padding-right: 10px;
+        }
+      </style>
+
 
     <style>
       table {
@@ -112,7 +146,40 @@
       </div>
     </div>
     <div class="separador"></div>
+    <div id="filtro-container">
+      <h2 style="width: 100%; text-align: center;">Filtrar por Período</h2>
 
+      <label>Data Inicial:</label>
+      <input type="date" id="dataInicio">
+
+      <label>Data Final:</label>
+      <input type="date" id="dataFim">
+
+      <button onclick="filtrarPorDatas()" style="padding: 5px 15px; background:red; color:#fff; border:none; border-radius:5px;">
+        Filtrar
+      </button>
+
+      <button onclick="limparFiltro()" style="padding: 5px 15px; background:#333; color:#fff; border:none; border-radius:5px;">
+        Limpar Filtro
+      </button>
+    </div>
+    <div id="geralResumo">
+        <div>
+          <h3>Total Cliques no Pagamento</h3>
+          <p id="totalPagamentos" style="font-size:22px;font-weight:bold;">0</p>
+        </div>
+
+        <div>
+          <h3>Total Cliques no WhatsApp</h3>
+          <p id="totalWhatsApp" style="font-size:22px;font-weight:bold;">0</p>
+        </div>
+
+        <div>
+          <h3>Total Views do Vídeo</h3>
+          <p id="totalViews" style="font-size:22px;font-weight:bold;">0</p>
+        </div>
+      </div>
+    <div class="separador"></div>
     <!-- CONTEÚDO CENTRALIZADO -->
     <div class="content">
       <h1>Resumo de Cliques</h1>
@@ -474,5 +541,115 @@
         signOut(auth);
       };
     </script>
+    <script>
+      /* FILTRAR POR DATAS */
+      function filtrarPorDatas() {
+        const inicio = document.getElementById("dataInicio").value;
+        const fim = document.getElementById("dataFim").value;
+
+        if (!inicio || !fim) {
+          alert("Selecione a data inicial e final!");
+          return;
+        }
+
+        const dataInicio = new Date(inicio + "T00:00:00");
+        const dataFim = new Date(fim + "T23:59:59");
+
+        const filtrados = paginatedData.filter(entry => {
+          const entrada = new Date(entry.dataDeEntrada);
+          return entrada >= dataInicio && entrada <= dataFim;
+        });
+
+        if (filtrados.length === 0) {
+          document.getElementById("summary").innerHTML =
+            "<p>Nenhum dado encontrado neste período.</p>";
+          document.getElementById("totalPagamentos").textContent = 0;
+          document.getElementById("totalWhatsApp").textContent = 0;
+          document.getElementById("totalViews").textContent = 0;
+          return;
+        }
+
+        gerarResumoFiltrado(filtrados);
+      }
+
+      /* LIMPAR FILTRO */
+      function limparFiltro() {
+        document.getElementById("dataInicio").value = "";
+        document.getElementById("dataFim").value = "";
+        carregarDados();
+      }
+
+      /* GERAR RESUMO FILTRADO */
+      function gerarResumoFiltrado(data) {
+        const resumo = {};
+
+        let totalPagamentos = 0;
+        let totalWhatsApp = 0;
+        let totalViews = data.length;
+
+        data.forEach(entry => {
+          const video = entry.utm_campaign;
+
+          if (!resumo[video]) {
+            resumo[video] = {
+              acessos: 0,
+              cliques: 0,
+              assistiram: 0
+            };
+          }
+
+          resumo[video].acessos++;
+          resumo[video].assistiram++;
+
+          if (entry.botaoPagamentoClicado === true) {
+            resumo[video].cliques++;
+            totalPagamentos++;
+          }
+
+          if (entry.idBotao && entry.idBotao.toLowerCase().includes("whatsapp")) {
+            totalWhatsApp++;
+          }
+        });
+
+        document.getElementById("totalPagamentos").textContent = totalPagamentos;
+        document.getElementById("totalWhatsApp").textContent = totalWhatsApp;
+        document.getElementById("totalViews").textContent = totalViews;
+
+        const ordenado = Object.entries(resumo).sort(
+          ([, a], [, b]) => b.cliques - a.cliques
+        );
+
+        let html = `
+          <h2>Resultado do Filtro</h2>
+          <table>
+            <tr>
+              <th>Vídeo</th>
+              <th>Acessos</th>
+              <th>Cliques no Pagamento</th>
+              <th>Views</th>
+            </tr>
+        `;
+
+        ordenado.forEach(([video, info]) => {
+          html += `
+            <tr>
+              <td>
+                <img src="https://img.youtube.com/vi/${video}/0.jpg" width="120"><br>
+                ${video}
+              </td>
+              <td>${info.acessos}</td>
+              <td>${info.cliques}</td>
+              <td>${info.assistiram}</td>
+            </tr>
+          `;
+        });
+
+        html += "</table>";
+
+        document.getElementById("summary").innerHTML =
+          `<div id="resultadoFiltroContainer">${html}</div>`;
+      }
+      </script>
+
   </body>
 </html>
