@@ -40,22 +40,21 @@
     <link rel="icon" href="./assets/foto.png" sizes="192x192" />
     <style>
       :root {
-        --accent: #c9a227; /* amarelo queimado */
-        --text: #222;
+        --accent: #ecc33c; /* amarelo queimado */
+        --text: #ffffff;
         --muted: #666;
       }
-
+      .card {
+        background-color: #000 !important;
+        color: var(--text);
+      }
       .card ul {
         padding-left: 18px;
       }
 
-      .card li {
-        color: var(--text);
-      }
-
       .highlight {
         color: var(--accent);
-        font-weight: 600;
+        font-weight: 1200;
       }
 
       .subtle {
@@ -119,6 +118,107 @@
           font-size: 1.8rem;
         }
       }
+
+      .final-curso {
+        background-color: #0f172a;
+        padding: 60px 20px;
+        color: #ffffff;
+        text-align: center;
+      }
+
+      .final-curso h2 {
+        font-size: 32px;
+        margin-bottom: 40px;
+        font-weight: 700;
+      }
+
+      .beneficios {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: left;
+      }
+
+      .beneficio {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        font-size: 18px;
+        line-height: 1.5;
+      }
+
+      .beneficio span {
+        font-size: 20px;
+        color: #22c55e;
+        margin-top: 2px;
+      }
+
+      .beneficio.destaque {
+        background-color: #1e293b;
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 20px;
+      }
+
+      .beneficio.destaque span {
+        color: #facc15;
+      }
+      .bloco-emocional {
+  background: linear-gradient(180deg, #0f172a, #111827);
+  padding: 25px 20px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.container-emocional {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.frase-impacto {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 25px;
+}
+
+.frase-secundaria {
+  font-size: 20px;
+  line-height: 1.6;
+  color: #d1d5db;
+}
+
+/* Destaques estratégicos */
+.destaque-vermelho {
+  color: #ef4444;
+  font-weight: 700;
+}
+
+.destaque-amarelo {
+  color: #facc15;
+  font-weight: 700;
+}
+
+.destaque-verde {
+  color: #22c55e;
+  font-weight: 700;
+}
+
+.destaque-azul {
+  color: #38bdf8;
+  font-weight: 700;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .frase-impacto {
+    font-size: 24px;
+  }
+
+  .frase-secundaria {
+    font-size: 18px;
+  }
+}
+
     </style>
 
     <meta
@@ -226,10 +326,25 @@
         z-index: 200;
       "
     >
-      <div style="font-size: 18px; font-weight: bold; line-height: 1.5">
-        🚨 Últimas <span id="vagas_numero"></span>/100 vagas disponíveis com meu
-        acompanhamento pessoal por 12 meses.
-        <br />
+      <div style="font-size: 18px; font-weight: bold">
+        <div
+          id="contador"
+          style="
+            background: #000;
+            color: #fff;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 8px;
+          "
+        >
+          Crie Seu Primeiro Projeto em 15 Dias
+          <!-- 🎭 Oferta de Carnaval <span id="vagas_numero"></span>/20 vagas disponíveis  <br>-->
+        </div>
+
+        <!-- 🚨 Últimas <span id="vagas_numero"></span>/100 vagas disponíveis com meu
+        acompanhamento pessoal por 12 meses. -->
+        <!-- <br /> -->
         <a href="#videoFrame">
           <span
             style="
@@ -239,18 +354,17 @@
               color: #000;
               font-weight: bold;
               display: inline-block;
-              margin-top: 6px;
+              margin-top: 5px;
               box-shadow: 0 0 10px rgba(255, 196, 0, 0.6);
             "
             onclick="desmutar(2)"
           >
             + Bônus: Encontros mensais • WhatsApp • Comunidade • Desafios
             semanais
-          </span>
-        </a>
+          </span> </a
+        ><br />
+        <s>R$197,00</s> $167,00 termina em: 00:<span id="tempo">15:00</span>Hr
       </div>
-      <!-- <small><strong>ACABA HOJE </strong></small> -->
-      <small id="vagas_atualizado"></small>
     </div>
     <div id="espacamento-barra"></div>
     <script>
@@ -294,18 +408,27 @@
             <div class="elementor-widget-container">
               <div class="elementor-image-box-wrapper">
                 <div class="elementor-image-box-content">
-                  <h1 class="elementor-image-box-title">
-                   Aprenda Programação do Zero, Domine Projetos Reais e Construa a Base Profissional que o Mercado Exige
-                   <br>
-                   <strong style="color: #ffc400;">
-                     Com Meu Acompanhamento Pessoal e suporte 12 meses.
-                    </strong>
-                  </h1>
-                  Mesmo que Você Nunca Tenha Escrito uma Linha de Código!
                   <div class="lancamento">
-                    <strong>🚨 Oferta de Lançamento 2026 🚨</strong>
                     <!-- <p id="promocao1"></p> -->
                   </div>
+                  <h1 class="elementor-image-box-title">
+                    <!-- Aprenda Programação do Zero, Domine Projetos Reais e -->
+                    <!-- Construa a Base Profissional que o Mercado Exige -->
+                    Aprenda Programação do Zero Absoluto até Enviar Currículo
+                    com Projetos Reais Publicados
+                    <br />
+                  </h1>
+                  <p style="font-size: 20px">
+                    Um método passo a passo que te ensina desde a primeira linha
+                    de código até montar portfólio, currículo e se preparar para
+                    entrevistas — mesmo que você nunca tenha programado antes.
+                    <strong style="color: #ffc400">
+                      Com meu acompanhamento por 12 meses, encontros ao vivo e
+                      suporte no WhatsApp.
+                    </strong>
+                  </p>
+                  <!-- Mesmo se Nunca Escreveu uma Linha de Código! -->
+
                   <!-- <p class="elementor-image-box-description">
                     Aprenda <span class="palavrasDestaque">HTML, CSS, JavaScript e banco de dados do zero</span>.
                     <br />
@@ -316,170 +439,7 @@
               </div>
             </div>
           </div>
-          <section class="hero" style="width: 100%; border: sol">
-            <!-- <p class="subtitle">
-              Mesmo sem saber nada, você vai aprender programação do zero, criar
-              seu primeiro projeto na prática, entender o que as empresas exigem
-              de um programador e descobrir como encontrar as melhores vagas
-              para trabalhar na área.
-            </p> -->
 
-            <div class="grid">
-              <div class="card">
-                <h2>O que você vai aprender</h2>
-                <ul>
-                  <li>
-                    <strong class="highlight">Programação do zero</strong>,
-                    mesmo sem experiência
-                  </li>
-
-                  <li>
-                    Instalação das <strong>ferramentas necessárias</strong>
-                  </li>
-
-                  <li>
-                    <strong class="highlight">HTML, CSS e JavaScript</strong>
-                    <span class="subtle">linha por linha</span>
-                  </li>
-
-                  <li><strong>Projetos práticos</strong> para fixação real</li>
-
-                  <li>
-                    <strong class="highlight">CRUD básico</strong> e
-                    <strong class="highlight">CRUD com banco de dados</strong>
-                  </li>
-
-                  <li>
-                    <strong class="highlight">Git, GitHub e GitFlow</strong> na
-                    prática
-                  </li>
-
-                  <li>
-                    <strong class="highlight">Scrum, Kanban</strong> e
-                    metodologias ágeis
-                  </li>
-
-                  <li>
-                    <strong>Qualidade de código</strong> e boas práticas
-                    profissionais
-                  </li>
-
-                  <li>
-                    <strong>Currículo, portfólio</strong> e
-                    <strong class="highlight">LinkedIn</strong> profissional
-                  </li>
-
-                  <li>
-                    <strong>Preparação para entrevistas</strong> e busca de
-                    vagas
-                  </li>
-                </ul>
-              </div>
-
-              <div class="card">
-                <h2>Além do conteúdo do curso</h2>
-                <ul>
-                  <li>
-                    <strong class="highlight">
-                      Acompanhamento pelo
-                      <span class="subtle" style="color: green">
-                        <strong>WhatsApp</strong>
-                      </span>
-                      <span
-                        title="Somente para as últimas vagas disponíveis"
-                        style="color: red"
-                        >*</span
-                      >
-                    </strong>
-                  </li>
-
-                  <li>
-                    <strong>Encontros mensais</strong>
-                    <span
-                      title="Somente para as últimas vagas disponíveis"
-                      style="color: red"
-                      >*</span
-                    >
-                    <span class="subtle" style="color: green">
-                      <strong>ao VIVO COMIGO</strong> </span
-                    ><br />
-                    <small
-                      >Nas reuniões ao vivo mensais comigo, você recebe
-                      <strong style="color: green"
-                        >Conteúdo Extra Atualizado</strong
-                      >
-                      e tira todas as suas dúvidas.</small
-                    >
-                  </li>
-
-                  <li>
-                    <strong>Desafios semanais</strong> para praticar
-                    <span
-                      title="Somente para as últimas vagas disponíveis"
-                      style="color: red"
-                      >*</span
-                    >
-                  </li>
-
-                  <li>
-                    <strong class="highlight">Acesso vitalício</strong> ao curso
-                  </li>
-
-                  <li>
-                    <strong>Pagamento único</strong>,
-                    <strong class="highlight">parcelável em até 12 x </strong>
-                    <strong style="color: green">$20,37</strong>
-                  </li>
-
-                  <li>
-                    <strong class="highlight">7 dias de garantia</strong>
-                    incondicional
-                  </li>
-
-                  <li>
-                    <strong>Acesso a novos módulos</strong> sem custo adicional
-                    <span
-                      title="Somente para as últimas vagas disponíveis"
-                      style="color: red"
-                      >*</span
-                    >
-                  </li>
-                  <li>
-                    <div class="d-flex">
-                      Fale comigo no ZAP
-                      <div
-                        onclick="editarRegistro('whatsapp')"
-                        title="Clique aqui"
-                        class="pulse"
-                      >
-                        <a
-                          href="https://wa.me/47997336957?text=Olá!%20Quero%20saber%20mais%20sobre%20o%20curso"
-                          target="_blank"
-                        >
-                          <img
-                            style="width: 30px"
-                            src="./assets/whatsapp.png"
-                            alt="WhatsApp"
-                          />
-                        </a>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </section>
-          <div class="cta" onclick="desmutar(2)">
-            <a href="#videoFrame"> Quero ver como funciona o curso ▶ </a>
-          </div>
-          <div class="d-flex">
-            <span
-              title="Somente para as últimas vagas disponíveis"
-              style="color: red"
-              >*</span
-            >
-            <small>Benefício liberado somente para últimas vagas.</small>
-          </div>
           <div
             class="elementor-element elementor-element-43f73f41 elementor-widget__width-inherit elementor-widget elementor-widget-html"
             data-id="43f73f41"
@@ -554,16 +514,20 @@
                   href="#saibaMais"
                 >
               </a> -->
-                <div id="promocaoTexto">
-                  <!-- De <strong><del>R$ 697.00</del></strong> por
-                  <strong>R$ 197.00</strong> em até 12x -->
-                </div>
+
                 <div class="lancamento">
                   <strong
-                    >🚨 Últimas vagas com meu acompanhamento pessoal por 12
-                    meses🚨</strong
+                    >🚨 Últimas <span id="vagas_numero"></span>/100 vagas com
+                    meu acompanhamento pessoal por 12 meses🚨</strong
                   >
-                  <br /><br />
+                  <br />
+                  <small id="vagas_atualizado"></small><br />
+                </div>
+                <div id="promocaoTexto">
+                  Um caminho estruturado com acompanhamento até estar pronto
+                  para o mercado. <br />
+                  De <strong><del>R$ 197.00</del></strong> por
+                  <strong>R$ 167.00</strong> em até 12x
                 </div>
                 <div id="btnCompra">
                   <span
@@ -609,7 +573,6 @@
               </div>
             </div>
           </div>
-
           <div
             class="elementor-element elementor-element-56b8c9c0 atrasado elementor-widget elementor-widget-image"
             data-id="56b8c9c0"
@@ -710,6 +673,254 @@
               </ul>
             </div>
           </div>
+        </div>
+      </div>
+      <section class="final-curso">
+        <div class="container">
+          <h2>🎯 Ao Final do Curso Você Terá:</h2>
+
+          <div class="beneficios">
+            <div class="beneficio">
+              <span>✔</span>
+              <p>Um sistema CRUD completo publicado na internet</p>
+            </div>
+
+            <div class="beneficio">
+              <span>✔</span>
+              <p>Um portfólio profissional pronto para enviar</p>
+            </div>
+
+            <div class="beneficio">
+              <span>✔</span>
+              <p>Um currículo estruturado para tecnologia</p>
+            </div>
+
+            <div class="beneficio">
+              <span>✔</span>
+              <p>Perfil LinkedIn otimizado</p>
+            </div>
+
+            <div class="beneficio">
+              <span>✔</span>
+              <p>
+                Conhecimento de Git, Scrum e fluxo de trabalho usado em empresas
+              </p>
+            </div>
+
+            <div class="beneficio">
+              <span>✔</span>
+              <p>Preparação prática para entrevistas técnicas</p>
+            </div>
+
+            <div class="beneficio destaque">
+              <span>🎓</span>
+              <p>
+                <strong
+                  >Certificado de Conclusão válido em todo o Brasil</strong
+                >
+                para fortalecer seu currículo e perfil profissional
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+       <div onclick="editarRegistro('CONHECER OS MÓDULOS')" style="width: 90%; max-width: 1200px; margin: auto;">
+              <!-- <div id="promocaoTexto">
+                De <strong><del>R$ 697.00</del></strong> por <strong>R$ 197.00</strong> em até 12x
+              </div>
+              <div class="lancamento">
+                <strong>*Oferta de Lançamento </strong> Os valores podem ser
+                alterados sem aviso prévio
+              </div> -->
+              <a target="_blank" href="https://go.hotmart.com/B95460619U?dp=1">
+                <button
+                  type="button"
+                  class="btn btn-warning btn-lg botao-promocao"
+                >
+                  <strong>
+                    Quero conhecer os módulos e criar meu primeiro projeto em 15
+                    dias!
+                  </strong>
+                  <br />
+                  <small>Clique aqui!</small>
+                </button>
+              </a>
+            </div>
+      <section class="hero" style="width: 90%; max-width: 1200px; margin: auto">
+        <section class="bloco-emocional">
+          <div class="container-emocional">
+            <h2 class="frase-impacto">
+              Você não precisa mais ficar
+              <span class="destaque-vermelho">pulando de vídeo em vídeo</span>
+              sem saber se está no
+              <span class="destaque-amarelo">caminho certo</span>.
+            </h2>
+
+            <p class="frase-secundaria">
+              Mesmo começando do
+              <span class="destaque-verde">zero absoluto</span>, você vai
+              aprender <strong>passo a passo</strong>, criar
+              <strong>projetos reais publicados na internet</strong>
+              e se preparar para
+              <span class="destaque-azul">disputar vagas com segurança</span>.
+            </p>
+          </div>
+        </section>
+
+        <div class="grid">
+          <div class="card">
+            <h2>O que você vai aprender</h2>
+            <ul>
+              <li>
+                <strong class="highlight">Programação do zero</strong>, mesmo
+                sem experiência
+              </li>
+
+              <li>Instalação das <strong>ferramentas necessárias</strong></li>
+
+              <li>
+                <strong class="highlight">HTML, CSS e JavaScript</strong>
+                <span>linha por linha</span>
+              </li>
+
+              <li><strong>Projetos práticos</strong> para fixação real</li>
+
+              <li>
+                <strong class="highlight">CRUD básico</strong> e
+                <strong class="highlight">CRUD com banco de dados</strong>
+              </li>
+
+              <li>
+                <strong class="highlight">Git, GitHub e GitFlow</strong> na
+                prática
+              </li>
+
+              <li>
+                <strong class="highlight">Scrum, Kanban</strong> e metodologias
+                ágeis
+              </li>
+
+              <li>
+                <strong>Qualidade de código</strong> e boas práticas
+                profissionais
+              </li>
+
+              <li>
+                <strong>Currículo, portfólio</strong> e
+                <strong class="highlight">LinkedIn</strong> profissional
+              </li>
+
+              <li>
+                <strong>Preparação para entrevistas</strong> e busca de vagas
+              </li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h2>Além do conteúdo do curso</h2>
+            <ul>
+              <li>
+                <strong class="highlight">
+                  Acompanhamento pelo
+                  <span class="subtle" style="color: green">
+                    <strong>WhatsApp</strong>
+                  </span>
+                  <span
+                    title="Somente para as últimas vagas disponíveis"
+                    style="color: red"
+                    >*</span
+                  >
+                </strong>
+              </li>
+
+              <li>
+                <strong>Encontros mensais</strong>
+                <span
+                  title="Somente para as últimas vagas disponíveis"
+                  style="color: red"
+                  >*</span
+                >
+                <span class="subtle" style="color: green">
+                  <strong>ao VIVO COMIGO</strong> </span
+                ><br />
+                <small
+                  >Nas reuniões ao vivo mensais comigo, você recebe
+                  <strong style="color: green"
+                    >Conteúdo Extra Atualizado</strong
+                  >
+                  e tira todas as suas dúvidas.</small
+                >
+              </li>
+
+              <li>
+                <strong>Desafios semanais</strong> para praticar
+                <span
+                  title="Somente para as últimas vagas disponíveis"
+                  style="color: red"
+                  >*</span
+                >
+              </li>
+
+              <li>
+                <strong class="highlight">Acesso vitalício</strong> ao curso
+              </li>
+
+              <li>
+                <strong>Pagamento único</strong>,
+                <strong class="highlight">parcelável em até 12 x </strong>
+                <strong style="color: green">$20,37</strong>
+              </li>
+
+              <li>
+                <strong class="highlight">7 dias de garantia</strong>
+                incondicional
+              </li>
+
+              <li>
+                <strong>Acesso a novos módulos</strong> sem custo adicional
+                <span
+                  title="Somente para as últimas vagas disponíveis"
+                  style="color: red"
+                  >*</span
+                >
+              </li>
+              <li>
+                <div class="d-flex">
+                  Fale comigo no ZAP
+                  <div
+                    onclick="editarRegistro('whatsapp')"
+                    title="Clique aqui"
+                    class="pulse"
+                  >
+                    <a
+                      href="https://wa.me/47997336957?text=Olá!%20Quero%20saber%20mais%20sobre%20o%20curso"
+                      target="_blank"
+                    >
+                      <img
+                        style="width: 30px"
+                        src="./assets/whatsapp.png"
+                        alt="WhatsApp"
+                      />
+                    </a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <br />
+      <div class="cta" onclick="desmutar(2)">
+        <a href="#videoFrame"> Quero ver como funciona o curso ▶ </a>
+      </div>
+      <div class="d-flex">
+        <span
+          title="Somente para as últimas vagas disponíveis"
+          style="color: red"
+          >*</span
+        >
+        <div style="text-align: center; width: 100%">
+          <small>Benefício liberado somente para últimas vagas.</small>
         </div>
       </div>
 
@@ -876,7 +1087,7 @@
           }
 
           let index = 0;
-          const totalImages = 17;
+          const totalImages = 14;
 
           function updateSlide() {
             const width = carousel.clientWidth;
@@ -1183,7 +1394,7 @@
         <div class="content">
           <p>
             A atualização anterior foi em
-            <span class="palavrasDestaque">23/01/2026</span>.
+            <span class="palavrasDestaque">12/02/2026</span>.
           </p>
           <p>
             <span class="palavrasDestaque">
@@ -1218,7 +1429,7 @@
         </h1>
         <p>
           Aproveite agora o preço promocional de
-          <span class="palavrasDestaque">R$ 197</span>, podendo ser parcelado em
+          <span class="palavrasDestaque">R$ 167</span>, podendo ser parcelado em
           até <span class="palavrasDestaque"> ate 12x</span>. Esta é uma
           <span class="palavrasDestaque">promoção temporária</span>, com
           <span class="palavrasDestaque">desconto de 80%</span> sobre o valor
@@ -1607,7 +1818,7 @@
                 </div>
                 <div id="promocaoTexto">
                   De <strong><del>R$ 697.00</del></strong> por
-                  <strong>R$ 197.00</strong> em até 12x
+                  <strong>R$ 167.00</strong> em até 12x
                 </div>
                 <div class="lancamento">
                   <strong>🚨 *Bônus Meu Acompanhamento para 2026* 🚨</strong>
@@ -2094,6 +2305,39 @@
         `🔥 Promoção prorrogada até ${dataFormatada}! Depois disso, o preço volta ao normal.`;
       document.getElementById("promocao2").innerText =
         `🔥 Promoção prorrogada até ${dataFormatada}! Depois disso, o preço volta ao normal.`;
+    </script>
+    <script>
+      (function () {
+        function atualizarContador() {
+          const agora = new Date();
+
+          // Sempre define a próxima meia-noite
+          const proximaMeiaNoite = new Date(
+            agora.getFullYear(),
+            agora.getMonth(),
+            agora.getDate() + 1,
+            0,
+            0,
+            0,
+          );
+
+          const diferenca = proximaMeiaNoite - agora;
+
+          const horas = Math.floor(diferenca / (1000 * 60 * 60));
+          const minutos = Math.floor(
+            (diferenca % (1000 * 60 * 60)) / (1000 * 60),
+          );
+          const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+
+          document.getElementById("tempo").innerText =
+            `${horas.toString().padStart(2, "0")}:` +
+            `${minutos.toString().padStart(2, "0")}:` +
+            `${segundos.toString().padStart(2, "0")}`;
+        }
+
+        atualizarContador();
+        setInterval(atualizarContador, 1000);
+      })();
     </script>
   </body>
 </html>

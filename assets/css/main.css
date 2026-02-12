@@ -421,7 +421,7 @@ button {
 }
 .botao-promocao {
   box-shadow: 0 6px 18px rgba(255, 102, 0, 0.5);
-  color: #FFF;
+  width: 100%;
 }
 
 /* efeito ao passar o mouse */
