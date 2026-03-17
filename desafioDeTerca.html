@@ -121,18 +121,18 @@
   <h1>🧠 Quiz para Iniciantes</h1>
 
   <p style="text-align:center;">
-    São 5 perguntas simples. Ao final, veja sua nota e receba explicações completas.
+    São 5 perguntas. Será que você acerta todas? 👀
   </p>
 
   <!-- PERGUNTA 1 -->
   <div class="pergunta">
-    <p><strong>1️⃣ O que é o frontend?</strong></p>
+    <p><strong>1️⃣ O JavaScript roda onde?</strong></p>
 
     <div class="options">
-      <label><input type="radio" name="q1" value="a"> A parte visual do site</label>
-      <label><input type="radio" name="q1" value="b"> A lógica que roda no servidor</label>
-      <label><input type="radio" name="q1" value="c"> O banco de dados</label>
-      <label><input type="radio" name="q1" value="d"> Uma linguagem de programação</label>
+      <label><input type="radio" name="q1" value="a"> Só no navegador</label>
+      <label><input type="radio" name="q1" value="b"> Só no servidor</label>
+      <label><input type="radio" name="q1" value="c"> No navegador e no servidor</label>
+      <label><input type="radio" name="q1" value="d"> Só no banco de dados</label>
     </div>
 
     <div class="feedback" id="f1"></div>
@@ -140,13 +140,13 @@
 
   <!-- PERGUNTA 2 -->
   <div class="pergunta">
-    <p><strong>2️⃣ O que é o backend?</strong></p>
+    <p><strong>2️⃣ Qual dessas é uma linguagem de backend?</strong></p>
 
     <div class="options">
-      <label><input type="radio" name="q2" value="a"> A parte visual do site</label>
-      <label><input type="radio" name="q2" value="b"> A lógica interna que roda no servidor</label>
-      <label><input type="radio" name="q2" value="c"> O design das páginas</label>
-      <label><input type="radio" name="q2" value="d"> As imagens do projeto</label>
+      <label><input type="radio" name="q2" value="a"> HTML</label>
+      <label><input type="radio" name="q2" value="b"> CSS</label>
+      <label><input type="radio" name="q2" value="c"> JavaScript (Node.js)</label>
+      <label><input type="radio" name="q2" value="d"> Figma</label>
     </div>
 
     <div class="feedback" id="f2"></div>
@@ -154,13 +154,13 @@
 
   <!-- PERGUNTA 3 -->
   <div class="pergunta">
-    <p><strong>3️⃣ Para que serve um banco de dados?</strong></p>
+    <p><strong>3️⃣ O que acontece quando você clica em "login"?</strong></p>
 
     <div class="options">
-      <label><input type="radio" name="q3" value="a"> Guardar informações organizadas</label>
-      <label><input type="radio" name="q3" value="b"> Criar animações</label>
-      <label><input type="radio" name="q3" value="c"> Criar botões e menus</label>
-      <label><input type="radio" name="q3" value="d"> Fazer login no sistema</label>
+      <label><input type="radio" name="q3" value="a"> O frontend valida tudo sozinho</label>
+      <label><input type="radio" name="q3" value="b"> O backend valida os dados no servidor</label>
+      <label><input type="radio" name="q3" value="c"> O banco de dados cria o usuário</label>
+      <label><input type="radio" name="q3" value="d"> Nada acontece</label>
     </div>
 
     <div class="feedback" id="f3"></div>
@@ -168,13 +168,13 @@
 
   <!-- PERGUNTA 4 -->
   <div class="pergunta">
-    <p><strong>4️⃣ O que é uma API?</strong></p>
+    <p><strong>4️⃣ Qual tecnologia cria o visual de um site?</strong></p>
 
     <div class="options">
-      <label><input type="radio" name="q4" value="a"> Uma ferramenta de design</label>
-      <label><input type="radio" name="q4" value="b"> O meio de comunicação entre frontend e backend</label>
-      <label><input type="radio" name="q4" value="c"> Um tipo de banco de dados</label>
-      <label><input type="radio" name="q4" value="d"> Um comando do JavaScript</label>
+      <label><input type="radio" name="q4" value="a"> HTML e CSS</label>
+      <label><input type="radio" name="q4" value="b"> Banco de dados</label>
+      <label><input type="radio" name="q4" value="c"> API</label>
+      <label><input type="radio" name="q4" value="d"> Servidor</label>
     </div>
 
     <div class="feedback" id="f4"></div>
@@ -182,13 +182,13 @@
 
   <!-- PERGUNTA 5 -->
   <div class="pergunta">
-    <p><strong>5️⃣ O que é um desenvolvedor Full Stack?</strong></p>
+    <p><strong>5️⃣ Dá pra ser programador sem faculdade?</strong></p>
 
     <div class="options">
-      <label><input type="radio" name="q5" value="a"> Um dev que só trabalha com banco de dados</label>
-      <label><input type="radio" name="q5" value="b"> Um dev que só faz telas</label>
-      <label><input type="radio" name="q5" value="c"> Um dev que usa duas linguagens</label>
-      <label><input type="radio" name="q5" value="d"> Um dev que trabalha com frontend e backend</label>
+      <label><input type="radio" name="q5" value="a"> Não, é obrigatório</label>
+      <label><input type="radio" name="q5" value="b"> Sim, se souber programar bem</label>
+      <label><input type="radio" name="q5" value="c"> Só no exterior</label>
+      <label><input type="radio" name="q5" value="d"> Só com indicação</label>
     </div>
 
     <div class="feedback" id="f5"></div>
@@ -208,11 +208,11 @@ function finalizarQuiz() {
   let nota = 0;
 
   const perguntas = [
-    { id: "q1", correta: "a", feed: "f1", texto: "Frontend é tudo que o usuário vê e interage (HTML, CSS e JS)." },
-    { id: "q2", correta: "b", feed: "f2", texto: "Backend é a lógica do servidor (APIs, autenticação, regras de negócio)." },
-    { id: "q3", correta: "a", feed: "f3", texto: "Banco de dados serve para armazenar informações como usuários e produtos." },
-    { id: "q4", correta: "b", feed: "f4", texto: "API é o meio de comunicação entre frontend e backend." },
-    { id: "q5", correta: "d", feed: "f5", texto: "Full Stack é quem trabalha com frontend e backend ao mesmo tempo." }
+    { id: "q1", correta: "c", feed: "f1", texto: "JavaScript roda tanto no navegador quanto no servidor (Node.js)." },
+    { id: "q2", correta: "c", feed: "f2", texto: "JavaScript com Node.js é usado no backend." },
+    { id: "q3", correta: "b", feed: "f3", texto: "O backend valida login, senha e regras de autenticação." },
+    { id: "q4", correta: "a", feed: "f4", texto: "HTML estrutura e CSS estiliza o visual do site." },
+    { id: "q5", correta: "b", feed: "f5", texto: "Faculdade não é obrigatória — o que importa é saber programar." }
   ];
 
   perguntas.forEach((p) => {
