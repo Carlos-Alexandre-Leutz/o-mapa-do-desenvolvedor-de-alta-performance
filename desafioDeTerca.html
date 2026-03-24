@@ -126,13 +126,13 @@
 
   <!-- PERGUNTA 1 -->
   <div class="pergunta">
-    <p><strong>1️⃣ O JavaScript roda onde?</strong></p>
+    <p><strong>1️⃣ HTML é uma linguagem de programação?</strong></p>
 
     <div class="options">
-      <label><input type="radio" name="q1" value="a"> Só no navegador</label>
-      <label><input type="radio" name="q1" value="b"> Só no servidor</label>
-      <label><input type="radio" name="q1" value="c"> No navegador e no servidor</label>
-      <label><input type="radio" name="q1" value="d"> Só no banco de dados</label>
+      <label><input type="radio" name="q1" value="a"> Sim</label>
+      <label><input type="radio" name="q1" value="b"> Não</label>
+      <label><input type="radio" name="q1" value="c"> Só no backend</label>
+      <label><input type="radio" name="q1" value="d"> Depende do projeto</label>
     </div>
 
     <div class="feedback" id="f1"></div>
@@ -140,13 +140,13 @@
 
   <!-- PERGUNTA 2 -->
   <div class="pergunta">
-    <p><strong>2️⃣ Qual dessas é uma linguagem de backend?</strong></p>
+    <p><strong>2️⃣ Qual dessas tecnologias roda no navegador?</strong></p>
 
     <div class="options">
-      <label><input type="radio" name="q2" value="a"> HTML</label>
-      <label><input type="radio" name="q2" value="b"> CSS</label>
-      <label><input type="radio" name="q2" value="c"> JavaScript (Node.js)</label>
-      <label><input type="radio" name="q2" value="d"> Figma</label>
+      <label><input type="radio" name="q2" value="a"> Node.js</label>
+      <label><input type="radio" name="q2" value="b"> JavaScript</label>
+      <label><input type="radio" name="q2" value="c"> Banco de dados</label>
+      <label><input type="radio" name="q2" value="d"> API</label>
     </div>
 
     <div class="feedback" id="f2"></div>
@@ -154,13 +154,13 @@
 
   <!-- PERGUNTA 3 -->
   <div class="pergunta">
-    <p><strong>3️⃣ O que acontece quando você clica em "login"?</strong></p>
+    <p><strong>3️⃣ Quem responde uma requisição de API?</strong></p>
 
     <div class="options">
-      <label><input type="radio" name="q3" value="a"> O frontend valida tudo sozinho</label>
-      <label><input type="radio" name="q3" value="b"> O backend valida os dados no servidor</label>
-      <label><input type="radio" name="q3" value="c"> O banco de dados cria o usuário</label>
-      <label><input type="radio" name="q3" value="d"> Nada acontece</label>
+      <label><input type="radio" name="q3" value="a"> O frontend</label>
+      <label><input type="radio" name="q3" value="b"> O backend</label>
+      <label><input type="radio" name="q3" value="c"> O HTML</label>
+      <label><input type="radio" name="q3" value="d"> O CSS</label>
     </div>
 
     <div class="feedback" id="f3"></div>
@@ -168,13 +168,13 @@
 
   <!-- PERGUNTA 4 -->
   <div class="pergunta">
-    <p><strong>4️⃣ Qual tecnologia cria o visual de um site?</strong></p>
+    <p><strong>4️⃣ O que acontece se não existir backend?</strong></p>
 
     <div class="options">
-      <label><input type="radio" name="q4" value="a"> HTML e CSS</label>
-      <label><input type="radio" name="q4" value="b"> Banco de dados</label>
-      <label><input type="radio" name="q4" value="c"> API</label>
-      <label><input type="radio" name="q4" value="d"> Servidor</label>
+      <label><input type="radio" name="q4" value="a"> O site funciona normal</label>
+      <label><input type="radio" name="q4" value="b"> Não dá pra salvar nem buscar dados</label>
+      <label><input type="radio" name="q4" value="c"> O CSS para de funcionar</label>
+      <label><input type="radio" name="q4" value="d"> O HTML quebra</label>
     </div>
 
     <div class="feedback" id="f4"></div>
@@ -182,13 +182,13 @@
 
   <!-- PERGUNTA 5 -->
   <div class="pergunta">
-    <p><strong>5️⃣ Dá pra ser programador sem faculdade?</strong></p>
+    <p><strong>5️⃣ Qual é mais difícil?</strong></p>
 
     <div class="options">
-      <label><input type="radio" name="q5" value="a"> Não, é obrigatório</label>
-      <label><input type="radio" name="q5" value="b"> Sim, se souber programar bem</label>
-      <label><input type="radio" name="q5" value="c"> Só no exterior</label>
-      <label><input type="radio" name="q5" value="d"> Só com indicação</label>
+      <label><input type="radio" name="q5" value="a"> Frontend</label>
+      <label><input type="radio" name="q5" value="b"> Backend</label>
+      <label><input type="radio" name="q5" value="c"> Depende</label>
+      <label><input type="radio" name="q5" value="d"> Nenhum</label>
     </div>
 
     <div class="feedback" id="f5"></div>
@@ -208,11 +208,11 @@ function finalizarQuiz() {
   let nota = 0;
 
   const perguntas = [
-    { id: "q1", correta: "c", feed: "f1", texto: "JavaScript roda tanto no navegador quanto no servidor (Node.js)." },
-    { id: "q2", correta: "c", feed: "f2", texto: "JavaScript com Node.js é usado no backend." },
-    { id: "q3", correta: "b", feed: "f3", texto: "O backend valida login, senha e regras de autenticação." },
-    { id: "q4", correta: "a", feed: "f4", texto: "HTML estrutura e CSS estiliza o visual do site." },
-    { id: "q5", correta: "b", feed: "f5", texto: "Faculdade não é obrigatória — o que importa é saber programar." }
+    { id: "q1", correta: "b", feed: "f1", texto: "HTML não é linguagem de programação, é linguagem de marcação." },
+    { id: "q2", correta: "b", feed: "f2", texto: "JavaScript roda no navegador e permite interatividade." },
+    { id: "q3", correta: "b", feed: "f3", texto: "O backend recebe a requisição e responde via API." },
+    { id: "q4", correta: "b", feed: "f4", texto: "Sem backend não dá pra persistir ou buscar dados." },
+    { id: "q5", correta: "c", feed: "f5", texto: "Depende — cada área tem desafios diferentes." }
   ];
 
   perguntas.forEach((p) => {
