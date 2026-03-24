@@ -1,45 +1,19 @@
 ## 📄 Description
-Brief description of the change and link to the related task.
+Description and task link
 
-**Task:** [TASK-001]
-**Issue:** #
+Description and Azure task link.
 
 ---
 
-## 🛠️ Solution
-Describe what was implemented and how the problem was solved.
-
--
--
--
+## 🛠️ Implemented Solution
+Detailed text with information about the implemented solution.
 
 ---
 
 ## 🧪 Tests (Coverage)
-Provide details about tests and coverage.
-
-- [ ] Unit tests added/updated
-- [ ] Integration tests
-- [ ] No tests required
-
-> Add a screenshot of the test coverage if applicable.
+Screenshot of the test coverage results, if available.
 
 ---
 
-## 📊 Sonar (Code Quality)
-Include Sonar metrics if applicable.
-
-- [ ] Code smells checked
-- [ ] Bugs checked
-- [ ] Vulnerabilities checked
-
-> Add a screenshot of Sonar analysis when required.
-
----
-
-## ✅ Checklist
-
-- [ ] Code follows project standards
-- [ ] Tests are passing
-- [ ] No console errors
-- [ ] Documentation updated (if needed)
+## 📊 Sonar
+Screenshot showing local Sonar metrics (only when related to a PBI for any environment).  
