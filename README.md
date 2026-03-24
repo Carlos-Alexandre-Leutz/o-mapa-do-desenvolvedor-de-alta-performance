@@ -1,5 +1,3 @@
----
-
 # 🚀 Sales Engine & Behavioral Analytics | Full-Stack MVP
 
 ### **Status: Active Production | Data-Driven Revenue**
@@ -21,7 +19,7 @@ This dashboard displays real-time interaction metrics, allowing me to identify f
 
 <img width="1249" height="936" alt="image" src="https://github.com/user-attachments/assets/45926a0a-1a02-4204-8932-e5727216ab73" />
 <img width="1249" height="936" alt="image" src="https://github.com/user-attachments/assets/249d9209-fc86-4ee3-be4f-b2e51b800cfc" />
- 
+
 
 ---
 
@@ -40,7 +38,7 @@ The proof of the business model. These metrics represent the direct financial im
 ---
 
 ## 🧠 Engineering & Pragmatism (The "Senior" Perspective)
-As a developer with 7 years of experience, this project represents **Pragmatic Engineering**. 
+As a developer with 7 years of experience, this project represents **Pragmatic Engineering**.
 * **MVP Mindset:** Prioritizing feature delivery and data collection to validate the business model.
 * **Technical Debt Management:** I maintain a dedicated **Backlog** to refactor and scale the architecture now that the product has achieved consistent revenue.
 * **Full-Cycle Ownership:** Demonstrating skills in Frontend, Backend, Data Analysis, and Product Strategy.
