@@ -309,7 +309,12 @@
             + Bônus: Encontros mensais • WhatsApp • Comunidade • Desafios
             semanais
           </span> </a><br />
-        <s>R$697,00</s> R$197,00 termina em: 00:<span id="tempo">15:00</span>Hr
+          <div class="lancamento">
+            <strong>🚨 Últimas <span id="vagas_numero"></span>/100 vagas com
+              meu acompanhamento pessoal por 12 meses🚨</strong>
+            <br />
+            <small id="vagas_atualizado"></small><br />
+          </div>
       </div>
     </div>
     <div id="espacamento-barra"></div>
@@ -346,9 +351,6 @@
           <div class="elementor-widget-container">
             <div class="elementor-image-box-wrapper">
               <div class="elementor-image-box-content">
-                <div class="lancamento">
-                  <!-- <p id="promocao1"></p> -->
-                </div>
                 <h1 class="elementor-image-box-title">
                   <!-- Aprenda Programação do Zero, Domine Projetos Reais e -->
                   <!-- Construa a Base Profissional que o Mercado Exige -->
@@ -430,18 +432,13 @@
                   href="#saibaMais"
                 >
               </a> -->
-
-              <div class="lancamento">
-                <strong>🚨 Últimas <span id="vagas_numero"></span>/100 vagas com
-                  meu acompanhamento pessoal por 12 meses🚨</strong>
-                <br />
-                <small id="vagas_atualizado"></small><br />
-              </div>
               <div id="promocaoTexto">
                 Um caminho estruturado com acompanhamento até estar pronto
                 para o mercado. <br />
-                De <strong><del>R$ 697.00</del></strong> por
-                <strong>R$ 197.00</strong> em até 12x
+                <div id="preco" style="display: none;">
+                  De <strong><del>R$ 697.00</del></strong> por
+                  <strong>R$ 197.00</strong> em até 12x
+                </div>
               </div>
               <div id="btnCompra">
                 <span onclick="desmutar(2)"
@@ -1124,65 +1121,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-    <script>
-      // Data atual
-      const hoje = new Date();
-
-      // Calcula quantos dias faltam até o próximo domingo (0 = domingo)
-      const diasAteDomingo = (7 - hoje.getDay()) % 7 || 7;
-
-      // Cria uma nova data para o próximo domingo
-      const proximoDomingo = new Date();
-      proximoDomingo.setDate(hoje.getDate() + diasAteDomingo);
-
-      // Formata a data em português
-      const opcoes = { weekday: "long", day: "2-digit", month: "long" };
-      let dataFormatada = proximoDomingo.toLocaleDateString("pt-BR", opcoes);
-
-      // Deixa a primeira letra maiúscula
-      dataFormatada =
-        dataFormatada.charAt(0).toUpperCase() + dataFormatada.slice(1);
-
-      // Exibe a mensagem
-      document.getElementById("promocao1").innerText =
-        `🔥 Promoção prorrogada até ${dataFormatada}! Depois disso, o preço volta ao normal.`;
-      document.getElementById("promocao2").innerText =
-        `🔥 Promoção prorrogada até ${dataFormatada}! Depois disso, o preço volta ao normal.`;
-    </script>
-    <script>
-      (function () {
-        function atualizarContador() {
-          const agora = new Date();
-
-          // Sempre define a próxima meia-noite
-          const proximaMeiaNoite = new Date(
-            agora.getFullYear(),
-            agora.getMonth(),
-            agora.getDate() + 1,
-            0,
-            0,
-            0,
-          );
-
-          const diferenca = proximaMeiaNoite - agora;
-
-          const horas = Math.floor(diferenca / (1000 * 60 * 60));
-          const minutos = Math.floor(
-            (diferenca % (1000 * 60 * 60)) / (1000 * 60),
-          );
-          const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
-
-          document.getElementById("tempo").innerText =
-            `${horas.toString().padStart(2, "0")}:` +
-            `${minutos.toString().padStart(2, "0")}:` +
-            `${segundos.toString().padStart(2, "0")}`;
-        }
-
-        atualizarContador();
-        setInterval(atualizarContador, 1000);
-      })();
-    </script>
 </body>
 
 </html>
