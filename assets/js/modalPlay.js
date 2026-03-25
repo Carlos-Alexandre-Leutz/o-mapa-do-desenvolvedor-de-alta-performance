@@ -33,4 +33,12 @@ function desmutar() {
     // Reinicia o vídeo e ativa o som removendo o mute
     iframe.src = videoSrc + "&mute=0";
     modalAlerta.style.display = 'none';
+
+    const precoElement = document.getElementById("preco");
+
+    if (precoElement) {
+        setTimeout(function () {
+            precoElement.style.display = "block";
+        }, 237000);
+    }
 }
