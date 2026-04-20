@@ -1,31 +1,33 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dev Quest: The Code Rush - Boss Progression</title>
-  <style>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dev Quest: The Code Rush - Boss Progression</title>
+    <style>
       body {
-          font-family: 'Courier New', Courier, monospace;
-          background: #020617;
-          color: #e5e7eb;
-          margin: 0;
-          /* Impede o scroll na página inteira */
-          height: 100vh;
-          overflow: hidden;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+        font-family: "Courier New", Courier, monospace;
+        background: #020617;
+        color: #e5e7eb;
+        margin: 0;
+        display: flex;
+        /* Impede o scroll na página inteira */
+        height: 100vh;
+        overflow: hidden;
+        align-items: center;
+        justify-content: center;
       }
 
       #game-container {
-          width: 100%;
-          max-width: 900px;
-          height: 100vh;
-          display: flex;
-          flex-direction: column;
-          position: relative;
+        width: 100%;
+        max-width: 900px;
+        height: 98vh;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        padding: 5px;
+        box-sizing: border-box;
       }
 
       #viewport {
@@ -40,84 +42,187 @@
       }
 
       .floor {
-        position: absolute; bottom: 0; width: 200%; height: 60px;
-        background: repeating-linear-gradient(90deg, #1e293b, #1e293b 40px, #0f172a 40px, #0f172a 80px);
+        position: absolute;
+        bottom: 0;
+        width: 200%;
+        height: 60px;
+        background: repeating-linear-gradient(
+          90deg,
+          #1e293b,
+          #1e293b 40px,
+          #0f172a 40px,
+          #0f172a 80px
+        );
         z-index: 2;
       }
 
       .bg-elements {
-        position: absolute; width: 200%; height: 100%;
-        background-image: linear-gradient(#22c55e 1px, transparent 1px), linear-gradient(90deg, #22c55e 1px, transparent 1px);
+        position: absolute;
+        width: 200%;
+        height: 100%;
+        background-image:
+          linear-gradient(#22c55e 1px, transparent 1px),
+          linear-gradient(90deg, #22c55e 1px, transparent 1px);
         background-size: 50px 50px;
         opacity: 0.1;
         z-index: 1;
       }
 
-      .running .floor, .running .bg-elements { animation: scrollEnv 1s linear infinite; }
-      @keyframes scrollEnv { from { transform: translateX(0); } to { transform: translateX(-80px); } }
+      .running .floor,
+      .running .bg-elements {
+        animation: scrollEnv 1s linear infinite;
+      }
+      @keyframes scrollEnv {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-80px);
+        }
+      }
 
       #hero {
-        position: absolute; bottom: 60px; left: 100px; width: 50px; height: 70px;
-        background: #22c55e; border-radius: 4px; z-index: 5; transition: transform 0.2s;
+        position: absolute;
+        bottom: 60px;
+        left: 100px;
+        width: 50px;
+        height: 70px;
+        background: #22c55e;
+        border-radius: 4px;
+        z-index: 5;
+        transition: transform 0.2s;
       }
 
       #boss {
-        position: absolute; bottom: 60px; right: -300px; width: 80px; height: 110px;
-        background: #ef4444; border-radius: 8px; z-index: 5;
-        transition: right 1s ease-out, transform 0.5s ease-in-out;
+        position: absolute;
+        bottom: 60px;
+        right: -300px;
+        width: 80px;
+        height: 110px;
+        background: #ef4444;
+        border-radius: 8px;
+        z-index: 5;
+        transition:
+          right 1s ease-out,
+          transform 0.5s ease-in-out;
         box-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
       }
 
       .shield {
-        position: absolute; inset: -15px; border: 5px solid #facc15;
-        border-radius: 50%; box-shadow: 0 0 30px #facc15;
-        display: none; animation: pulseShield 0.5s infinite; z-index: 4;
+        position: absolute;
+        inset: -15px;
+        border: 5px solid #facc15;
+        border-radius: 50%;
+        box-shadow: 0 0 30px #facc15;
+        display: none;
+        animation: pulseShield 0.5s infinite;
+        z-index: 4;
       }
-      @keyframes pulseShield { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+      @keyframes pulseShield {
+        0%,
+        100% {
+          opacity: 0.7;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
 
       .projectile {
-        position: absolute; width: 25px; height: 25px; background: #f87171;
-        border-radius: 50%; z-index: 10; box-shadow: 0 0 10px #ef4444;
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        background: #f87171;
+        border-radius: 50%;
+        z-index: 10;
+        box-shadow: 0 0 10px #ef4444;
       }
 
       #quiz-panel {
-          background: #1e293b;
-          padding: 20px;
-          border-radius: 0;
-          border: 2px solid #334155;
-          border-top: none;
-          max-height: 45vh;
-          overflow-y: auto;
+        background: #1e293b;
+        padding: 20px;
+        border-radius: 0;
+        border: 2px solid #334155;
+        border-top: none;
+        max-height: 45vh;
+        overflow-y: auto;
       }
 
-      .status-bar { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 5px; color: #94a3b8; }
-      .hp-container { width: 100%; height: 20px; background: #451a03; border-radius: 10px; overflow: hidden; }
-      #hp-fill { width: 100%; height: 100%; background: #22c55e; transition: width 0.3s; }
-      .question-text { font-size: 1.1rem; margin: 15px 0; min-height: 40px; color: #f1f5f9; }
+      .status-bar {
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+        margin-bottom: 5px;
+        color: #94a3b8;
+      }
+      .hp-container {
+        width: 100%;
+        height: 20px;
+        background: #451a03;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      #hp-fill {
+        width: 100%;
+        height: 100%;
+        background: #22c55e;
+        transition: width 0.3s;
+      }
+      .question-text {
+        font-size: 1.1rem;
+        margin: 15px 0;
+        min-height: 40px;
+        color: #f1f5f9;
+      }
 
       .options-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-          gap: 10px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 10px;
       }
 
       .opt-btn {
-        background: #0f172a; border: 1px solid #334155; color: #fff;
-        padding: 15px; border-radius: 6px; cursor: pointer; text-align: left;
-        font-family: inherit; font-size: 0.95rem; transition: 0.2s;
+        background: #0f172a;
+        border: 1px solid #334155;
+        color: #fff;
+        padding: 15px;
+        border-radius: 6px;
+        cursor: pointer;
+        text-align: left;
+        font-family: inherit;
+        font-size: 0.95rem;
+        transition: 0.2s;
       }
-      .opt-btn:hover { background: #1e293b; border-color: #facc15; }
+      .opt-btn:hover {
+        background: #1e293b;
+        border-color: #facc15;
+      }
 
       #overlay {
-        position: absolute; inset: 0; background: rgba(2, 6, 23, 0.95);
-        display: flex; flex-direction: column; align-items: center; justify-content: center;
-        z-index: 100; text-align: center; padding: 20px;
+        position: absolute;
+        inset: 0;
+        background: rgba(2, 6, 23, 0.95);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 100;
+        text-align: center;
+        padding: 20px;
         overflow-y: auto;
         box-sizing: border-box;
       }
 
-      .start-btn { padding: 20px 40px; background: #22c55e; color: #020617; font-weight: bold; cursor: pointer; font-size: 1.3rem; border: none; border-radius: 8px; }
-
+      .start-btn {
+        padding: 20px 40px;
+        background: #22c55e;
+        color: #020617;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 1.3rem;
+        border: none;
+        border-radius: 8px;
+      }
 
       @media (max-width: 600px) {
         #viewport {
@@ -144,31 +249,96 @@
           margin: 10px 0;
         }
       }
-  </style>
-</head>
-<body>
+      #leaderboard h3 {
+        color: #facc15;
+        text-align: center;
+        margin: 0;
+        font-size: 0.7rem;
+        letter-spacing: 2px;
+      }
 
-<div id="game-container">
-  <div id="viewport" class="running">
-    <div class="bg-elements"></div>
-    <div class="floor"></div>
-    <div id="overlay">
-      <h1 style="color: #22c55e; font-size: 3.5rem;">DEV QUEST</h1>
-      <button onclick="startGame()" class="start-btn">INICIAR JORNADA</button>
+      #leaderboard h3 {
+        color: #facc15;
+        text-align: center;
+        margin: 0 0 10px 0;
+        font-size: 0.9rem;
+        border-bottom: 1px solid #facc15;
+      }
+
+      #ranking-list {
+        display: flex;
+        flex-direction: row; /* Nomes um ao lado do outro */
+        gap: 15px;
+        list-style: none;
+        padding: 5px 0;
+        margin: 0;
+        overflow-x: auto; /* Se tiver muitos, você arrasta pro lado */
+        scrollbar-width: none; /* Esconde a barra de scroll */
+      }
+
+      /* Estilo de cada item do ranking */
+      #ranking-list li {
+        display: flex;
+        gap: 5px;
+        white-space: nowrap;
+        font-size: 0.7rem;
+        color: #fff;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 2px 8px;
+        border-radius: 4px;
+      }
+
+      /* Ajuste no Viewport para ele não ter borda arredondada em cima */
+      #viewport {
+        width: 100%;
+        flex: 1; /* O jogo ocupa o espaço que sobrar */
+        border: 4px solid #1e293b;
+        border-top: none;
+        border-radius: 0;
+        position: relative;
+        overflow: hidden;
+      }
+      @media (max-width: 600px) {
+        #viewport {
+          flex: 0 0 30vh; /* No celular o jogo fica menor para sobrar espaço para as perguntas */
+        }
+        #quiz-panel {
+          max-height: 55vh; /* Aumenta o espaço das perguntas no celular */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="game-container">
+      <div id="leaderboard">
+        <h3>TOP 10 PLAYERS</h3>
+        <ul id="ranking-list"></ul>
+      </div>
+
+      <div id="viewport" class="running">
+        <div class="bg-elements"></div>
+        <div class="floor"></div>
+        <div id="overlay">
+          <h1 style="color: #22c55e; font-size: 3.5rem">DEV QUEST</h1>
+          <button onclick="startGame()" class="start-btn">
+            INICIAR JORNADA
+          </button>
+        </div>
+        <div id="hero"><div id="shield" class="shield"></div></div>
+        <div id="boss"></div>
+        <div id="projectiles-container"></div>
+      </div>
+
+      <div id="quiz-panel">
+        <div class="status-bar">
+          <span>HERO HP</span><span>FALTAM: <span id="q-count">40</span></span>
+        </div>
+        <div class="hp-container"><div id="hp-fill"></div></div>
+        <div class="question-text" id="q-text"></div>
+        <div class="options-grid" id="q-opts"></div>
+      </div>
     </div>
-    <div id="hero"><div id="shield" class="shield"></div></div>
-    <div id="boss"></div>
-    <div id="projectiles-container"></div>
-  </div>
 
-  <div id="quiz-panel">
-    <div class="status-bar"><span>HERO HP</span><span>FALTAM: <span id="q-count">40</span></span></div>
-    <div class="hp-container"><div id="hp-fill"></div></div>
-    <div class="question-text" id="q-text"></div>
-    <div class="options-grid" id="q-opts"></div>
-  </div>
-</div>
-
-<script type="module" src="./game.js"></script>
-</body>
+    <script type="module" src="./game.js"></script>
+  </body>
 </html>
