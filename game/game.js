@@ -259,16 +259,19 @@ function getRank(score) {
 
 function gameOver() {
   const finalScore = calculateScore();
+  const rank = getRank(finalScore);
   const overlay = document.getElementById('overlay');
   overlay.style.display = 'flex';
-  overlay.innerHTML = `
-        <h1 style="color:${rank.color}; margin-top: auto;">RANK: ${rank.title}</h1>
-        <p style="color:#fff">Você depurou todo o sistema!</p>
 
-        <div style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 10px; color: white; width: 80%; max-width: 400px;">
-            <p>Acertos Totais: <b>${totalCorrectCount}</b></p>
-            <p>Bugs Pendentes: <b>${totalErrors}</b></p>
-            <h2 style="color:#facc15; margin: 5px 0;">SCORE: ${finalScore}</h2>
+  overlay.innerHTML = `
+        <h1 style="color:#ef4444; margin-top: auto;">SISTEMA CORROMPIDO</h1>
+        <p style="color:#fff">Sua jornada parou na ${levels[currentLevelIndex].name}</p>
+
+        <div style="margin: 15px 0; padding: 15px; background: rgba(239, 68, 68, 0.1); border: 1px solid #ef4444; border-radius: 10px; color: white; width: 80%; max-width: 400px;">
+            <p>Bugs Resolvidos: <b>${totalCorrectCount}</b></p>
+            <p>Erros Cometidos: <b>${totalErrors}</b></p>
+            <h2 style="color:#facc15; margin: 5px 0;">SCORE FINAL: ${finalScore}</h2>
+            <p style="font-size: 0.8rem; color: ${rank.color}">Rank Alcançado: ${rank.title}</p>
         </div>
 
         <div style="width: 100%; max-width: 500px; display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 10px; margin-bottom: auto; padding: 0 10px;">
@@ -276,8 +279,8 @@ function gameOver() {
                 COMPARTILHAR
             </button>
 
-            <button onclick="location.reload()" class="start-btn" style="flex: 1; padding: 15px; font-size: 0.9rem; white-space: nowrap;">
-                NOVO DESAFIO
+            <button onclick="location.reload()" class="start-btn" style="flex: 1; padding: 15px; font-size: 0.9rem; white-space: nowrap; background: #ef4444;">
+                REENTRAR
             </button>
         </div>
     `;
@@ -288,14 +291,15 @@ function win() {
   const rank = getRank(finalScore);
   const overlay = document.getElementById('overlay');
   overlay.style.display = 'flex';
+
   overlay.innerHTML = `
         <h1 style="color:${rank.color}; margin-top: auto;">RANK: ${rank.title}</h1>
-        <p style="color:#fff">Você depurou todo o sistema!</p>
+        <p style="color:#fff">Você depurou todo o sistema com sucesso!</p>
 
-        <div style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 10px; color: white; width: 80%; max-width: 400px;">
+        <div style="margin: 15px 0; padding: 15px; background: rgba(34, 197, 94, 0.1); border: 1px solid ${rank.color}; border-radius: 10px; color: white; width: 80%; max-width: 400px;">
             <p>Acertos Totais: <b>${totalCorrectCount}</b></p>
             <p>Bugs Pendentes: <b>${totalErrors}</b></p>
-            <h2 style="color:#facc15; margin: 5px 0;">SCORE: ${finalScore}</h2>
+            <h2 style="color:#facc15; margin: 5px 0;">SCORE FINAL: ${finalScore}</h2>
         </div>
 
         <div style="width: 100%; max-width: 500px; display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 10px; margin-bottom: auto; padding: 0 10px;">
@@ -304,7 +308,7 @@ function win() {
             </button>
 
             <button onclick="location.reload()" class="start-btn" style="flex: 1; padding: 15px; font-size: 0.9rem; white-space: nowrap;">
-                NOVO DESAFIO
+                JOGAR DE NOVO
             </button>
         </div>
     `;
