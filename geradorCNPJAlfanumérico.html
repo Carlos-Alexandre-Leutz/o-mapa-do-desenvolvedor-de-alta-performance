@@ -33,6 +33,7 @@
             color: #333;
             border: 2px solid #e9ecef;
             min-height: 35px;
+            word-break: break-all;
         }
         .grid {
             display: grid;
@@ -70,6 +71,7 @@
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
+            z-index: 100;
         }
         .show { visibility: visible; animation: fade 2s; }
         @keyframes fade { from {opacity: 0;} to {opacity: 1;} }
@@ -96,24 +98,25 @@
 <div id="toast" class="toast">Copiado!</div>
 
 <script>
-    // --- LÓGICA DO CPF ---
-    function renderCPF() {
-        let n = Array.from({length: 9}, () => Math.floor(Math.random() * 10));
+    const renderCPF = () => {
+        let digits = Array.from({ length: 9 }, () => Math.floor(Math.random() * 10));
 
-        const calcDV = (num) => {
-            let res = num.reverse().reduce((acc, curr, idx) => acc + curr * (idx + 2), 0) % 11;
-            return res < 2 ? 0 : 11 - res;
+        const calculateDV = (base, weights) => {
+            let sum = base.reduce((acc, curr, idx) => acc + curr * weights[idx], 0);
+            let remainder = sum % 11;
+            return remainder < 2 ? 0 : 11 - remainder;
         };
 
-        n.push(calcDV([...n]));
-        n.push(calcDV([...n]));
+        const dv1 = calculateDV(digits, [10, 9, 8, 7, 6, 5, 4, 3, 2]);
+        digits.push(dv1);
+        const dv2 = calculateDV(digits, [11, 10, 9, 8, 7, 6, 5, 4, 3, 2]);
+        digits.push(dv2);
 
-        let cpf = n.join('');
+        const cpf = digits.join('');
         formatAndShow(cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4"), "#6f42c1");
-    }
+    };
 
-    // --- LÓGICA DO CNPJ ---
-    function renderCNPJ(isAlpha) {
+    const renderCNPJ = (isAlpha) => {
         const chars = isAlpha ? "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ" : "0123456789";
         let base = "";
         for (let i = 0; i < 12; i++) {
@@ -123,18 +126,28 @@
         const weights1 = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
         const weights2 = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
 
-        const getDV = (text, weights) => {
-            let sum = [...text].reduce((acc, curr, i) => acc + (curr.charCodeAt(0) - 48) * weights[i], 0);
-            let res = sum % 11;
-            return res < 2 ? 0 : 11 - res;
+        const calculateDigit = (text, weights) => {
+            let sum = 0;
+            for (let i = 0; i < text.length; i++) {
+                let val = text.charCodeAt(i) - 48;
+                sum += val * weights[i];
+            }
+            let remainder = sum % 11;
+            return remainder < 2 ? 0 : 11 - remainder;
         };
 
-        let dv1 = getDV(base, weights1);
-        let dv2 = getDV(base + dv1, weights2);
+        const dv1 = calculateDigit(base, weights1);
+        const dv2 = calculateDigit(base + dv1, weights2);
 
-        let cnpj = base + dv1 + dv2;
-        formatAndShow(cnpj.replace(/^(.{2})(.{3})(.{3})(.{4})(.{2})$/, "$1.$2.$3/$4-$5"), isAlpha ? "#28a745" : "#6c757d");
-    }
+        const fullCnpj = base + dv1.toString() + dv2.toString();
+
+        const formatted = fullCnpj.replace(
+            /^([A-Z0-9]{2})([A-Z0-9]{3})([A-Z0-9]{3})([A-Z0-9]{4})(\d{2})$/,
+            "$1.$2.$3/$4-$5"
+        );
+
+        formatAndShow(formatted, isAlpha ? "#28a745" : "#6c757d");
+    };
 
     function formatAndShow(text, color) {
         const el = document.getElementById('display');
