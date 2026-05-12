@@ -213,28 +213,38 @@
 </header>
 
 <div id="desafio" class="container">
-  <h1>🐞 Desafio: Bug da Tipagem</h1>
+  <h1>🚦 Desafio: Lógica do Semáforo</h1>
 
-  <p><strong>Objetivo:</strong> Corrigir o código para que ele realize uma soma matemática em vez de apenas "colar" os textos.</p>
+  <p><strong>Objetivo:</strong> Criar uma lógica que diga ao motorista o que fazer dependendo da cor do sinal.</p>
 
   <div class="alerta">
-    <strong>⚠️ O Bug:</strong><br>
-    O sistema deve prever sua idade daqui a 5 anos. Mas se você digita <strong>20</strong>, ele diz que você terá <strong>205</strong>!
+    <strong>⚠️ A Missão:</strong><br>
+    Se a cor for <strong>"verde"</strong>, o resultado deve ser "Siga em frente". <br>
+    Se for <strong>"amarelo"</strong>, "Atenção: Reduza". <br>
+    Se for <strong>"vermelho"</strong>, "Pare o veículo".
   </div>
 
-  <p>Digite sua idade atual:</p>
-  <input type="number" id="idade" placeholder="Ex: 20">
+  <p>Escolha a cor do semáforo:</p>
+  <select id="corSinal" style="width: 100%; padding: 10px; margin-bottom: 20px; border-radius: 4px;">
+    <option value="verde">Verde</option>
+    <option value="amarelo">Amarelo</option>
+    <option value="vermelho">Vermelho</option>
+  </select>
 
   <p><strong>Código JavaScript:</strong></p>
   <textarea id="codigo">
-// ❌ O valor vem do input como Texto (String)
-let idadeAtual = valorDigitado;
-let anosParaSomar = 5;
+// A variável 'cor' recebe o valor selecionado
+let cor = corSelecionada;
+let acao = "";
 
-// Corrija a linha abaixo:
-let idadeFutura = idadeAtual + anosParaSomar;
+// Use 'if', 'else if' e 'else' para definir a acao:
+if (cor === "verde") {
+  acao = "Siga em frente";
+}
 
-resultado = "Daqui a 5 anos você terá: " + idadeFutura + " anos.";
+// Complete o código abaixo:
+
+resultado = acao;
   </textarea>
 
   <button onclick="executarCodigo()">Executar código</button>
@@ -246,18 +256,22 @@ resultado = "Daqui a 5 anos você terá: " + idadeFutura + " anos.";
   <div class="resultado" id="saida"></div>
 
   <div class="hint">
-    💡 Dica: No JS, "20" + 5 = "205". Use <b>Number()</b> para converter.
+    💡 Dica: Use <b>else if (cor === "amarelo")</b> para verificar a segunda condição.
   </div>
 </div>
 
 <div id="explicacao" class="container" style="display:none;">
   <h2>📘 Explicação</h2>
-  <p>Tudo o que o usuário digita no navegador é lido como <strong>texto (String)</strong>. No JS, o sinal de <code>+</code> com texto serve para <strong>juntar</strong> (concatenar).</p>
-
-  <p>Para somar matematicamente, você deve converter o texto em número:</p>
+  <p>Na programação, usamos o <strong>IF (SE)</strong> para tomar decisões. Quando temos mais de duas opções, usamos o <strong>ELSE IF</strong>.</p>
 
   <pre style="background:#010a16; padding:10px; border-radius:4px; color:#22c55e;">
-let idadeAtual = Number(valorDigitado);</pre>
+if (cor === "verde") {
+  acao = "Siga";
+} else if (cor === "amarelo") {
+  acao = "Atenção";
+} else {
+  acao = "Pare";
+}</pre>
 </div>
 
 <div id="curso" class="container cta">
@@ -296,24 +310,26 @@ let idadeAtual = Number(valorDigitado);</pre>
   }
 
   function executarCodigo() {
-    const input = document.getElementById("idade");
+    const select = document.getElementById("corSinal");
     const cod = document.getElementById("codigo").value.trim();
 
-    if (input.value === "") {
-      mostrarMensagem("⚠️ Digite uma idade primeiro.");
-      return;
-    }
-
     try {
+      // Criando a função que simula o ambiente do aluno
       const funcao = new Function(`
-        let valorDigitado = "${input.value}";
+        let corSelecionada = "${select.value}";
         let resultado = "";
         ${cod}
         return resultado;
       `);
-      mostrarMensagem(funcao());
+
+      const res = funcao();
+      if(!res) {
+        mostrarMensagem("❌ O código rodou, mas a variável 'resultado' está vazia.");
+      } else {
+        mostrarMensagem("📢 Decisão do motorista: " + res);
+      }
     } catch (e) {
-      mostrarMensagem("❌ Erro de sintaxe no seu código.");
+      mostrarMensagem("❌ Erro de sintaxe: Verifique as chaves { } e os parênteses.");
     }
   }
 </script>
