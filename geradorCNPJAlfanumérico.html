@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Documentos Dev</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f7f6;
+        }
+        .container {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            text-align: center;
+            width: 420px;
+        }
+        h1 { font-size: 1.4rem; color: #333; margin-bottom: 5px; }
+        #display {
+            font-size: 1.5rem;
+            font-weight: 700;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin: 20px 0;
+            color: #333;
+            border: 2px solid #e9ecef;
+            min-height: 35px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        button {
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.2s;
+            font-size: 0.9rem;
+        }
+        .btn-cpf { background: #6f42c1; color: white; }
+        .btn-normal { background: #6c757d; color: white; }
+        .btn-alpha { background: #28a745; color: white; }
+        .btn-copy { background: #007bff; color: white; margin-top: 10px; }
+
+        button:hover { opacity: 0.9; transform: scale(0.98); }
+
+        .toast {
+            visibility: hidden;
+            background: #333;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .show { visibility: visible; animation: fade 2s; }
+        @keyframes fade { from {opacity: 0;} to {opacity: 1;} }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Gerador de Documentos</h1>
+    <p style="font-size: 0.8rem; color: #888; margin-bottom: 20px;">Ferramenta para testes de software</p>
+
+    <div id="display">---</div>
+
+    <div class="grid">
+        <button class="btn-cpf" onclick="renderCPF()">Gerar CPF</button>
+        <div class="row">
+            <button class="btn-normal" onclick="renderCNPJ(false)">CNPJ Normal</button>
+            <button class="btn-alpha" onclick="renderCNPJ(true)">CNPJ Alpha</button>
+        </div>
+        <button class="btn-copy" onclick="copyText()">Copiar Resultado</button>
+    </div>
+</div>
+
+<div id="toast" class="toast">Copiado!</div>
+
+<script>
+    // --- LÓGICA DO CPF ---
+    function renderCPF() {
+        let n = Array.from({length: 9}, () => Math.floor(Math.random() * 10));
+
+        const calcDV = (num) => {
+            let res = num.reverse().reduce((acc, curr, idx) => acc + curr * (idx + 2), 0) % 11;
+            return res < 2 ? 0 : 11 - res;
+        };
+
+        n.push(calcDV([...n]));
+        n.push(calcDV([...n]));
+
+        let cpf = n.join('');
+        formatAndShow(cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4"), "#6f42c1");
+    }
+
+    // --- LÓGICA DO CNPJ ---
+    function renderCNPJ(isAlpha) {
+        const chars = isAlpha ? "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ" : "0123456789";
+        let base = "";
+        for (let i = 0; i < 12; i++) {
+            base += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+
+        const weights1 = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
+        const weights2 = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
+
+        const getDV = (text, weights) => {
+            let sum = [...text].reduce((acc, curr, i) => acc + (curr.charCodeAt(0) - 48) * weights[i], 0);
+            let res = sum % 11;
+            return res < 2 ? 0 : 11 - res;
+        };
+
+        let dv1 = getDV(base, weights1);
+        let dv2 = getDV(base + dv1, weights2);
+
+        let cnpj = base + dv1 + dv2;
+        formatAndShow(cnpj.replace(/^(.{2})(.{3})(.{3})(.{4})(.{2})$/, "$1.$2.$3/$4-$5"), isAlpha ? "#28a745" : "#6c757d");
+    }
+
+    function formatAndShow(text, color) {
+        const el = document.getElementById('display');
+        el.innerText = text;
+        el.style.color = color;
+        el.style.borderColor = color;
+    }
+
+    function copyText() {
+        const text = document.getElementById('display').innerText;
+        if (text === "---") return;
+        navigator.clipboard.writeText(text);
+        const t = document.getElementById("toast");
+        t.className = "toast show";
+        setTimeout(() => t.className = "toast", 2000);
+    }
+</script>
+
+</body>
+</html>
