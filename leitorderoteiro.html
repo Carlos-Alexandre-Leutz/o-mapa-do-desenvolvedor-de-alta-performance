@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproduzir Vídeo do Google Drive</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #1a73e8;
+        }
+
+        p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #1a73e8;
+        }
+
+        button {
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #1557b0;
+        }
+
+        /* Área do player de vídeo */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* Proporção 16:9 de cinema/youtube */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            background-color: #000;
+            display: none; /* Escondido até que um link válido seja inserido */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .error-message {
+            color: #d93025;
+            font-size: 14px;
+            margin-top: -15px;
+            margin-bottom: 15px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Reprodutor de Vídeo do Google Drive</h1>
+        <p>Cole o link de compartilhamento do seu vídeo do Drive no campo abaixo e clique em Gerar.</p>
+
+        <div class="input-group">
+            <input type="text" id="driveLink" placeholder="https://drive.google.com/file/d/.../view?usp=drive_link">
+            <button onclick="carregarVideo()">Gerar Vídeo</button>
+        </div>
+
+        <div class="error-message" id="errorMessage">Link inválido. Certifique-se de colar um link correto do Google Drive.</div>
+
+        <div class="video-wrapper" id="videoContainer">
+            <iframe id="videoPlayer" src="" allow="autoplay" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <script>
+        function carregarVideo() {
+            const linkInput = document.getElementById('driveLink').value.trim();
+            const videoContainer = document.getElementById('videoContainer');
+            const videoPlayer = document.getElementById('videoPlayer');
+            const errorMessage = document.getElementById('errorMessage');
+
+            // Expressão regular para encontrar e extrair o ID do arquivo do Drive de forma segura
+            const regex = /\/file\/d\/([a-zA-Z0-9_-]{25,})/;
+            const match = linkInput.match(regex);
+
+            if (match && match[1]) {
+                const videoId = match[1];
+                // Monta o link correto de preview usando o ID extraído
+                const previewUrl = `https://drive.google.com/file/d/${videoId}/preview`;
+
+                // Atualiza o iframe e exibe o container do vídeo
+                videoPlayer.src = previewUrl;
+                videoContainer.style.display = 'block';
+                errorMessage.style.display = 'none';
+            } else {
+                // Se o link não for válido, esconde o player e avisa o usuário
+                videoContainer.style.display = 'none';
+                videoPlayer.src = '';
+                errorMessage.style.display = 'block';
+            }
+        }
+    </script>
+
+</body>
+</html>
