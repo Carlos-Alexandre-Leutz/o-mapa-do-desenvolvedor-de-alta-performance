@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reproduzir Vídeo do Google Drive</title>
+    <title>Área de Acesso</title>
     <style>
         * {
             box-sizing: border-box;
@@ -31,6 +31,11 @@
             text-align: center;
         }
 
+        /* Telas (Escondidas por padrão, exceto o login) */
+        #loginScreen { max-width: 400px; margin-top: 50px; }
+        #mainContent { display: none; }
+        #fakeScriptScreen { display: none; max-width: 700px; text-align: left; }
+
         h1 {
             font-size: 24px;
             margin-bottom: 10px;
@@ -49,7 +54,7 @@
             margin-bottom: 25px;
         }
 
-        input[type="text"] {
+        input[type="text"], input[type="password"] {
             flex: 1;
             padding: 12px 15px;
             border: 2px solid #ddd;
@@ -59,7 +64,7 @@
             transition: border-color 0.3s;
         }
 
-        input[type="text"]:focus {
+        input[type="text"]:focus, input[type="password"]:focus {
             border-color: #1a73e8;
         }
 
@@ -75,80 +80,135 @@
             transition: background-color 0.3s;
         }
 
-        button:hover {
-            background-color: #1557b0;
-        }
+        button:hover { background-color: #1557b0; }
 
-        /* Área do player de vídeo */
+        /* Estilo do Vídeo */
         .video-wrapper {
             position: relative;
-            padding-bottom: 56.25%; /* Proporção 16:9 de cinema/youtube */
+            padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
             border-radius: 8px;
             background-color: #000;
-            display: none; /* Escondido até que um link válido seja inserido */
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            display: none;
         }
 
         .video-wrapper iframe {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
+            top: 0; left: 0; width: 100%; height: 100%; border: none;
         }
 
         .error-message {
-            color: #d93025;
-            font-size: 14px;
-            margin-top: -15px;
-            margin-bottom: 15px;
-            display: none;
+            color: #d93025; font-size: 14px; margin-top: -15px; margin-bottom: 15px; display: none;
+        }
+
+        /* Estilo do Leitor de Roteiros Falso */
+        .script-reader {
+            background-color: #f9f9f9;
+            border-left: 4px solid #666;
+            padding: 20px;
+            font-family: 'Courier New', Courier, monospace; /* Fonte típica de roteiros */
+            white-space: pre-line;
+            line-height: 1.6;
+            margin-top: 20px;
+            font-size: 15px;
+        }
+
+        .script-title {
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-transform: uppercase;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <div class="container" id="loginScreen">
+        <h1>Entrar no Sistema</h1>
+        <p>Insira suas credenciais para acessar os arquivos.</p>
+
+        <div style="display: flex; flex-direction: column; gap: 15px;">
+            <input type="password" id="passwordInput" placeholder="Digite a senha secreta...">
+            <button onclick="verificarSenha()">Fazer Login</button>
+        </div>
+    </div>
+
+    <div class="container" id="mainContent">
         <h1>Reprodutor de Vídeo do Google Drive</h1>
-        <p>Cole o link de compartilhamento do seu vídeo do Drive no campo abaixo e clique em Gerar.</p>
+        <p>Cole o link de compartilhamento do seu vídeo do Drive no campo abaixo.</p>
 
         <div class="input-group">
-            <input type="text" id="driveLink" placeholder="https://drive.google.com/file/d/.../view?usp=drive_link">
+            <input type="text" id="driveLink" placeholder="https://drive.google.com/file/d/.../view">
             <button onclick="carregarVideo()">Gerar Vídeo</button>
         </div>
 
-        <div class="error-message" id="errorMessage">Link inválido. Certifique-se de colar um link correto do Google Drive.</div>
+        <div class="error-message" id="errorMessage">Link inválido.</div>
 
         <div class="video-wrapper" id="videoContainer">
             <iframe id="videoPlayer" src="" allow="autoplay" allowfullscreen></iframe>
         </div>
     </div>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/gRFKxfFJnKM?si=ol2lVLXSg8xSmwVb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+    <div class="container" id="fakeScriptScreen">
+        <h2 style="color: #2b2b2b; margin-bottom: 5px;">Leitor de Roteiros v2.4</h2>
+        <p>Status: <span style="color: green; font-weight: bold;">Login efetuado com sucesso.</span> Exibindo documento padrão:</p>
+
+        <div class="script-reader">
+            <div class="script-title">ROTEIRO</div>
+
+            <strong>CENA 1 - INT. ESCRITÓRIO - NOITE</strong>
+
+            O silêncio toma conta da sala escura. Apenas a luz fraca de um monitor antigo ilumina o rosto do PERSONAGEM, que digita freneticamente no teclado. Ele para por um segundo, olha para os lados, desconfiado.
+
+            <strong>PERSONAGEM</strong>
+            (sussurrando)
+            Acho que alguém errou a senha... mas o sistema diz que eu estou logado. Estranho.
+
+            A câmera se afasta lentamente enquanto linhas de código sem sentido continuam subindo pela tela. Nada mais acontece aqui. É apenas um texto em um fundo cinza. O leitor está vazio.
+        </div>
+    </div>
 
     <script>
+        function verificarSenha() {
+            const senhaInserida = document.getElementById('passwordInput').value;
+            const loginScreen = document.getElementById('loginScreen');
+            const mainContent = document.getElementById('mainContent');
+            const fakeScriptScreen = document.getElementById('fakeScriptScreen');
+
+            if (senhaInserida === "121314") {
+                // Senha certa: vai para o site do vídeo
+                loginScreen.style.display = 'none';
+                mainContent.style.display = 'block';
+            } else {
+                // Senha errada: finge que logou mas vai para a tela de roteiro estático
+                loginScreen.style.display = 'none';
+                fakeScriptScreen.style.display = 'block';
+            }
+        }
+
+        // Atalho para o botão Enter
+        document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') verificarSenha();
+        });
+
+        // Reprodutor de vídeo
         function carregarVideo() {
             const linkInput = document.getElementById('driveLink').value.trim();
             const videoContainer = document.getElementById('videoContainer');
             const videoPlayer = document.getElementById('videoPlayer');
             const errorMessage = document.getElementById('errorMessage');
 
-            // Expressão regular para encontrar e extrair o ID do arquivo do Drive de forma segura
             const regex = /\/file\/d\/([a-zA-Z0-9_-]{25,})/;
             const match = linkInput.match(regex);
 
             if (match && match[1]) {
-                const videoId = match[1];
-                // Monta o link correto de preview usando o ID extraído
-                const previewUrl = `https://drive.google.com/file/d/${videoId}/preview`;
-
-                // Atualiza o iframe e exibe o container do vídeo
-                videoPlayer.src = previewUrl;
+                videoPlayer.src = `https://drive.google.com/file/d/${match[1]}/preview`;
                 videoContainer.style.display = 'block';
                 errorMessage.style.display = 'none';
             } else {
-                // Se o link não for válido, esconde o player e avisa o usuário
                 videoContainer.style.display = 'none';
                 videoPlayer.src = '';
                 errorMessage.style.display = 'block';
