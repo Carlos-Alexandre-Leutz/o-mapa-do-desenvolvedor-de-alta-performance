@@ -66,9 +66,9 @@
     /* AJUSTES PARA CELULAR */
     @media (max-width: 768px) {
       .container {
-        width: 95%; /* Ocupa quase tudo */
-        margin: 15px auto; /* Reduz margem superior/inferior */
-        padding: 15px; /* Padding interno menor para ganhar espaço */
+        width: 95%;
+        margin: 15px auto;
+        padding: 15px;
         border-radius: 4px;
       }
 
@@ -213,38 +213,39 @@
 </header>
 
 <div id="desafio" class="container">
-  <h1>🚦 Desafio: Lógica do Semáforo</h1>
+  <h1>🛒 Desafio: Desconto no E-commerce</h1>
 
-  <p><strong>Objetivo:</strong> Criar uma lógica que diga ao motorista o que fazer dependendo da cor do sinal.</p>
+  <p><strong>Objetivo:</strong> Criar uma lógica que calcule o valor final de um produto aplicando um cupom de desconto.</p>
 
   <div class="alerta">
     <strong>⚠️ A Missão:</strong><br>
-    Se a cor for <strong>"verde"</strong>, o resultado deve ser "Siga em frente". <br>
-    Se for <strong>"amarelo"</strong>, "Atenção: Reduza". <br>
-    Se for <strong>"vermelho"</strong>, "Pare o veículo".
+    Se o cupom for <strong>"DESC10"</strong>, o preço deve ter 10% de desconto. <br>
+    Se for <strong>"DESC20"</strong>, o preço deve ter 20% de desconto. <br>
+    Se não for nenhum cupom válido, o preço continua o mesmo (sem desconto).
   </div>
 
-  <p>Escolha a cor do semáforo:</p>
+  <p>Escolha o cupom aplicado:</p>
   <select id="corSinal" style="width: 100%; padding: 10px; margin-bottom: 20px; border-radius: 4px;">
-    <option value="verde">Verde</option>
-    <option value="amarelo">Amarelo</option>
-    <option value="vermelho">Vermelho</option>
+    <option value="DESC10">DESC10 (10% de desconto)</option>
+    <option value="DESC20">DESC20 (20% de desconto)</option>
+    <option value="NENHUM">Sem cupom</option>
   </select>
 
   <p><strong>Código JavaScript:</strong></p>
   <textarea id="codigo">
-// A variável 'cor' recebe o valor selecionado
-let cor = corSelecionada;
-let acao = "";
+// Preço original do produto: R$ 100
+let preco = 100;
+let cupom = corSelecionada;
+let precoFinal = 0;
 
-// Use 'if', 'else if' e 'else' para definir a acao:
-if (cor === "verde") {
-  acao = "Siga em frente";
+// Use 'if', 'else if' e 'else' para calcular o precoFinal:
+if (cupom === "DESC10") {
+  precoFinal = preco * 0.9;
 }
 
 // Complete o código abaixo:
 
-resultado = acao;
+resultado = "R$ " + precoFinal;
   </textarea>
 
   <button onclick="executarCodigo()">Executar código</button>
@@ -256,21 +257,21 @@ resultado = acao;
   <div class="resultado" id="saida"></div>
 
   <div class="hint">
-    💡 Dica: Use <b>else if (cor === "amarelo")</b> para verificar a segunda condição.
+    💡 Dica: Multiplicar por <b>0.8</b> dá 20% de desconto, e se não houver cupom, o preço final é igual ao original.
   </div>
 </div>
 
 <div id="explicacao" class="container" style="display:none;">
   <h2>📘 Explicação</h2>
-  <p>Na programação, usamos o <strong>IF (SE)</strong> para tomar decisões. Quando temos mais de duas opções, usamos o <strong>ELSE IF</strong>.</p>
+  <p>Trabalhar com operadores condicionais e cálculos matemáticos básicos é uma das tarefas mais comuns no dia a dia de um programador front-end.</p>
 
   <pre style="background:#010a16; padding:10px; border-radius:4px; color:#22c55e;">
-if (cor === "verde") {
-  acao = "Siga";
-} else if (cor === "amarelo") {
-  acao = "Atenção";
+if (cupom === "DESC10") {
+  precoFinal = preco * 0.9;
+} else if (cupom === "DESC20") {
+  precoFinal = preco * 0.8;
 } else {
-  acao = "Pare";
+  precoFinal = preco;
 }</pre>
 </div>
 
@@ -314,7 +315,6 @@ if (cor === "verde") {
     const cod = document.getElementById("codigo").value.trim();
 
     try {
-      // Criando a função que simula o ambiente do aluno
       const funcao = new Function(`
         let corSelecionada = "${select.value}";
         let resultado = "";
@@ -326,7 +326,7 @@ if (cor === "verde") {
       if(!res) {
         mostrarMensagem("❌ O código rodou, mas a variável 'resultado' está vazia.");
       } else {
-        mostrarMensagem("📢 Decisão do motorista: " + res);
+        mostrarMensagem("📢 Valor final do produto: " + res);
       }
     } catch (e) {
       mostrarMensagem("❌ Erro de sintaxe: Verifique as chaves { } e os parênteses.");
