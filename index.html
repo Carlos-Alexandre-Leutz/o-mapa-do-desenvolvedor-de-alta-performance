@@ -1,1129 +1,204 @@
 <!doctype html>
 <html lang="pt-BR">
-
 <head>
-  <!-- Google Tag Manager -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Aprenda Programação do Zero até o Primeiro Emprego | Alexandre Leutz</title>
+  <meta name="description" content="Método passo a passo para aprender programação do zero, publicar projetos reais, montar portfólio e currículo e se preparar para entrevistas, com acompanhamento no WhatsApp." />
+  <meta property="og:title" content="O Mapa Completo para Virar Programador do zero" />
+  <meta property="og:description" content="Da primeira linha de código ao currículo enviado, com projetos reais publicados." />
+  <meta property="og:image" content="https://alexandreleutz.com.br/assets/capa.jpeg" />
+  <link rel="stylesheet" href="assets/v2/style.css" />
   <script>
     (function (w, d, s, l, i) {
-      w[l] = w[l] || [];
-      w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-      var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s),
-        dl = l != "dataLayer" ? "&l=" + l : "";
-      j.async = true;
-      j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+      w[l] = w[l] || []; w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+      var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != "dataLayer" ? "&l=" + l : "";
+      j.async = true; j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
       f.parentNode.insertBefore(j, f);
     })(window, document, "script", "dataLayer", "GTM-K5X5TTM2");
   </script>
-  <!-- End Google Tag Manager -->
-  <meta charset="UTF-8" />
-  <title>Alexandre Leutz</title>
-  <meta name="robots" content="max-image-preview:large" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" id="elementor-frontend-css" href="./assets/css/custom-frontend.min.css" media="all" />
-  <link rel="stylesheet" href="./assets/css/custom-widget-icon-list.min.css" media="all" />
-  <link rel="stylesheet" href="./assets/css/main.css" media="all" />
-  <link rel="stylesheet" href="./assets/css/post-3878.css" media="all" />
-  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
-  <link rel="icon" href="./assets/foto.png" sizes="32x32" />
-  <link rel="icon" href="./assets/foto.png" sizes="192x192" />
-  <style>
-    :root {
-      --accent: #ecc33c;
-      /* amarelo queimado */
-      --text: #ffffff;
-      --muted: #666;
-    }
-
-    .card {
-      background-color: #000 !important;
-      color: var(--text);
-    }
-
-    .card ul {
-      padding-left: 18px;
-    }
-
-    .highlight {
-      color: var(--accent);
-      font-weight: 1200;
-    }
-
-    .subtle {
-      color: var(--muted);
-      font-size: 0.95em;
-    }
-
-    .hero {
-      font-size: 1.1rem;
-    }
-
-    .cta {
-      margin-top: 5px;
-      text-align: center;
-    }
-
-    .cta a {
-      display: inline-block;
-      background: #facc15;
-      color: #000;
-      padding: 18px 36px;
-      border-radius: 999px;
-      font-size: 1.1rem;
-      font-weight: bold;
-      text-decoration: none;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
-      transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
-    }
-
-    .cta a:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 4px;
-    }
-
-    .card {
-      background: #ffffff;
-      border-radius: 16px;
-      padding: 28px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
-    }
-
-    .card h2 {
-      font-size: 1.4rem;
-      color: var(--primary);
-    }
-
-    .card ul li {
-      position: relative;
-    }
-
-    @media (max-width: 600px) {
-      .hero h1 {
-        font-size: 1.8rem;
-      }
-    }
-
-    .final-curso {
-      background-color: #0f172a;
-      padding: 60px 20px;
-      color: #ffffff;
-      text-align: center;
-    }
-
-    .final-curso h2 {
-      font-size: 32px;
-      margin-bottom: 40px;
-      font-weight: 700;
-    }
-
-    .beneficios {
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: left;
-    }
-
-    .beneficio {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      font-size: 18px;
-      line-height: 1.5;
-    }
-
-    .beneficio span {
-      font-size: 20px;
-      color: #22c55e;
-      margin-top: 2px;
-    }
-
-    .beneficio.destaque {
-      background-color: #1e293b;
-      padding: 15px;
-      border-radius: 8px;
-      margin-top: 20px;
-    }
-
-    .beneficio.destaque span {
-      color: #facc15;
-    }
-
-    .bloco-emocional {
-      background: linear-gradient(180deg, #0f172a, #111827);
-      padding: 25px 20px;
-      text-align: center;
-      color: #ffffff;
-    }
-
-    .container-emocional {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .frase-impacto {
-      font-size: 32px;
-      font-weight: 700;
-      line-height: 1.4;
-      margin-bottom: 25px;
-    }
-
-    .frase-secundaria {
-      font-size: 20px;
-      line-height: 1.6;
-      color: #d1d5db;
-    }
-
-    /* Destaques estratégicos */
-    .destaque-vermelho {
-      color: #ef4444;
-      font-weight: 700;
-    }
-
-    .destaque-amarelo {
-      color: #facc15;
-      font-weight: 700;
-    }
-
-    .destaque-verde {
-      color: #22c55e;
-      font-weight: 700;
-    }
-
-    .destaque-azul {
-      color: #38bdf8;
-      font-weight: 700;
-    }
-
-    /* Responsivo */
-    @media (max-width: 768px) {
-      .frase-impacto {
-        font-size: 24px;
-      }
-
-      .frase-secundaria {
-        font-size: 18px;
-      }
-    }
-
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
-  </style>
-
-  <meta property="og:title" content="O Mapa Completo para Virar Programador do zero" />
-  <meta property="og:description" content="O mapa para para iniciar na programação" />
-
-  <!-- <meta
-      name="google-site-verification"
-      content="WJns86sdl0s1FYawzD0JJdlxlZtTTDKss2LBzpLxF-c"
-    /> -->
-
-  <meta name="description"
-    content="Descubra como muitas pessoas estão mudando de carreira para TI com o curso 'O Mapa Completo para Virar Programador do zero'. Aprenda a programar de forma prática e rápida, do zero ao avançado. Inscreva-se agora!" />
-  <meta name="keywords"
-    content="curso de programação, transição de carreira para TI, aprender programação rápido, desenvolvedor de alta performance, curso de desenvolvimento de software, programação para iniciantes, curso online de programação, como aprender programação, curso para programadores, Mapa do Desenvolvedor, TI para iniciantes, carreira em tecnologia, curso completo de programação" />
-  <meta name="author" content="Alexandre Leutz" />
-  <meta property="og:image" content="./assets/capa.jpeg" />
-  <meta property="og:url" content="https://alexandreleutz.com.br" />
-  <meta property="og:type" content="website" />
-
-  <meta property="og:description"
-    content="Descubra como muitas pessoas estão mudando de carreira para TI com o curso 'O Mapa Completo para Virar Programador do zero'. Aprenda a programar de forma prática e rápida." />
-  <meta property="og:image" content="https://alexandreleutz.com.br/assets/capa.jpeg" />
-  <meta property="og:url" content="https://alexandreleutz.com.br" />
-  <meta property="og:type" content="website" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="O Mapa Completo para Virar Programador do zero - Aprenda Programação" />
-  <meta name="twitter:description"
-    content="Transforme sua carreira com o curso 'O Mapa Completo para Virar Programador do zero'. Aprenda programação e alcance novos patamares!" />
-  <meta name="twitter:image" content="https://alexandreleutz.com.br/assets/capa.jpeg" />
-  <link rel="canonical" href="https://alexandreleutz.com.br" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 </head>
+<body>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K5X5TTM2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<body
-  class="home page-template page-template-elementor_canvas page page-id-3878 wp-embed-responsive elementor-default elementor-template-canvas elementor-kit-5 elementor-page elementor-page-3878">
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K5X5TTM2" height="0" width="0"
-      style="display: none; visibility: hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
-  <!-- BARRA DE VAGAS -->
-  <style>
-    /* Remove o FIXO em telas pequenas (celular) */
-    @media (max-width: 600px) {
-      #barra-vagas {
-        position: static !important;
-      }
-    }
-  </style>
-  <div onclick="editarRegistro('Modulos Flutuante')">
-    <div id="barra-vagas" style="
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          z-index: 999999;
-          background: #000;
-          padding: 15px 0;
-          text-align: center;
-          color: #fff;
-          z-index: 200;
-        ">
-      <div style="font-size: 18px; font-weight: bold">
-        <div id="contador" style="
-              background: #000;
-              color: #fff;
-              text-align: center;
-              font-size: 20px;
-              font-weight: bold;
-              border-radius: 8px;
-            ">
-          Crie Seu Primeiro Projeto em 15 Dias
-          <!-- 🎭 Oferta de Carnaval <span id="vagas_numero"></span>/20 vagas disponíveis  <br>-->
-        </div>
-
-        <!-- 🚨 Últimas <span id="vagas_numero"></span>/100 vagas disponíveis com meu
-        acompanhamento pessoal por 12 meses. -->
-        <!-- <br /> -->
-        <a href="#videoFrame">
-          <span style="
-                background: #ffc400;
-                padding: 6px 12px;
-                border-radius: 30px;
-                color: #000;
-                font-weight: bold;
-                display: inline-block;
-                margin-top: 5px;
-                box-shadow: 0 0 10px rgba(255, 196, 0, 0.6);
-              " onclick="desmutar(2)">
-            + Bônus: Encontros mensais • WhatsApp • Comunidade • Desafios
-            semanais
-          </span> </a><br />
-          <div class="lancamento">
-            <strong>🚨 Últimas <span id="vagas_numero"></span>/100 vagas com
-              meu acompanhamento pessoal por 12 meses🚨</strong>
-            <br />
-            <small id="vagas_atualizado"></small><br />
-          </div>
-      </div>
-    </div>
-    <div id="espacamento-barra"></div>
-    <a target="_blank" href="https://go.hotmart.com/B95460619U?dp=1">
-      <div class="matricule-se-btn">Ver conteúdo completo do curso</div>
-    </a>
+  <div class="topbar">
+    <div>🚨 Restam <strong><span data-vagas>3</span>/<span data-vagas-total>100</span></strong> vagas com meu acompanhamento no WhatsApp</div>
+    <div class="bar" data-vagas-bar><i></i></div>
+    <small class="atualizado" data-vagas-atualizado></small>
   </div>
+
+  <header class="hero" data-secao="hero">
+    <div class="ide" aria-hidden="true">
+      <div class="ide-act"><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="ide-tree">
+        <b>EXPLORER</b>
+        <span class="o">▾ projeto-crud</span>
+        <span>&nbsp;&nbsp;▸ assets</span>
+        <span class="c">&nbsp;&nbsp;&lt;&gt; index.html</span>
+        <span class="y">&nbsp;&nbsp;JS app.js</span>
+        <span class="b">&nbsp;&nbsp;# style.css</span>
+        <span>&nbsp;&nbsp;{} package.json</span>
+        <span>&nbsp;&nbsp;README.md</span>
+      </div>
+      <div class="ide-main">
+        <div class="ide-tabs"><span class="on">app.js</span><span>index.html</span><span>style.css</span></div>
+<pre><code><span class="k">const</span> <span class="v">alunos</span> = [];
+
+<span class="k">function</span> <span class="f">criar</span>(<span class="v">nome</span>) {
+  <span class="v">alunos</span>.<span class="f">push</span>({ id: <span class="n">Date</span>.<span class="f">now</span>(), <span class="v">nome</span> });
+  <span class="f">render</span>();
+}
+
+<span class="k">function</span> <span class="f">deletar</span>(<span class="v">id</span>) {
+  <span class="k">const</span> <span class="v">i</span> = <span class="v">alunos</span>.<span class="f">findIndex</span>(<span class="v">a</span> =&gt; <span class="v">a</span>.id === <span class="v">id</span>);
+  <span class="v">alunos</span>.<span class="f">splice</span>(<span class="v">i</span>, <span class="n">1</span>);
+  <span class="f">render</span>();
+}
+
+<span class="k">async function</span> <span class="f">salvar</span>() {
+  <span class="k">await</span> <span class="f">fetch</span>(<span class="s">"/api/alunos"</span>, {
+    method: <span class="s">"POST"</span>,
+    body: <span class="n">JSON</span>.<span class="f">stringify</span>(<span class="v">alunos</span>),
+  });
+  <span class="m">// primeiro deploy no ar 🚀</span>
+}
+
+<span class="f">git</span> <span class="s">commit -m "feat: meu primeiro projeto"</span></code></pre>
+      </div>
+    </div>
+    <div class="wrap hero-in">
+    <h1>Aprenda programação <span class="hl">do zero</span> até enviar currículo, com projetos reais publicados</h1>
+    <p class="lead">Um método passo a passo, da primeira linha de código ao portfólio, currículo e preparação para entrevistas. Mesmo que você nunca tenha programado.</p>
+
+    <div class="video">
+      <iframe id="videoFrame" src="https://www.youtube.com/embed/UCqrggoWA30?autoplay=1&mute=1&controls=0&playsinline=1" title="Apresentação do curso"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <button id="video-som" class="video-som" type="button">🔊 Clique para assistir com som</button>
+    </div>
+
+    <div class="cta-box">
+      <button class="btn btn-cta" data-abrir-chat data-track="hero-chat" type="button">💬 Tirar minhas dúvidas agora</button>
+      <a class="btn btn-ghost oculto-ate-preco" data-track="hero-ver-oferta" href="#oferta">Ver a oferta</a>
+    </div>
+    <p class="mini">Resposta na hora, sem esperar o WhatsApp.</p>
+    </div>
+  </header>
+
+  <section class="wrap" data-secao="resultado">
+    <h2>O que você vai ter no final</h2>
+    <ul class="checks">
+      <li>Um sistema CRUD completo publicado na internet</li>
+      <li>Portfólio profissional pronto para enviar</li>
+      <li>Currículo estruturado para tecnologia</li>
+      <li>LinkedIn otimizado para recrutadores</li>
+      <li>Domínio de Git, GitHub, GitFlow e Scrum, como nas empresas</li>
+      <li>Preparação prática para entrevistas técnicas</li>
+      <li>Certificado de conclusão</li>
+    </ul>
+  </section>
+
+  <section class="wrap alt" data-secao="modulos">
+    <h2>O que você vai aprender</h2>
+    <div class="cards">
+      <article class="card"><h3>Programação do zero</h3><p>Instalação das ferramentas (VS Code, Git, GitHub) e o que um programador faz no dia a dia.</p></article>
+      <article class="card"><h3>HTML, CSS e JavaScript</h3><p>Linha por linha, com projetos pequenos em cada módulo para fixar de verdade.</p></article>
+      <article class="card"><h3>Framework e banco de dados</h3><p>Vue.js, CRUD com banco de dados e a comunicação entre front-end e servidor.</p></article>
+      <article class="card"><h3>Código de qualidade</h3><p>Padrões, nomenclatura e segurança para seu pull request ser aceito.</p></article>
+      <article class="card"><h3>Fluxo de empresa</h3><p>Git, GitFlow, Scrum e Kanban: como o código sai do seu computador e chega à produção.</p></article>
+      <article class="card"><h3>Emprego</h3><p>Busca de vagas com pouca concorrência, currículo, portfólio, LinkedIn e entrevistas.</p></article>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <h2>Duas trilhas, um caminho</h2>
+    <div class="trilhas">
+      <div class="card"><span class="tag">Trilha 1</span><h3>Desafio 15 dias</h3><p>Sai do zero absoluto e termina com seu primeiro projeto no ar.</p></div>
+      <div class="card"><span class="tag">Trilha 2</span><h3>Mapa do Desenvolvedor de Alta Performance</h3><p>Vira programador de verdade: padrões, fluxo de trabalho e preparação para o mercado.</p></div>
+    </div>
+    <p class="note">O curso foi pensado para ser estudado com o apoio de IAs, que ajudam nas aulas e na busca pelo primeiro emprego.</p>
+  </section>
+
+  <section class="wrap alt" data-secao="acompanhamento">
+    <h2>Acompanhamento no WhatsApp</h2>
+    <p class="lead">Além do curso na Hotmart (acesso vitalício), você pode entrar no grupo de alunos para tirar dúvidas comigo, receber desafios semanais e conteúdo extra.</p>
+    <p class="urgencia">Restam <strong><span data-vagas>3</span>/<span data-vagas-total>100</span></strong> vagas. Se você garantir hoje, eu consigo reservar a sua. Depois disso não posso dar certeza.</p>
+    <div class="bar big" data-vagas-bar><i></i></div>
+    <small class="atualizado" data-vagas-atualizado></small>
+  </section>
+
+  <section class="wrap" data-secao="provas">
+    <h2>Quem já está dentro</h2>
+    <div class="provas">
+      <img src="assets/imagens/2026/1.png" alt="Conversa de alunos" loading="lazy" />
+      <img src="assets/imagens/2026/2.png" alt="Conversa de alunos" loading="lazy" />
+      <img src="assets/imagens/2026/3.png" alt="Conversa de alunos" loading="lazy" />
+      <img src="assets/imagens/2026/4.png" alt="Conversa de alunos" loading="lazy" />
+      <img src="assets/imagens/2026/5.png" alt="Conversa de alunos" loading="lazy" />
+      <img src="assets/imagens/2026/6.png" alt="Conversa de alunos" loading="lazy" />
+    </div>
+  </section>
+
+  <section class="wrap alt oculto-ate-preco" id="oferta" data-secao="oferta">
+    <div class="oferta">
+      <p class="de">De <s id="preco-de">R$ 697,00</s> por</p>
+      <p class="por"><span id="preco-por">R$ 197,00</span></p>
+      <p class="parc">em até <span id="parcelas">12x</span> · pagamento único</p>
+      <ul class="checks small">
+        <li>Acesso vitalício ao curso</li>
+        <li>Novos módulos sem custo adicional</li>
+        <li>7 dias de garantia incondicional</li>
+        <li>Acompanhamento no WhatsApp (vagas limitadas)</li>
+      </ul>
+      <a class="btn btn-cta" id="comprar" href="https://pay.hotmart.com/B95460619U" target="_blank" rel="noopener">Quero começar do jeito certo</a>
+      <button class="btn btn-ghost" data-abrir-chat data-track="oferta-chat" type="button">Ainda tenho uma dúvida</button>
+      <img class="pay" src="assets/icons-meio-de-pagamento2.png" alt="Formas de pagamento" loading="lazy" />
+      <p class="mini">Compra segura pela Hotmart · Reembolso em 1 clique em até 7 dias</p>
+    </div>
+  </section>
+
+  <section class="wrap" data-secao="faq">
+    <h2>Perguntas frequentes</h2>
+    <details data-track-faq><summary>Preciso saber alguma coisa de programação?</summary><p>Não. Começamos do zero, instalando as ferramentas passo a passo.</p></details>
+    <details data-track-faq><summary>Eu vou conseguir um emprego?</summary><p>O curso te dá o caminho completo: conhecimento, projetos, portfólio, currículo e entrevistas. O resultado depende do seu esforço e de usar o que eu entrego. Ninguém pode prometer emprego, mas quem aplica tem muito mais chance.</p></details>
+    <details data-track-faq><summary>Como funciona o pagamento?</summary><p>Pagamento único, parcelável em até 12x. Sem mensalidade e com acesso vitalício.</p></details>
+    <details data-track-faq><summary>E se eu não gostar?</summary><p>Você tem 7 dias de garantia incondicional pela Hotmart. É só clicar em pedir reembolso.</p></details>
+    <details data-track-faq><summary>Como funciona o acompanhamento?</summary><p>Um grupo de WhatsApp com os alunos e comigo para tirar dúvidas, receber desafios e conteúdo extra. As vagas são limitadas.</p></details>
+  </section>
+
+  <footer class="wrap foot">
+    <p>© Alexandre Leutz · <a href="politica-de-privacidade.html">Política de privacidade</a></p>
+  </footer>
+
+  <!-- Chat -->
+  <button id="chat-fab" class="fab" type="button" aria-label="Abrir chat de dúvidas">
+    <span class="fab-ic">💬</span><span class="fab-tx">Tire suas dúvidas</span>
+  </button>
+
+  <div id="chat" class="chat" role="dialog" aria-modal="true" aria-label="Chat de dúvidas" aria-hidden="true">
+    <div class="chat-head">
+      <div class="chat-avatar">AL</div>
+      <div class="chat-title"><strong>Assistente do Alexandre</strong><small>Responde na hora</small></div>
+      <button id="chat-close" class="chat-x" type="button" aria-label="Fechar chat">✕</button>
+    </div>
+    <div id="chat-msgs" class="chat-msgs" aria-live="polite"></div>
+    <form id="chat-form" class="chat-form" autocomplete="off">
+      <textarea id="chat-input" rows="1" maxlength="500" placeholder="Digite sua mensagem..." aria-label="Mensagem"></textarea>
+      <button id="chat-send" type="submit" aria-label="Enviar">➤</button>
+    </form>
+  </div>
+
+  <script src="assets/v2/config.js"></script>
   <script>
-    function ajustarEspacamento() {
-      // Se for celular, NÃO ajusta
-      if (window.innerWidth <= 600) {
-        document.getElementById("espacamento-barra").style.height = "0px";
-        return;
-      }
-
-      // Desktop → ajusta normalmente
-      const barra = document.getElementById("barra-vagas");
-      const espaco = document.getElementById("espacamento-barra");
-
-      const altura = barra.offsetHeight;
-      espaco.style.height = altura + "px";
-    }
-
-    ajustarEspacamento();
-    window.onresize = ajustarEspacamento;
+    // Preço vem do config (uma fonte só)
+    document.getElementById("preco-de").textContent = SITE.precoDe;
+    document.getElementById("preco-por").textContent = SITE.precoPor;
+    document.getElementById("parcelas").textContent = SITE.parcelas;
+    document.getElementById("comprar").href = SITE.checkoutUrl;
+    document.getElementById("comprar").addEventListener("click", function () {
+      window.editarRegistro && window.editarRegistro("Oferta");
+    });
   </script>
-  <div data-elementor-type="wp-page" data-elementor-id="3878" class="elementor elementor-3878"
-    data-elementor-post-type="page">
-    <div class="elementor-element elementor-element-4c1c885c e-flex e-con-boxed e-con e-parent" data-id="4c1c885c"
-      data-element_type="container" data-settings='{"background_background":"classic"}'>
-      <div class="e-con-inner">
-        <div class="elementor-element elementor-element-31a50274 elementor-widget elementor-widget-image-box"
-          data-id="31a50274" data-element_type="widget" data-widget_type="image-box.default">
-          <div class="elementor-widget-container">
-            <div class="elementor-image-box-wrapper">
-              <div class="elementor-image-box-content">
-                <h1 class="elementor-image-box-title">
-                  <!-- Aprenda Programação do Zero, Domine Projetos Reais e -->
-                  <!-- Construa a Base Profissional que o Mercado Exige -->
-                  Aprenda Programação do Zero Absoluto até Enviar Currículo
-                  com Projetos Reais Publicados
-                  <br />
-                </h1>
-                <p style="font-size: 20px">
-                  Um método passo a passo que te ensina desde a primeira linha
-                  de código até montar portfólio, currículo e se preparar para
-                  entrevistas — mesmo que você nunca tenha programado antes.
-                  <strong style="color: #ffc400">
-                    Com meu acompanhamento por 12 meses, encontros ao vivo e
-                    suporte no WhatsApp.
-                  </strong>
-                </p>
-                <!-- Mesmo se Nunca Escreveu uma Linha de Código! -->
-
-                <!-- <p class="elementor-image-box-description">
-                    Aprenda <span class="palavrasDestaque">HTML, CSS, JavaScript e banco de dados do zero</span>.
-                    <br />
-                    e
-                    <span class="palavrasDestaque">Publique seu primeiro sistema</span>
-                  </p> -->
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="elementor-element elementor-element-43f73f41 elementor-widget__width-inherit elementor-widget elementor-widget-html"
-          data-id="43f73f41" data-element_type="widget" data-widget_type="html.default">
-          <div class="iframe-container">
-            <iframe id="videoFrame" width="640" height="360"
-              src="https://www.youtube.com/embed/UCqrggoWA30?autoplay=1&controls=0&mute=1" title="YouTube video player"
-              frameborder="0" allow="
-                  accelerometer;
-                  autoplay;
-                  clipboard-write;
-                  encrypted-media;
-                  gyroscope;
-                  picture-in-picture;
-                  web-share;
-                " referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-              <!-- src="https://www.youtube.com/embed/rXEpCLIKbdY?autoplay=1&controls=0&mute=1" -->
-            </iframe>
-            <!-- <video
-                id="video"
-                width="640"
-                height="360"
-                controls
-                autoplay
-                muted
-                loop
-              >
-                <source src="./assets/vid.mp4" type="video/mp4" />
-                Seu navegador não suporta a tag de vídeo.
-              </video> -->
-          </div>
-          <!-- Modal Play-->
-          <div id="modalAlerta">
-            <div onclick="desmutar(1)" class="modal-content animated-div texto-com-borda">
-              Clique aqui
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-volume-mute-fill" viewBox="0 0 16 16">
-                <path
-                  d="M6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06m7.137 2.096a.5.5 0 0 1 0 .708L12.207 8l1.647 1.646a.5.5 0 0 1-.708.708L11.5 8.707l-1.646 1.647a.5.5 0 0 1-.708-.708L10.793 8 9.146 6.354a.5.5 0 1 1 .708-.708L11.5 7.293l1.646-1.647a.5.5 0 0 1 .708 0" />
-              </svg>
-              Para ativar o som!
-            </div>
-          </div>
-        </div>
-        <div
-          class="elementor-element elementor-element-364a751 elementor-mobile-align-center elementor-widget-mobile__width-initial atrasado elementor-widget elementor-widget-button">
-          <div class="elementor-widget-container">
-            <div class="elementor-button-wrapper">
-              <!-- <a
-                  class="elementor-button elementor-button-link elementor-size-lg"
-                  href="#saibaMais"
-                >
-              </a> -->
-              <div id="promocaoTexto">
-                Um caminho estruturado com acompanhamento até estar pronto
-                para o mercado. <br />
-                <div id="preco" style="display: none;">
-                  De <strong><del>R$ 697.00</del></strong> por
-                  <strong>R$ 197.00</strong> em até 12x
-                </div>
-              </div>
-              <div id="btnCompra">
-                <span onclick="desmutar(2)"
-                  class="elementor-button-content-wrapper elementor-button elementor-button-link elementor-size-lg"
-                  style="
-                      background-color: #ffc107;
-                      box-shadow: 0px 7px 0px 0px #ffd966;
-                    ">
-                  <span class="elementor-button-text" style="color: black">
-                    QUERO COMEÇAR MEU PROJETO HOJE! <br /><small>Ative o som</small>
-                  </span>
-                </span>
-                <div class="mt-2" style="margin: auto; width: 50%; font-size: large;">
-                  De <strong><del>R$ 697,00</del></strong> por <strong>R$ 197,00</strong> em até 12x
-                </div>
-              </div>
-              <div id="btnCompraLink" style="display: none">
-                <div onclick="editarRegistro('Abaixo do vídeo')"
-                  class="elementor-element elementor-element-6655043a elementor-mobile-align-center elementor-widget-mobile__width-initial elementor-widget elementor-widget-button"
-                  data-id="6655043a" data-element_type="widget" data-widget_type="button.default">
-                  <div class="elementor-widget-container">
-                    <div class="elementor-button-wrapper">
-                      <a class="elementor-button elementor-button-link elementor-size-lg" target="_blank"
-                        href="https://hotmart.com/pt-br/marketplace/produtos/hagsxd-desenvolvedor-de-alta-performance-l1nag/B95460619U">
-                        <span class="elementor-button-content-wrapper">
-                          <span class="elementor-button-text">Sim, quero começar do jeito certo!<br /></span>
-                        </span>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="elementor-element elementor-element-56b8c9c0 atrasado elementor-widget elementor-widget-image"
-          data-id="56b8c9c0" data-element_type="widget" data-widget_type="image.default">
-          <div class="elementor-widget-container">
-            <img fetchpriority="high" decoding="async" width="800" height="75"
-              src="./assets/icons-meio-de-pagamento2.png" class="attachment-large size-large wp-image-3756" alt=""
-              srcset="
-                  ./assets/icons-meio-de-pagamento2.png        866w,
-                  ./assets/icons-meio-de-pagamento2-300x28.png 300w,
-                  ./assets/icons-meio-de-pagamento2-768x72.png 768w
-                " sizes="(max-width: 800px) 100vw, 800px" />
-          </div>
-        </div>
-        <div
-          class="elementor-element elementor-element-6c03b138 elementor-icon-list--layout-inline elementor-tablet-align-center elementor-mobile-align-center elementor-widget-mobile__width-initial atrasado elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list"
-          data-id="6c03b138" data-element_type="widget" data-widget_type="icon-list.default">
-          <div class="elementor-widget-container">
-            <ul class="elementor-icon-list-items elementor-inline-items">
-              <li class="elementor-icon-list-item elementor-inline-item">
-                <span class="elementor-icon-list-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" id="Camada_2" viewBox="0 0 505.9 511.96">
-                    <g id="Camada_1-2">
-                      <g>
-                        <path
-                          d="M452.49,258.27c30.09-111.43-41.66-229.04-154.58-253.21-10.2-2.18-20.61-3.39-30.92-5.06h-28c-8.19,1.25-16.43,2.24-24.56,3.81-49.01,9.44-89.54,33.53-120.99,72.11-36.52,44.79-52.63,96.64-44.98,153.82,11.28,84.23,57.74,142.96,137.96,171.04,113.97,39.89,234.56-25.82,266.07-142.51Zm-236.5,34.49c-22.81-22.81-46.1-46.11-68.96-68.97,6.61-6.62,13.5-13.53,20.51-20.54,15.79,15.82,31.87,31.93,47.87,47.97,41.14-41.15,81.82-81.83,122.2-122.21,7.64,7.63,14.56,14.55,21.08,21.06-47.31,47.31-95.07,95.07-142.7,142.7Z">
-                        </path>
-                        <path
-                          d="M62.38,345.92c-20.77,30.3-41.23,60.15-62.38,91.01,31.47-5.86,61.64-11.47,92.26-17.17,5.72,30.6,11.36,60.72,17.25,92.21,19.87-28.98,38.99-56.86,58.4-85.19-43.06-17.2-77.94-44-105.53-80.86Z">
-                        </path>
-                        <path
-                          d="M443.55,345.9c-27.65,37-62.59,63.77-105.5,80.9,19.5,28.43,38.6,56.27,58.39,85.14,5.89-31.54,11.51-61.58,17.23-92.21,30.58,5.67,60.83,11.28,92.22,17.11-21.19-30.91-41.66-60.76-62.35-90.93Z">
-                        </path>
-                      </g>
-                    </g>
-                  </svg>
-                </span>
-                <span class="elementor-icon-list-text">Garantia de 07 dias</span>
-              </li>
-              <li class="elementor-icon-list-item elementor-inline-item">
-                <span class="elementor-icon-list-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" id="Camada_2" viewBox="0 0 306.16 343.79">
-                    <g id="Camada_1-2">
-                      <g>
-                        <path
-                          d="M306.1,317.56c-1.16-35.13-15.28-63.9-42.49-86.16-4.18-3.42-8.83-6.28-13.28-9.41-.81,1-1.24,1.51-1.66,2.03-13.38,16.72-30.58,26.9-52,28.41-14.59,1.03-29.3,.9-43.93,.4-10.62-.36-18.35-6.27-23.27-15.79-.67-1.3-2.07-2.66-3.43-3.12-13.6-4.61-25.44-12-35.59-22.09-1.77-1.76-3.32-2.06-5.6-1.46-13.21,3.48-25.6,8.8-36.66,16.83C14.31,251.8-1.18,285.39,.07,326.96c.16,5.43,2.49,10.01,6.93,13.19,2.13,1.53,4.69,2.44,7.05,3.63H292.09c.48-.24,.94-.53,1.44-.7,7.88-2.69,12.44-8.86,12.58-17.14,.05-2.8,.07-5.6-.02-8.39Z">
-                        </path>
-                        <path
-                          d="M63.08,172.51c7.85,2.69,16.53,.24,21.84-6.19,.66-.8,1.31-1.61,2.13-2.62,8.64,21.43,22.18,37.74,43.85,46.61,8.41-10.25,14.22-12.98,27.21-12.98,10.07,0,20.15-.05,30.22,.02,6.84,.05,12.58-2.34,16.58-7.89,3.32-4.61,6.32-9.48,9.12-14.43,1.99-3.52,3.4-7.38,5.1-11.14,1.58,1.74,3.06,3.25,4.4,4.88,.53,.64,1.09,1.53,1.07,2.29-.14,4.69,.13,9.49-.78,14.04-3.41,17.03-17.43,28.01-35.53,28.16-10.97,.09-21.94-.04-32.91,.04-7.51,.05-12.56,4.96-12.52,11.95,.03,6.91,5.23,11.78,12.68,11.8,11.53,.03,23.07,.31,34.58-.06,24.5-.77,42.15-12.49,53-34.38,4.64-9.35,5.65-19.43,5.45-29.74-.03-1.63,.83-3.63,1.94-4.86,3.71-4.08,5.91-8.7,5.93-14.2,.06-16.68,.05-33.35,0-50.03-.01-5-1.58-9.64-5.19-13.07-2.5-2.37-3.24-4.93-3.67-8.17C240.96,31.79,194.73-4.6,143.51,.47,98.83,4.9,63,40.41,58.2,84.9c-.17,1.58-1.18,3.32-2.31,4.5-3.72,3.89-6.12,8.37-6.16,13.74-.12,17.12-.16,34.25,0,51.37,.07,8.17,5.66,15.35,13.35,17.99Zm19.05-86.48c4.48-35.16,34.41-61.62,70.23-62.15,35.33-.53,65.79,25.31,71.43,60.42,.44,2.73,.17,4.66-1.98,6.45-1.17,.97-1.95,2.4-3.15,3.95-.62-1.31-1.17-2.43-1.69-3.56-9.15-20.11-22.99-35.73-44.45-42.53-26.31-8.34-48.88-.75-67.77,18.75-7.56,7.81-12.97,17.05-17.12,27.32-1.82-2.09-3.47-3.76-4.82-5.64-.56-.78-.81-2.04-.68-3.01Z">
-                        </path>
-                      </g>
-                    </g>
-                  </svg>
-                </span>
-                <span class="elementor-icon-list-text">Suporte personalizado</span>
-              </li>
-              <li class="elementor-icon-list-item elementor-inline-item">
-                <span class="elementor-icon-list-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" id="Camada_2" viewBox="0 0 383.27 259.22">
-                    <g id="Camada_1-2">
-                      <path
-                        d="M381.86,19.49c-3.69-11.35-13.88-19.02-25.76-19.4-1.12-.04-2.25-.04-3.37-.04C245.32,.04,137.9,.06,30.49,0c-6.82,0-13.16,1.2-18.7,5.31C3.7,11.31,0,19.45,0,29.51,.04,96.25,.02,162.99,.05,229.73c0,2.35,.19,4.75,.64,7.05,2.49,12.68,13.49,21.95,26.42,22.39,.87,.03,1.75,.05,2.62,.05,107.91,0,215.82,.01,323.73,0,15.36,0,25.05-7.59,29.24-22.68,.13-.47,.37-.9,.57-1.35V24.09c-.47-1.53-.92-3.07-1.41-4.6ZM118.78,168.78c12.09-.1,24.19-.11,36.28,0,5.6,.05,9.04,3.44,9,8.37-.05,4.93-3.47,8.02-9.2,8.1-2.99,.04-5.98,.05-8.98,.04s-5.99-.02-8.98-.02c-2.99,0-5.98,.01-8.98,.02s-5.98,0-8.98-.04c-5.64-.07-9.17-3.25-9.21-8.11-.04-4.84,3.53-8.31,9.05-8.36ZM35.79,87.09c.03-6.2,3.02-9.18,9.17-9.23,7.97-.06,15.94-.01,23.91-.01,3.92,0,7.85-.01,11.77-.02,3.92,0,7.85,0,11.77,.03,6.05,.05,9.23,3.16,9.27,9.22,.08,11.21,.08,22.42,0,33.63-.04,6.03-3.19,9.26-9.27,9.3-15.82,.1-31.64,.1-47.45,0-6.17-.04-9.13-3.15-9.17-9.29-.06-11.21-.06-22.42,0-33.63Zm9.03,81.69c12.09-.11,24.19-.11,36.28,0,5.54,.05,9.07,3.5,9.02,8.37-.05,4.9-3.52,8.02-9.21,8.1-5.98,.08-11.97,.02-17.95,.02-2.99,0-5.98,.02-8.98,.02-2.99,0-5.98,0-8.98-.04-5.72-.08-9.15-3.18-9.18-8.11-.04-4.93,3.41-8.31,9-8.36Zm131.74,53.17c-21.57,0-43.15,0-64.72,0-22.2,0-44.39,.02-66.59-.02-5.83,0-9.26-2.95-9.42-7.85-.13-4.19,2.4-7.51,6.53-8.31,1.45-.28,2.97-.28,4.46-.28,43.27-.01,86.54-.01,129.81,0,7.2,0,11.1,2.83,11.21,8.12,.11,5.4-3.85,8.34-11.28,8.35Zm52.36-36.7c-1.53,.02-3.06,.03-4.58,.04-4.58,.02-9.17-.02-13.75-.02-5.86,0-11.72,.06-17.59-.01-5.62-.07-9.26-3.23-9.4-8-.14-4.83,3.7-8.44,9.38-8.48,11.97-.08,23.95-.09,35.92,0,5.59,.05,9.15,3.43,9.16,8.27,0,4.85-3.55,8.12-9.14,8.2Zm74.12,0c-6.11,.1-12.22,.02-18.33,.02-4.49,0-8.98,.04-13.47,.02-1.5,0-2.99-.02-4.49-.04-5.53-.08-9.18-3.43-9.18-8.2,0-4.78,3.65-8.22,9.19-8.27,12.1-.1,24.2-.11,36.3,0,5.42,.05,9.14,3.74,9.01,8.46-.13,4.64-3.7,7.91-9.02,7.99Zm44.41-128.08c-.27,4.05-3.29,7.28-7.5,7.41-6.6,.21-13.21,.11-19.82,.12-8.6,.01-17.21,0-25.81,0-13.84,0-27.68,0-41.52,0-1.37,0-2.75,.03-4.11-.12-3.84-.43-6.65-3.3-7.05-7.07-.43-4.07,1.67-7.55,5.47-8.71,1.4-.43,2.94-.58,4.41-.59,28.68-.03,57.35-.03,86.03,0,1.23,0,2.5,.1,3.7,.39,4.1,1.01,6.47,4.36,6.19,8.58Z">
-                      </path>
-                    </g>
-                  </svg>
-                </span>
-                <span class="elementor-icon-list-text">Compra Segura</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <section class="final-curso">
-      <div class="container">
-        <h2>🎯 Ao Final do Curso Você Terá:</h2>
-
-        <div class="beneficios">
-          <div class="beneficio">
-            <span>✔</span>
-            <p>Um sistema CRUD completo publicado na internet</p>
-          </div>
-
-          <div class="beneficio">
-            <span>✔</span>
-            <p>Um portfólio profissional pronto para enviar</p>
-          </div>
-
-          <div class="beneficio">
-            <span>✔</span>
-            <p>Um currículo estruturado para tecnologia</p>
-          </div>
-
-          <div class="beneficio">
-            <span>✔</span>
-            <p>Perfil LinkedIn otimizado</p>
-          </div>
-
-          <div class="beneficio">
-            <span>✔</span>
-            <p>
-              Conhecimento de Git, Scrum e fluxo de trabalho usado em empresas
-            </p>
-          </div>
-
-          <div class="beneficio">
-            <span>✔</span>
-            <p>Preparação prática para entrevistas técnicas</p>
-          </div>
-
-          <div class="beneficio destaque">
-            <span>🎓</span>
-            <p>
-              <strong>Certificado de Conclusão válido em todo o Brasil</strong>
-              para fortalecer seu currículo e perfil profissional
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <div class="cta" onclick="editarRegistro('CONHECER OS MÓDULOS')">
-      <a target="_blank" href="https://go.hotmart.com/B95460619U?dp=1">
-        <strong>
-          Quero conhecer os módulos e criar meu primeiro projeto em 15 dias!
-        </strong>
-        <br />
-        <small>Clique aqui!</small>
-      </a>
-    </div>
-    <section class="hero" style="width: 90%; max-width: 1200px; margin: auto">
-      <section class="bloco-emocional">
-        <div class="container-emocional">
-          <h2 class="frase-impacto">
-            Você não precisa mais ficar
-            <span class="destaque-vermelho">pulando de vídeo em vídeo</span>
-            sem saber se está no
-            <span class="destaque-amarelo">caminho certo</span>.
-          </h2>
-
-          <p class="frase-secundaria">
-            Mesmo começando do
-            <span class="destaque-verde">zero absoluto</span>, você vai
-            aprender <strong>passo a passo</strong>, criar
-            <strong>projetos reais publicados na internet</strong>
-            e se preparar para
-            <span class="destaque-azul">disputar vagas com segurança</span>.
-          </p>
-        </div>
-      </section>
-
-      <div class="grid">
-        <div class="card">
-          <h2>O que você vai aprender</h2>
-          <ul>
-            <li>
-              <strong class="highlight">Programação do zero</strong>, mesmo
-              sem experiência
-            </li>
-
-            <li>Instalação das <strong>ferramentas necessárias</strong></li>
-
-            <li>
-              <strong class="highlight">HTML, CSS e JavaScript</strong>
-              <span>linha por linha</span>
-            </li>
-
-            <li><strong>Projetos práticos</strong> para fixação real</li>
-
-            <li>
-              <strong class="highlight">CRUD básico</strong> e
-              <strong class="highlight">CRUD com banco de dados</strong>
-            </li>
-
-            <li>
-              <strong class="highlight">Git, GitHub e GitFlow</strong> na
-              prática
-            </li>
-
-            <li>
-              <strong class="highlight">Scrum, Kanban</strong> e metodologias
-              ágeis
-            </li>
-
-            <li>
-              <strong>Qualidade de código</strong> e boas práticas
-              profissionais
-            </li>
-
-            <li>
-              <strong>Currículo, portfólio</strong> e
-              <strong class="highlight">LinkedIn</strong> profissional
-            </li>
-
-            <li>
-              <strong>Preparação para entrevistas</strong> e busca de vagas
-            </li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h2>Além do conteúdo do curso</h2>
-          <ul>
-            <li>
-              <strong class="highlight">
-                Acompanhamento pelo
-                <span class="subtle" style="color: green">
-                  <strong>WhatsApp</strong>
-                </span>
-                <span title="Somente para as últimas vagas disponíveis" style="color: red">*</span>
-              </strong>
-            </li>
-
-            <li>
-              <strong>Encontros mensais</strong>
-              <span title="Somente para as últimas vagas disponíveis" style="color: red">*</span>
-              <span class="subtle" style="color: green">
-                <strong>ao VIVO COMIGO</strong> </span><br />
-              <small>Nas reuniões ao vivo mensais comigo, você recebe
-                <strong style="color: green">Conteúdo Extra Atualizado</strong>
-                e tira todas as suas dúvidas.</small>
-            </li>
-
-            <li>
-              <strong>Desafios semanais</strong> para praticar
-              <span title="Somente para as últimas vagas disponíveis" style="color: red">*</span>
-            </li>
-
-            <li>
-              <strong class="highlight">Acesso vitalício</strong> ao curso
-            </li>
-
-            <li>
-              <strong>Pagamento único</strong>,
-              <strong class="highlight">parcelável em até 12 x </strong>
-              <strong style="color: green">$20,37</strong>
-            </li>
-
-            <li>
-              <strong class="highlight">7 dias de garantia</strong>
-              incondicional
-            </li>
-
-            <li>
-              <strong>Acesso a novos módulos</strong> sem custo adicional
-              <span title="Somente para as últimas vagas disponíveis" style="color: red">*</span>
-            </li>
-            <li>
-              <div class="d-flex">
-                Fale comigo no ZAP
-                <div onclick="editarRegistro('whatsapp')" title="Clique aqui" class="pulse">
-                  <a href="https://wa.me/47997336957?text=Olá!%20Quero%20saber%20mais%20sobre%20o%20curso"
-                    target="_blank">
-                    <img style="width: 30px" src="./assets/whatsapp.png" alt="WhatsApp" />
-                  </a>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-    <br />
-    <div class="cta" onclick="desmutar(2)">
-      <a href="#videoFrame"> Quero ver como funciona o curso ▶ </a>
-    </div>
-    <div class="d-flex">
-      <span title="Somente para as últimas vagas disponíveis" style="color: red">*</span>
-      <div style="text-align: center; width: 100%">
-        <small>Benefício liberado somente para últimas vagas.</small>
-      </div>
-    </div>
-
-    <div class="elementor-element elementor-element-738f75cc e-flex e-con-boxed e-con e-parent" data-id="738f75cc"
-      data-element_type="container" data-settings='{"background_background":"gradient"}'>
-      <div class="e-con-inner"></div>
-    </div>
-
-    <div id="saibaMais" class="container py-5">
-
-      <!-- OBJETIVO DO CURSO -->
-      <div class="container mt-5 text-center">
-
-        <h1 class="text-center mb-4">Objetivo do Curso</h1>
-
-        <p class="lead text-center">
-          <strong>
-            <span class="palavrasDestaque">
-              Aprenda a criar seu primeiro sistema completo com JavaScript em apenas 15 dias
-            </span>
-          </strong>,
-          seguindo exatamente o que é usado dentro das empresas.
-        </p>
-
-        <p class="text-center">
-          O <strong>Mapa Completo para Virar Programador do Zero</strong> foi criado para iniciantes que querem aprender
-          programação de forma prática, rápida e clara — mesmo começando totalmente do zero.
-        </p>
-
-        <p class="text-center">
-          Você vai dominar as habilidades essenciais para
-          <span class="palavrasDestaque">criar qualquer projeto</span>,
-          entender como funciona um sistema real e conquistar sua primeira oportunidade na
-          <span class="palavrasDestaque">área de TI</span>.
-        </p>
-        <a class="btn btn-warning btn-lg" target="_blank" href="https://go.hotmart.com/B95460619U?dp=1">
-          <strong>SIM, 🔥 Quero aprender programação do jeito certo!</strong>
-          <br />
-          <small>Clique aqui!</small>
-        </a>
-      </div>
-
-      <!-- PROJETOS -->
-      <div class="container mt-5 text-center">
-
-        <h1 class="text-center mt-5">🚀 Projetos que você vai criar</h1>
-
-        <ul class="text-center">
-          <li>✅ <strong>CRUD simples com JavaScript</strong> — manipulando dados na prática.</li>
-          <li>✅ <strong>CRUD com banco de dados real</strong> — estrutura igual ao que as empresas usam.</li>
-          <li>✅ <strong>Site moderno com Bootstrap</strong> — páginas responsivas e profissionais.</li>
-          <li>✅ <strong>Portfólio completo</strong> — pronto para atrair recrutadores.</li>
-        </ul>
-
-        <p class="text-center">💡 Projetos reais que você pode publicar na internet.</p>
-
-        <a class="btn btn-warning btn-lg" target="_blank" href="https://go.hotmart.com/B95460619U?dp=1">
-          <strong> 🛠️ Quero criar esses projetos na prática!</strong>
-          <br />
-          <small>Clique aqui!</small>
-        </a>
-      </div>
-      <!-- PROVA SOCIAL -->
-      <div class="provaSocial mt-5">
-        <h3 class="text-center mb-4">O que os alunos acham?</h3>
-
-        <div class="carousel-container">
-          <div class="carousel" id="carousel">
-            <!-- As imagens serão carregadas automaticamente pelo JS -->
-          </div>
-
-          <button class="btncarousel prev" onclick="moveSlide(-1)">&#10094;</button>
-          <button class="btncarousel next" onclick="moveSlide(1)">&#10095;</button>
-        </div>
-      </div>
-
-      <style>
-        .carousel-container {
-          position: relative;
-          width: 100%;
-          max-width: 900px;
-          margin: auto;
-          overflow: hidden;
-          border-radius: 10px;
-        }
-
-        .carousel {
-          display: flex;
-          transition: transform 0.5s ease-in-out;
-        }
-
-        .carousel img {
-          width: 100%;
-          flex-shrink: 0;
-          border-radius: 10px;
-        }
-
-        .btncarousel {
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          background: rgba(0, 0, 0, 0.5);
-          color: white;
-          border: none;
-          font-size: 30px;
-          padding: 8px 15px;
-          cursor: pointer;
-          border-radius: 4px;
-          z-index: 10;
-        }
-
-        .prev {
-          left: 10px;
-        }
-
-        .next {
-          right: 10px;
-        }
-      </style>
-
-      <script>
-        const carousel = document.getElementById("carousel");
-
-        // Quantidade de imagens (altere se quiser)
-        const totalImages = 14;
-
-        for (let i = 1; i <= totalImages; i++) {
-          const img = document.createElement("img");
-          img.src = `./assets/imagens/2026/${i}.png`; // mantém sua estrutura original
-          carousel.appendChild(img);
-        }
-
-        let index = 0;
-
-        function updateSlide() {
-          const width = carousel.clientWidth;
-          carousel.style.transform = `translateX(${-index * width}px)`;
-        }
-
-        function moveSlide(direction) {
-          index += direction;
-
-          if (index < 0) index = totalImages - 1;
-          if (index >= totalImages) index = 0;
-
-          updateSlide();
-        }
-
-        // Auto-play a cada 3 segundos
-        setInterval(() => moveSlide(1), 3000);
-
-        // Ajusta ao redimensionar
-        window.addEventListener("resize", updateSlide);
-      </script>
-
-      <!-- PROBLEMAS RESOLVIDOS -->
-      <div class="container mt-5 text-center">
-
-        <h3 class="mt-5 text-center">Dificuldades que esse curso elimina</h3>
-
-        <ul class="list-group mb-4 text-center">
-          <li>❌ Não sabe por onde começar e se sente perdido com tanto conteúdo?</li>
-          <li>❌ Tem medo de não estar preparado para entrevistas?</li>
-          <li>❌ Não sabe como montar um portfólio que chama atenção?</li>
-          <li>❌ Já tentou aprender sozinho, mas trava na prática?</li>
-        </ul>
-
-        <p class="text-center">
-          👉 Este curso é a solução definitiva para quem quer aprender de verdade.
-        </p>
-        <a class="btn btn-warning btn-lg" target="_blank" href="https://pay.hotmart.com/B95460619U">
-          <strong>SIM, 💡 Quero seguir um caminho claro para programar!</strong>
-          <br />
-          <small>Clique aqui!</small>
-        </a>
-      </div>
-
-      <!-- COMO O CURSO TRANSFORMA O ALUNO -->
-      <div class="container mt-5 text-center">
-        <h2 class="text-center mt-5">Como o curso te transforma?</h2>
-
-        <ul class="list-group mb-4 text-center">
-          <li>🔹 Domine <strong>HTML, CSS e JavaScript do zero ao avançado</strong>.</li>
-          <li>🔹 Construa seu <strong>primeiro projeto completo com banco de dados</strong>.</li>
-          <li>🔹 Publique seu sistema na internet, igual empresas fazem.</li>
-          <li>🔹 Aprenda <strong>código limpo, boas práticas e Git</strong>.</li>
-          <li>🔹 Entenda como trabalhar em equipe usando metodologias reais.</li>
-          <li>🔹 Crie <strong>portfólio e currículo que geram entrevistas</strong>.</li>
-          <li>🔹 Prepare-se para entrevistas e processos seletivos.</li>
-        </ul>
-
-        <p class="text-center">
-          <strong>O resultado: você sai do zero para estar pronto para o mercado de TI.</strong>
-        </p>
-
-        <a class="btn btn-warning btn-lg" target="_blank" href="https://pay.hotmart.com/B95460619U">
-          <strong>SIM, 🚀 Quero aprender tudo isso passo a passo!</strong>
-          <br />
-          <small>Clique aqui!</small>
-        </a>
-      </div>
-
-      <!-- PARA QUEM É -->
-      <div class="container mt-5 text-center">
-        <h2 class="text-center mb-4">Para quem é esse curso?</h2>
-
-        <ul>
-          <li>✅ Para quem <strong>nunca programou</strong>.</li>
-          <li>✅ Para quem quer <strong>criar projetos reais desde o início</strong>.</li>
-          <li>✅ Para quem quer entrar no mercado <strong>Front-End</strong>.</li>
-          <li>✅ Para quem está perdido em conteúdos soltos e quer um caminho claro.</li>
-          <li>✅ Para quem deseja fazer uma <strong>transição de carreira</strong> com segurança.</li>
-        </ul>
-
-        <p class="mt-4">
-          Se você se identifica com esses pontos, este curso é seu caminho para entrar no mercado de
-          <span class="palavrasDestaque">Tecnologia</span>!
-        </p>
-        <a class="btn btn-warning btn-lg" target="_blank" href="https://pay.hotmart.com/B95460619U">
-          <strong>SIM, 🚀 Quero garantir minha vaga no curso!</strong>
-          <br />
-          <small>Clique aqui!</small>
-        </a>
-      </div>
-
-      <!-- ATUALIZAÇÕES -->
-      <div class="container mt-5 text-center">
-        <h1 class="text-center mb-4">O curso está sendo atualizado?</h1>
-
-        <p><span class="palavrasDestaque ">Sim! Atualizado constantemente.</span></p>
-
-        <p><strong>25/02/2026</strong>: +1 módulo novo com 14 aulas e 5h de conteúdo 🚀</p>
-        <a class="btn btn-warning btn-lg" target="_blank" href="https://pay.hotmart.com/B95460619U">
-          <strong>SIM, 💥 Quero estudar com conteúdo atualizado!</strong>
-          <br />
-          <small>Clique aqui!</small>
-        </a>
-      </div>
-      <!-- PREÇO -->
-      <div class="container mt-5 text-center">
-        <h1 class="text-center mb-4">Qual o valor e desconto?</h1>
-
-        <p>
-          Aproveite o preço promocional de
-          <span class="palavrasDestaque">R$ 197</span> em até
-          <span class="palavrasDestaque">12x</span>.
-          É <span class="palavrasDestaque">pagamento único</span>: você paga
-          <strong>apenas uma vez</strong> e nunca mais é cobrado.
-        </p>
-
-        <p>
-          <span class="palavrasDestaque">Desconto de 80%</span> sobre o valor original
-          de <span class="palavrasDestaque">R$ 697</span>.
-        </p>
-
-        <p>
-          São <span class="palavrasDestaque">90 aulas</span> + novas atualizações mensais.
-        </p>
-
-        <p>
-          <a target="_blank" href="https://pay.hotmart.com/B95460619U">
-            Clique aqui para se inscrever
-          </a>
-          — checkout seguro Hotmart.
-        </p>
-
-        <p>
-          Mesmo sem limite total no cartão, a Hotmart usa apenas o limite da
-          <strong>primeira parcela</strong>.
-        </p>
-
-        <p>Após a compra, você recebe acesso imediato no seu e-mail.</p>
-        <a class="btn btn-warning btn-lg" target="_blank" href="https://pay.hotmart.com/B95460619U">
-          <strong>SIM, 🔥 Quero aproveitar o desconto antes que acabe!</strong>
-          <br />
-          <small>Clique aqui!</small>
-        </a>
-      </div>
-      <!-- ACESSO VITALÍCIO -->
-      <div class="container mt-5 text-center">
-        <h1 class="text-center mb-4">Tempo de Acesso</h1>
-
-        <p>
-          O acesso é <span class="palavrasDestaque">vitalício</span>.
-          Você pode assistir quando quiser, sem limite de tempo.
-        </p>
-
-        <figure style="width: 40%; margin: auto">
-          <img src="./assets/AcessoVitalicio.png" alt="Acesso Vitalício" />
-        </figure>
-        <a class="btn btn-warning btn-lg" target="_blank" href="https://pay.hotmart.com/B95460619U">
-          <strong>SIM, ♾️ Quero acesso vitalício ao curso!</strong>
-          <br />
-          <small>Clique aqui!</small>
-        </a>
-      </div>
-      <!-- CERTIFICADO -->
-      <div class="container mt-5 text-center">
-        <h1 class="text-center mb-4">Certificado de Conclusão</h1>
-
-        <p>
-          Ao finalizar o curso, você recebe um
-          <span class="palavrasDestaque">certificado digital válido em todo o Brasil</span>.
-        </p>
-        <a class="btn btn-warning btn-lg" target="_blank" href="https://pay.hotmart.com/B95460619U">
-          <strong>SIM, 🚀 Quero meu certificado profissional!</strong>
-          <br />
-          <small>Clique aqui!</small>
-        </a>
-      </div>
-      <!-- GARANTIA -->
-      <div class="container mt-5 text-center">
-        <h1 class="text-center mb-4">Política de Reembolso</h1>
-
-        <p>
-          Você tem <span class="palavrasDestaque">7 dias</span> para pedir reembolso
-          com <span class="palavrasDestaque">100% do valor devolvido</span>, sem perguntas.
-        </p>
-
-        <figure style="width: 40%; margin: auto">
-          <img src="./assets/selo-7d.svg" alt="Garantia de 7 dias" />
-        </figure>
-
-        <p>
-          Basta enviar um e-mail para:
-          <a href="mailto:alexandreleutzdev@gmail.com">alexandreleutzdev@gmail.com</a>
-        </p>
-      </div>
-
-      <!-- FINAL CTA -->
-      <div class="container mt-5 text-center">
-        <h2>Vamos nessa 🤝</h2>
-        <p>🎯 Pare de adiar seu futuro. Comece hoje a construir sua carreira na programação.</p>
-
-        <a class="btn btn-warning btn-lg" target="_blank" href="https://pay.hotmart.com/B95460619U">
-          <strong>SIM, QUERO INVESTIR NO MEU FUTURO!</strong>
-          <br />
-          <small>Clique aqui!</small>
-        </a>
-
-        <div id="promocaoTexto" class="mt-2">
-          De <strong><del>R$ 697,00</del></strong> por <strong>R$ 197,00</strong> em até 12x
-        </div>
-      </div>
-
-    </div>
-
-    <div onclick="editarRegistro('whatsapp')" class="whatsapp-message pulse" title="Clique aqui">
-      <a href="https://wa.me/47997336957?text=Olá!%20Quero%20saber%20mais%20sobre%20o%20curso" target="_blank">
-        Tem dúvidas? Fale comigo!
-        <img src="./assets/whatsapp.png" alt="WhatsApp" />
-      </a>
-    </div>
-    <footer class="bg-light text-center py-3" style="color: black">
-      <p class="mb-0">
-        &copy; <span id="currentYear"></span> - Alexandre Leutz.
-        <a href="/politica-de-privacidade.html" target="_blank"><small>Termos de Uso</small></a>.
-        <a href="https://wa.me/47997336957?text=Olá!%20Tenho%20dúvidas%20sobre%20o%20DAP%20e%20gostaria%20de%20falar%20com%20você."
-          target="_blank">
-          Contato
-        </a>
-      </p>
-      <div id="cookie-banner" style="display: none">
-        <div>
-          Usamos cookies para personalizar conteúdos e melhorar a sua
-          experiência.
-          <button class="btn btn-primary" id="accept-all">Ok, entendi</button>
-        </div>
-      </div>
-    </footer>
-
-
-    <script>
-      document.getElementById("currentYear").textContent =
-        new Date().getFullYear();
-    </script>
-
-    <script src="./assets/js/metricas.js"></script>
-    <script src="./assets/js/modalPlay.js"></script>
-    <script src="./assets/js/lgpd.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/v2/metricas.js"></script>
+  <script src="assets/v2/chat.js"></script>
 </body>
-
 </html>

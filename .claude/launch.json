@@ -1,0 +1,6 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    { "name": "site", "runtimeExecutable": "python3", "runtimeArgs": ["-m", "http.server", "8000", "-d", "/Users/alexandreleutz/Documents/GitHub/o-mapa-do-desenvolvedor-de-alta-performance"], "port": 8000 }
+  ]
+}
