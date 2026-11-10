@@ -1,5 +1,5 @@
 import * as Repo from "./questions.js";
-import urlBase from "./auth.js";
+import { rankingBase } from "./auth.js";
 
 // --- CONFIGURAÇÃO VISUAL ---
 const levelColors = [
@@ -386,7 +386,7 @@ function saveGameScore(nomeAluno, pontuacao) {
     data: new Date().toLocaleString("pt-BR"),
   };
 
-  let url = urlBase + `ranking/${Date.now()}.json`;
+  let url = `${rankingBase}${Date.now()}.json`;
 
   fetch(url, {
     method: "PUT",
@@ -396,7 +396,7 @@ function saveGameScore(nomeAluno, pontuacao) {
     .catch((err) => console.error("Erro ao salvar:", err));
 }
 function carregarRanking() {
-  let url = urlBase + "ranking.json";
+  let url = `${rankingBase}.json`;
 
   fetch(url)
     .then((res) => res.json())

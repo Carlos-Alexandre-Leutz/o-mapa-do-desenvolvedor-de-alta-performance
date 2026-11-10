@@ -1,0 +1,59 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+
+    "vagas": {
+      ".read": true,
+      ".write": "auth != null && auth.uid === '85MAIuAm0DUgGrpgIiMf2VVbP0o2'",
+      ".validate": "newData.hasChildren(['total', 'atualizadoEm'])",
+      "total": { ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 1000" },
+      "atualizadoEm": { ".validate": "newData.isString() && newData.val().length <= 40" },
+      "$outro": { ".validate": false }
+    },
+
+    "18-01-25": {
+      ".read": "auth != null && auth.uid === '85MAIuAm0DUgGrpgIiMf2VVbP0o2'",
+      ".write": "auth != null && auth.uid === '85MAIuAm0DUgGrpgIiMf2VVbP0o2'",
+      "$id": {
+        ".write": "newData.exists()",
+        ".validate": "newData.hasChildren(['tipoDispositivo', 'dataDeEntrada']) || data.exists()",
+        "tipoDispositivo": { ".validate": "newData.val() === 'mobile' || newData.val() === 'desktop'" },
+        "dataDeEntrada": { ".validate": "newData.isString() && newData.val().length <= 40" },
+        "utm_source": { ".validate": "newData.val() == null || (newData.isString() && newData.val().length <= 100)" },
+        "utm_medium": { ".validate": "newData.val() == null || (newData.isString() && newData.val().length <= 100)" },
+        "utm_campaign": { ".validate": "newData.val() == null || (newData.isString() && newData.val().length <= 100)" },
+        "botaoPagamentoClicado": { ".validate": "newData.isBoolean()" },
+        "idBotao": { ".validate": "newData.isString() && newData.val().length <= 500" },
+        "tempoClique": { ".validate": "newData.isString() && newData.val().length <= 40" },
+        "desmutou": { ".validate": "newData.isBoolean()" },
+        "botao": { ".validate": "newData.val() == null || newData.isNumber() || (newData.isString() && newData.val().length <= 100)" },
+        "tempoDesmute": { ".validate": "newData.isString() && newData.val().length <= 40" },
+        "versao": { ".validate": "newData.isString() && newData.val().length <= 20" },
+        "cliques": { ".validate": "newData.isString() && newData.val().length <= 2000" },
+        "tempoUltimoClique": { ".validate": "newData.isString() && newData.val().length <= 40" },
+        "secoesVistas": { ".validate": "newData.isString() && newData.val().length <= 500" },
+        "scrollMax": { ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 100" },
+        "tempoNaPagina": { ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 86400" },
+        "chatAberto": { ".validate": "newData.isBoolean()" },
+        "chatAbertoEm": { ".validate": "newData.isString() && newData.val().length <= 40" },
+        "chatMensagens": { ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 1000" },
+        "vendido": { ".validate": "auth != null && auth.uid === '85MAIuAm0DUgGrpgIiMf2VVbP0o2' && newData.isBoolean()" },
+        "$outro": { ".validate": false }
+      }
+    },
+
+    "ranking": {
+      ".read": true,
+      "$id": {
+        ".write": "!data.exists() && newData.exists()",
+        ".validate": "newData.hasChildren(['nome', 'score', 'rank', 'data'])",
+        "nome": { ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 40" },
+        "score": { ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 100000" },
+        "rank": { ".validate": "newData.isString() && newData.val().length <= 60" },
+        "data": { ".validate": "newData.isString() && newData.val().length <= 40" },
+        "$outro": { ".validate": false }
+      }
+    }
+  }
+}

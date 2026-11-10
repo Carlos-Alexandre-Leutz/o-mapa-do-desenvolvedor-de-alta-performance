@@ -200,7 +200,9 @@
       onAuthStateChanged(auth, (user) => {
         if (!user) {
           window.location.href = "login.html";
+          return;
         }
+        window.usuarioAdmin = user;
       });
 
       // Função de sair

@@ -240,8 +240,13 @@
       const itemsPerPage = 10; // Número de itens por página
       let paginatedData = []; // Dados paginados
 
-      function carregarDados() {
-        fetch(`${urlBase}.json`)
+      async function urlAutenticada(caminho) {
+        const token = await window.usuarioAdmin.getIdToken();
+        return `${urlBase}${caminho}.json?auth=${token}`;
+      }
+
+      async function carregarDados() {
+        fetch(await urlAutenticada(""))
           .then((response) => response.json())
           .then((data) => {
             const array = Object.entries(data).map(([id, value]) => ({
@@ -462,7 +467,8 @@
         if (
           confirm(`Tem certeza de que deseja deletar o registro com ID ${id}?`)
         ) {
-          fetch(`${urlBase}${id}.json`, { method: "DELETE" })
+          urlAutenticada(id)
+            .then((url) => fetch(url, { method: "DELETE" }))
             .then((response) => {
               if (response.ok) {
                 carregarDados(); // Recarregar a tabela após deletar
@@ -485,13 +491,16 @@
           // Criando o objeto para atualizar o status do item para "vendido"
           const vendaData = { vendido: true };
 
-          fetch(`${urlBase}${id}.json`, {
-            method: "PATCH", // Usamos PATCH para fazer uma atualização parcial
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(vendaData), // Enviar o objeto com o novo status
-          })
+          urlAutenticada(id)
+            .then((url) =>
+              fetch(url, {
+                method: "PATCH", // Usamos PATCH para fazer uma atualização parcial
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(vendaData), // Enviar o objeto com o novo status
+              }),
+            )
             .then((response) => {
               if (response.ok) {
                 carregarDados(); // Recarregar a tabela após a atualização
@@ -505,7 +514,6 @@
         }
       }
 
-      window.onload = carregarDados;
     </script>
 
     <script type="module">
@@ -533,7 +541,10 @@
       onAuthStateChanged(auth, (user) => {
         if (!user) {
           window.location.href = "login.html";
+          return;
         }
+        window.usuarioAdmin = user;
+        carregarDados();
       });
 
       // Função de sair

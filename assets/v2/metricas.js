@@ -6,13 +6,13 @@
   const C = window.SITE;
   const id = Date.now();
   const isProd = C.hostsProducao.includes(location.hostname);
-  const base = isProd ? C.firebaseProd : C.firebaseTeste;
-  const url = `${base}${id}.json`;
+  const url = `${C.firebaseProd}${id}.json`;
   const log = [];
   let pagamentos = "";
   let criado = null;
 
   function enviar(method, dados) {
+    if (!isProd) return Promise.resolve();
     const p = fetch(url, {
       method,
       headers: { "Content-Type": "application/json" },

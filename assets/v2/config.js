@@ -23,7 +23,6 @@ window.SITE = {
   chatUrl: "https://aged-violet-4f3b.alexandreoantiquado.workers.dev",
 
   // Firebase Realtime Database (mesmos bancos do site antigo)
-  firebaseTeste: "https://sorteio-curso-canal-default-rtdb.firebaseio.com/users/",
   firebaseProd: "https://pagina-de-venda-dap-default-rtdb.firebaseio.com/18-01-25/",
   firebaseVagas: "https://pagina-de-venda-dap-default-rtdb.firebaseio.com/vagas.json",
   hostsProducao: ["carlos-alexandre-leutz.github.io", "alexandreleutz.com.br", "www.alexandreleutz.com.br"],

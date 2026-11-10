@@ -20,10 +20,10 @@ const modalAlerta = document.getElementById('modalAlerta');
 function desmutar() {
     // videoElement.currentTime = 0;
     // videoElement.muted = false;
-    let btnCompraLink = document.getElementById('btnCompraLink');
-    btnCompraLink.style.display = 'block';
-    let btnCompra = document.getElementById('btnCompra');
-    btnCompra.style.display = 'none';
+    const btnCompraLink = document.getElementById('btnCompraLink');
+    if (btnCompraLink) btnCompraLink.style.display = 'block';
+    const btnCompra = document.getElementById('btnCompra');
+    if (btnCompra) btnCompra.style.display = 'none';
     botaoDesmutarClicado();
     var iframe = document.getElementById("videoFrame");
     // var videoSrc = "https://www.youtube.com/embed/5fHtpLExs2c?autoplay=1&controls=0&start=2";
@@ -32,7 +32,7 @@ function desmutar() {
 
     // Reinicia o vídeo e ativa o som removendo o mute
     iframe.src = videoSrc + "&mute=0";
-    modalAlerta.style.display = 'none';
+    if (modalAlerta) modalAlerta.style.display = 'none';
 
     const precoElement = document.getElementById("preco");
 

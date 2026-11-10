@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const preferencesModal = document.getElementById("preferences-modal");
   const managePreferences = document.getElementById("manage-preferences");
 
+  if (!cookieBanner) return;
+
   // Show the banner if no consent is saved
   if (!localStorage.getItem("cookieConsent")) {
     cookieBanner.style.display = "block";

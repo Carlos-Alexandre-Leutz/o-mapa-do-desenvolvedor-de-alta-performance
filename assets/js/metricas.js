@@ -1,17 +1,12 @@
 
-let urlBase = "https://sorteio-curso-canal-default-rtdb.firebaseio.com/users/";
+const urlBase = "https://pagina-de-venda-dap-default-rtdb.firebaseio.com/18-01-25/";
 const id = Date.now();
 let btnClicados = "";
 
+const isProd = ["carlos-alexandre-leutz.github.io", "alexandreleutz.com.br"].includes(window.location.hostname);
+
 function verificarAmbiente() {
-  let isProd = window.location.hostname === "carlos-alexandre-leutz.github.io";
-  if(!isProd) {
-    isProd = window.location.hostname === "alexandreleutz.com.br";
-  }
-  if (isProd) {
-      urlBase ="https://pagina-de-venda-dap-default-rtdb.firebaseio.com/18-01-25/"; //dadoso salvoso apartir desta data
-  }
-  save();
+  if (isProd) save();
 }
 window.onload = verificarAmbiente;
 
@@ -47,11 +42,13 @@ function save () {
     },
     body: JSON.stringify(dados)
   })
-  .then(response => response.json());
-};
+  .then(response => response.json())
+  .catch(() => {});
+}
 
 function editarRegistro(idBotao) {
-  btnClicados = btnClicados + ", " + idBotao;
+  if (!isProd) return;
+  btnClicados = btnClicados ? btnClicados + ", " + idBotao : idBotao;
   const dadosClique = {
     botaoPagamentoClicado: true,
     idBotao: btnClicados,
@@ -66,9 +63,10 @@ function editarRegistro(idBotao) {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(dadosClique),
-  });
+  }).catch(() => {});
 }
 function botaoDesmutarClicado(btn) {
+  if (!isProd) return;
   const dadosClique = {
     desmutou: true,
     botao: btn,
@@ -114,8 +112,14 @@ function botaoDesmutarClicado(btn) {
 async function buscarVagas() {
   const url = `https://pagina-de-venda-dap-default-rtdb.firebaseio.com/vagas.json`;
 
-  const resposta = await fetch(url);
-  const dados = await resposta.json();
+  let dados;
+  try {
+    const resposta = await fetch(url);
+    dados = await resposta.json();
+  } catch (erro) {
+    console.error("⚠ Não foi possível carregar as vagas.", erro);
+    return;
+  }
 
   if (!dados || dados.total == null) {
     console.error("⚠ Banco ainda não tem 'vagas' configurado.");
@@ -123,7 +127,8 @@ async function buscarVagas() {
   }
 
   // Atualiza o elemento na página
-  document.getElementById("vagas_numero").innerText = dados.total;
+  const vagasEl = document.getElementById("vagas_numero");
+  if (vagasEl) vagasEl.innerText = dados.total;
 
   // Caso queira mostrar a última atualização:
   if (document.getElementById("vagas_atualizado")) {
@@ -131,7 +136,6 @@ async function buscarVagas() {
     document.getElementById("vagas_atualizado").innerText = `Numero de vagas Atualizado em: ${dataFormatada}`;
   }
 
-  console.log("🔥 Vagas carregadas:", dados.total);
 }
 buscarVagas();
 
@@ -146,15 +150,21 @@ async function atualizarVagas(novoValor) {
     atualizadoEm: new Date().toISOString()
   };
 
-  const url = `https://pagina-de-venda-dap-default-rtdb.firebaseio.com/vagas.json`;
+  if (!window.usuarioAdmin) {
+    throw new Error("É necessário estar logado para atualizar as vagas.");
+  }
+  const token = await window.usuarioAdmin.getIdToken();
+  const url = `https://pagina-de-venda-dap-default-rtdb.firebaseio.com/vagas.json?auth=${token}`;
 
-  await fetch(url, {
+  const resposta = await fetch(url, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(dados)
   });
+  if (!resposta.ok) {
+    throw new Error("Falha ao atualizar vagas: " + resposta.status);
+  }
 
-  console.log("🔥 Vagas atualizadas para:", novoValor);
 
   // atualizar imediatamente na tela
   buscarVagas();
@@ -170,7 +180,14 @@ async function salvarNovaVaga() {
 
   document.getElementById("status-vagas").innerText = "Salvando...";
 
-  await atualizarVagas(valor);
+  try {
+    await atualizarVagas(valor);
+  } catch (erro) {
+    console.error(erro);
+    document.getElementById("status-vagas").innerText =
+      "Erro ao salvar. Verifique se está logado.";
+    return;
+  }
 
   document.getElementById("status-vagas").innerText =
     "Vagas atualizadas com sucesso!";

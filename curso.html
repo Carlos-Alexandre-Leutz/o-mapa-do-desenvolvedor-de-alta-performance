@@ -7,60 +7,40 @@
 </head>
 <body>
     <script>
-        let urlBase = "https://sorteio-curso-canal-default-rtdb.firebaseio.com/users/";
+        const urlBase = "https://pagina-de-venda-dap-default-rtdb.firebaseio.com/18-01-25/";
+        const destino = "https://go.hotmart.com/B95460619U?dp=1";
         const id = Date.now();
-        let btnClicados = "";
+        const isProd = ["carlos-alexandre-leutz.github.io", "alexandreleutz.com.br"].includes(window.location.hostname);
 
-        function verificarAmbiente() {
-            console.log('verificarAmbiente');
-            let isProd = window.location.hostname === "carlos-alexandre-leutz.github.io";
-            if(!isProd) {
-                isProd = window.location.hostname === "alexandreleutz.com.br";
-            }
-            if (isProd) {
-                urlBase ="https://pagina-de-venda-dap-default-rtdb.firebaseio.com/18-01-25/"; //dados salvos apartir desta data
-            }
-            save();
+        function obterTipoDispositivo() {
+            return window.innerWidth <= 800 ? "mobile" : "desktop";
         }
-        window.onload = verificarAmbiente;
-        function save () {
-             console.log('save');
-            const params = new URLSearchParams(window.location.search);
-            const utm_source = params.get('utm_source');
-            const utm_medium = params.get('utm_medium');
-            const utm_campaign = params.get('utm_campaign');
 
+        function redirecionar() {
+            window.location.href = destino;
+        }
+
+        function save() {
+            if (!isProd) return redirecionar();
+
+            const params = new URLSearchParams(window.location.search);
             const dados = {
                 tipoDispositivo: obterTipoDispositivo(),
                 dataDeEntrada: new Date().toISOString(),
-                utm_source: utm_source,
-                utm_medium: utm_medium,
-                utm_campaign: utm_campaign
+                utm_source: params.get('utm_source'),
+                utm_medium: params.get('utm_medium'),
+                utm_campaign: params.get('utm_campaign')
             };
 
-
-            const url = `${urlBase}${id}.json`;
-
-            fetch(url, {
+            fetch(`${urlBase}${id}.json`, {
                 method: 'PUT',
-                headers: {
-                'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(dados)
             })
-            .then(response => {
-                window.location.href = "https://go.hotmart.com/B95460619U?dp=1";
-                response.json()
-            });
-        };
-        function obterTipoDispositivo() {
-            if (window.innerWidth <= 800) {
-                return "mobile";
-            } else {
-                return "desktop";
-            }
+            .catch(() => {})
+            .finally(redirecionar);
         }
-
+        window.onload = save;
     </script>
 
 </body>
