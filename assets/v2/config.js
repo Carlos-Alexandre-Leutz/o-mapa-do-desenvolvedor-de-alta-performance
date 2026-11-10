@@ -7,6 +7,8 @@ window.SITE = {
   whatsapp: "554797336957",
   whatsappMsg: "Oi Alexandre, comprei o curso e quero liberar o acompanhamento!",
 
+  blackFridayFim: "2026-11-30T23:59:59-03:00",
+
   // Preço exibido (se mudar aqui, mude também no worker/prompt.js)
   precoDe: "R$ 697,00",
   precoPor: "R$ 197,00",

@@ -21,6 +21,12 @@
 <body>
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K5X5TTM2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
+  <div class="bf-strip" data-bf hidden>
+    <span class="bf-tag">BLACK FRIDAY</span>
+    <span>Preço especial termina em</span>
+    <strong class="bf-time" id="bf-time">--</strong>
+  </div>
+
   <div class="topbar">
     <div>🚨 Restam <strong><span data-vagas>3</span>/<span data-vagas-total>100</span></strong> vagas com meu acompanhamento no WhatsApp</div>
     <div class="bar" data-vagas-bar><i></i></div>
@@ -67,6 +73,7 @@
       </div>
     </div>
     <div class="wrap hero-in">
+    <p class="bf-badge" data-bf hidden>🖤 BLACK FRIDAY · <span data-bf-off></span>% OFF</p>
     <h1>Aprenda programação <span class="hl">do zero</span> até enviar currículo, com projetos reais publicados</h1>
     <p class="lead">Um método passo a passo, da primeira linha de código ao portfólio, currículo e preparação para entrevistas. Mesmo que você nunca tenha programado.</p>
 
@@ -140,6 +147,7 @@
 
   <section class="wrap alt oculto-ate-preco" id="oferta" data-secao="oferta">
     <div class="oferta">
+      <p class="bf-ribbon" data-bf hidden>BLACK FRIDAY · economize <span data-bf-eco></span></p>
       <p class="de">De <s id="preco-de">R$ 697,00</s> por</p>
       <p class="por"><span id="preco-por">R$ 197,00</span></p>
       <p class="parc">em até <span id="parcelas">12x</span> · pagamento único</p>
@@ -194,6 +202,34 @@
     document.getElementById("preco-por").textContent = SITE.precoPor;
     document.getElementById("parcelas").textContent = SITE.parcelas;
     document.getElementById("comprar").href = SITE.checkoutUrl;
+
+    (function () {
+      var fim = new Date(SITE.blackFridayFim).getTime();
+      var itens = document.querySelectorAll("[data-bf]");
+      var tempo = document.getElementById("bf-time");
+      var num = function (s) { return Number(s.replace(/[^\d,]/g, "").replace(",", ".")); };
+      var de = num(SITE.precoDe), por = num(SITE.precoPor);
+      document.querySelectorAll("[data-bf-off]").forEach(function (e) { e.textContent = Math.round((1 - por / de) * 100); });
+      document.querySelectorAll("[data-bf-eco]").forEach(function (e) {
+        e.textContent = "R$ " + (de - por).toLocaleString("pt-BR", { minimumFractionDigits: 2 });
+      });
+      var dois = function (n) { return String(n).padStart(2, "0"); };
+      var timer;
+      function tick() {
+        var falta = fim - Date.now();
+        if (isNaN(fim) || falta <= 0) {
+          itens.forEach(function (e) { e.hidden = true; });
+          clearInterval(timer);
+          return;
+        }
+        var s = Math.floor(falta / 1000);
+        var d = Math.floor(s / 86400);
+        tempo.textContent = (d ? d + "d " : "") + dois(Math.floor(s % 86400 / 3600)) + ":" + dois(Math.floor(s % 3600 / 60)) + ":" + dois(s % 60);
+        itens.forEach(function (e) { e.hidden = false; });
+      }
+      tick();
+      timer = setInterval(tick, 1000);
+    })();
     document.getElementById("comprar").addEventListener("click", function () {
       window.editarRegistro && window.editarRegistro("Oferta");
     });
