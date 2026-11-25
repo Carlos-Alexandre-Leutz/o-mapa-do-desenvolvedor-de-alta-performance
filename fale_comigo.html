@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Abrindo WhatsApp…</title>
+</head>
+<body>
+  <p>Abrindo o WhatsApp… <a id="link" href="#">Clique aqui se não abrir</a></p>
+  <script src="config.js"></script>
+  <script>
+    const msg = new URLSearchParams(location.search).get("msg");
+    const texto = msg ? msg.replace(/[-_]+/g, " ") : MENSAGEM_PADRAO;
+    const link = `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(texto)}`;
+    document.getElementById("link").href = link;
+    location.replace(link);
+  </script>
+</body>
+</html>
